@@ -44,6 +44,29 @@ alter table `match`
 # 2026-02-02
 #---------------------------------------------------------------------------------------------------
 
-# Stage
+# Match Stage
 alter table match_stage
     add column stage_name varchar(255) null;
+
+
+#---------------------------------------------------------------------------------------------------
+# 2026-02-03
+#---------------------------------------------------------------------------------------------------
+
+# Match Stage competitor
+alter table match_stage_competitor
+    add column has_deduction int null;
+alter table match_stage_competitor
+    add column deduction_percentage decimal(10, 2) null;
+alter table match_stage_competitor
+    add column date_updated datetime null;
+
+# Match Competitor
+alter table match_competitor
+    add column date_updated datetime null;
+
+# Match
+alter table `match`
+    add column date_created datetime null;
+alter table `match`
+    add column date_updated datetime null;
