@@ -24,7 +24,7 @@ CREATE TABLE competitor
 );
 
 -- Match table
-CREATE TABLE match
+CREATE TABLE `match`
 (
     id                 BIGINT PRIMARY KEY AUTO_INCREMENT,
     club_id            BIGINT       NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE match_stage
     target_penalty   INT,
     min_rounds       INT,
     max_points       INT,
-    FOREIGN KEY (match_id) REFERENCES match (id)
+    FOREIGN KEY (match_id) REFERENCES `match` (id)
 );
 
 -- MatchCompetitor table
@@ -74,7 +74,7 @@ CREATE TABLE match_competitor
     date_updated        DATETIME,
     date_edited         DATETIME,
     FOREIGN KEY (competitor_id) REFERENCES competitor (id),
-    FOREIGN KEY (match_id) REFERENCES match (id)
+    FOREIGN KEY (match_id) REFERENCES `match` (id)
 );
 
 -- MatchStageCompetitor table
@@ -116,7 +116,7 @@ CREATE TABLE club_matches
     club_id    BIGINT NOT NULL,
     matches_id BIGINT NOT NULL,
     FOREIGN KEY (club_id) REFERENCES club (id),
-    FOREIGN KEY (matches_id) REFERENCES match (id)
+    FOREIGN KEY (matches_id) REFERENCES `match` (id)
 );
 
 CREATE TABLE competitor_competitor_matches
@@ -139,7 +139,7 @@ CREATE TABLE match_match_stages
 (
     match_id        BIGINT NOT NULL,
     match_stages_id BIGINT NOT NULL,
-    FOREIGN KEY (match_id) REFERENCES match (id),
+    FOREIGN KEY (match_id) REFERENCES `match` (id),
     FOREIGN KEY (match_stages_id) REFERENCES match_stage (id)
 );
 
@@ -147,7 +147,7 @@ CREATE TABLE match_match_competitors
 (
     match_id             BIGINT NOT NULL,
     match_competitors_id BIGINT NOT NULL,
-    FOREIGN KEY (match_id) REFERENCES match (id),
+    FOREIGN KEY (match_id) REFERENCES `match` (id),
     FOREIGN KEY (match_competitors_id) REFERENCES match_competitor (id)
 );
 
