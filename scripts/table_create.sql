@@ -1,17 +1,33 @@
 #---------------------------------------------------------------------------------------------------
-# 2026-02-10
+# 2026-02-1
 #---------------------------------------------------------------------------------------------------
 
 -- Club table
-CREATE TABLE club
+CREATE TABLE IF NOT EXISTS club
 (
     id           BIGINT PRIMARY KEY AUTO_INCREMENT,
     name         VARCHAR(255) NOT NULL UNIQUE,
     abbreviation VARCHAR(255)
 );
 
+-- IpscMatch table
+CREATE TABLE IF NOT EXISTS ipsc_match
+(
+    id                 BIGINT PRIMARY KEY AUTO_INCREMENT,
+    club_id            BIGINT       NULL,
+    name               VARCHAR(255) NOT NULL UNIQUE,
+    scheduled_date     DATE         NOT NULL,
+    club_name          VARCHAR(255),
+    match_firearm_type VARCHAR(255),
+    match_category     VARCHAR(255),
+    date_created       DATETIME     NOT NULL,
+    date_updated       DATETIME,
+    date_edited        DATETIME,
+    FOREIGN KEY (club_id) REFERENCES club (id)
+);
+
 -- Competitor table
-CREATE TABLE competitor
+CREATE TABLE IF NOT EXISTS competitor
 (
     id                          BIGINT PRIMARY KEY AUTO_INCREMENT,
     first_name                  VARCHAR(255) NOT NULL,
@@ -20,27 +36,11 @@ CREATE TABLE competitor
     date_of_birth               DATE,
     sapsa_number                INT,
     competitor_number           VARCHAR(255) NOT NULL,
-    default_competitor_category VARCHAR(50)
+    default_competitor_category VARCHAR(255)
 );
 
--- Match table
-CREATE TABLE `match`
-(
-    id                 BIGINT PRIMARY KEY AUTO_INCREMENT,
-    club_id            BIGINT       NOT NULL,
-    name               VARCHAR(255) NOT NULL UNIQUE,
-    scheduled_date     DATE         NOT NULL,
-    club_name          VARCHAR(50),
-    match_firearm_type VARCHAR(50),
-    match_category     VARCHAR(50),
-    date_created       DATETIME     NOT NULL,
-    date_updated       DATETIME,
-    date_edited        DATETIME,
-    FOREIGN KEY (club_id) REFERENCES club (id)
-);
-
--- MatchStage table
-CREATE TABLE match_stage
+-- IpscMatchStage table
+CREATE TABLE IF NOT EXISTS ipsc_match_stage
 (
     id               BIGINT PRIMARY KEY AUTO_INCREMENT,
     match_id         BIGINT NOT NULL,
@@ -54,38 +54,38 @@ CREATE TABLE match_stage
     target_penalty   INT,
     min_rounds       INT,
     max_points       INT,
-    FOREIGN KEY (match_id) REFERENCES `match` (id)
+    FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
 
 -- MatchCompetitor table
-CREATE TABLE match_competitor
+CREATE TABLE IF NOT EXISTS match_competitor
 (
     id                  BIGINT PRIMARY KEY AUTO_INCREMENT,
     competitor_id       BIGINT   NOT NULL,
     match_id            BIGINT   NOT NULL,
-    club                VARCHAR(50),
-    firearm_type        VARCHAR(50),
-    division            VARCHAR(50),
-    power_factor        VARCHAR(50),
+    club                VARCHAR(255),
+    firearm_type        VARCHAR(255),
+    division            VARCHAR(255),
+    power_factor        VARCHAR(255),
     match_points        DECIMAL(19, 2),
     match_ranking       DECIMAL(19, 2),
-    competitor_category VARCHAR(50),
+    competitor_category VARCHAR(255),
     date_created        DATETIME NOT NULL,
     date_updated        DATETIME,
     date_edited         DATETIME,
     FOREIGN KEY (competitor_id) REFERENCES competitor (id),
-    FOREIGN KEY (match_id) REFERENCES `match` (id)
+    FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
 
 -- MatchStageCompetitor table
-CREATE TABLE match_stage_competitor
+CREATE TABLE IF NOT EXISTS match_stage_competitor
 (
     id                   BIGINT PRIMARY KEY AUTO_INCREMENT,
     competitor_id        BIGINT   NOT NULL,
     match_stage_id       BIGINT   NOT NULL,
-    firearm_type         VARCHAR(50),
-    division             VARCHAR(50),
-    power_factor         VARCHAR(50),
+    firearm_type         VARCHAR(255),
+    division             VARCHAR(255),
+    power_factor         VARCHAR(255),
     score_a              INT,
     score_b              INT,
     score_c              INT,
@@ -102,59 +102,10 @@ CREATE TABLE match_stage_competitor
     stage_percentage     DECIMAL(19, 2),
     stage_ranking        DECIMAL(19, 2),
     is_disqualified      BOOLEAN,
-    competitor_category  VARCHAR(50),
+    competitor_category  VARCHAR(255),
     date_created         DATETIME NOT NULL,
     date_updated         DATETIME,
     date_edited          DATETIME,
     FOREIGN KEY (competitor_id) REFERENCES competitor (id),
-    FOREIGN KEY (match_stage_id) REFERENCES match_stage (id)
-);
-
--- Junction tables for lazy-loaded collections
-CREATE TABLE club_matches
-(
-    club_id    BIGINT NOT NULL,
-    matches_id BIGINT NOT NULL,
-    FOREIGN KEY (club_id) REFERENCES club (id),
-    FOREIGN KEY (matches_id) REFERENCES `match` (id)
-);
-
-CREATE TABLE competitor_competitor_matches
-(
-    competitor_id         BIGINT NOT NULL,
-    competitor_matches_id BIGINT NOT NULL,
-    FOREIGN KEY (competitor_id) REFERENCES competitor (id),
-    FOREIGN KEY (competitor_matches_id) REFERENCES match_competitor (id)
-);
-
-CREATE TABLE competitor_competitor_stage_matches
-(
-    competitor_id               BIGINT NOT NULL,
-    competitor_stage_matches_id BIGINT NOT NULL,
-    FOREIGN KEY (competitor_id) REFERENCES competitor (id),
-    FOREIGN KEY (competitor_stage_matches_id) REFERENCES match_stage_competitor (id)
-);
-
-CREATE TABLE match_match_stages
-(
-    match_id        BIGINT NOT NULL,
-    match_stages_id BIGINT NOT NULL,
-    FOREIGN KEY (match_id) REFERENCES `match` (id),
-    FOREIGN KEY (match_stages_id) REFERENCES match_stage (id)
-);
-
-CREATE TABLE match_match_competitors
-(
-    match_id             BIGINT NOT NULL,
-    match_competitors_id BIGINT NOT NULL,
-    FOREIGN KEY (match_id) REFERENCES `match` (id),
-    FOREIGN KEY (match_competitors_id) REFERENCES match_competitor (id)
-);
-
-CREATE TABLE match_stage_match_stage_competitors
-(
-    match_stage_id             BIGINT NOT NULL,
-    match_stage_competitors_id BIGINT NOT NULL,
-    FOREIGN KEY (match_stage_id) REFERENCES match_stage (id),
-    FOREIGN KEY (match_stage_competitors_id) REFERENCES match_stage_competitor (id)
+    FOREIGN KEY (match_stage_id) REFERENCES ipsc_match_stage (id)
 );
