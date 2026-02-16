@@ -5,3 +5,19 @@
 ALTER TABLE ipsc_match
     ADD COLUMN date_refreshed DATETIME NULL;
 
+#---------------------------------------------------------------------------------------------------
+# 2026-02-15
+#---------------------------------------------------------------------------------------------------
+
+ALTER TABLE match_competitor
+    ADD COLUMN date_refreshed DATETIME NULL;
+
+ALTER TABLE match_stage_competitor
+    ADD COLUMN date_refreshed DATETIME NULL;
+
+#---------------------------------------------------------------------------------------------------
+# 2026-02-16
+#---------------------------------------------------------------------------------------------------
+
+ALTER TABLE match_competitor
+    RENAME COLUMN club TO club_name;
