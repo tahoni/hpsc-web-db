@@ -4,10 +4,10 @@
 
 ### Table of Contents
 
-- [Version 1.2.0](#version-110---_2026-02-21_)
+- [Version 1.1.0](#version-110---_2026-02-21_)
 - [Version 1.0.0](#version-100---_2026-01-28_)
 
-### [Version 1.2.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.2.0) - _2026-02-21_
+### [Version 1.1.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.0.0) - _2026-02-21_
 
 This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
 Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary

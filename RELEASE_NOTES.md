@@ -2,7 +2,7 @@
 
 ## Release Notes
 
-### Version 1.2.0 - 2026-02-21
+### Version 1.1.0 - 2026-02-21
 
 This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
 Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary
