@@ -1,120 +1,160 @@
 #---------------------------------------------------------------------------------------------------
-# 2026-01-21
+# 2026-02-01
 #---------------------------------------------------------------------------------------------------
 
-# Club
-create table if not exists club
+-- Club table
+CREATE TABLE IF NOT EXISTS club
 (
-    id           int auto_increment primary key,
-    name         varchar(255) not null,
-    abbreviation varchar(255) null,
-    constraint club_name_uindex unique (name),
-    constraint club_abbreviation_uindex unique (abbreviation)
+    id           BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name         VARCHAR(255) NOT NULL UNIQUE,
+    abbreviation VARCHAR(255)
 );
 
-# Competitor
-create table if not exists competitor
+-- IpscMatch table
+CREATE TABLE IF NOT EXISTS ipsc_match
 (
-    id                int auto_increment primary key,
-    first_name        varchar(255) not null,
-    last_name         varchar(255) not null,
-    middle_names      varchar(255) not null,
-    competitor_number varchar(255) not null,
-    sapsa_number      int          null,
-    category          varchar(255) null,
-    constraint competitor_sapsa_number_uindex unique (sapsa_number),
-    constraint competitor_full_name_uindex unique index (first_name, middle_names, last_name)
+    id                 BIGINT PRIMARY KEY AUTO_INCREMENT,
+    club_id            BIGINT       NULL,
+    name               VARCHAR(255) NOT NULL UNIQUE,
+    scheduled_date     DATE         NOT NULL,
+    club_name          VARCHAR(255),
+    match_firearm_type VARCHAR(255),
+    match_category     VARCHAR(255),
+    date_created       DATETIME     NOT NULL,
+    date_updated       DATETIME,
+    date_edited        DATETIME,
+    FOREIGN KEY (club_id) REFERENCES club (id)
 );
 
-# Match
-create table if not exists `match`
+-- Competitor table
+CREATE TABLE IF NOT EXISTS competitor
 (
-    id             int auto_increment primary key,
-    club_id        int          not null,
-    name           varchar(255) not null,
-    scheduled_date date         not null,
-    match_division varchar(255) null,
-    match_category varchar(255) null,
-    foreign key (club_id) references club (id),
-    constraint match_club_id_name_scheduled_date_uindex unique (club_id, name, scheduled_date)
+    id                          BIGINT PRIMARY KEY AUTO_INCREMENT,
+    first_name                  VARCHAR(255) NOT NULL,
+    last_name                   VARCHAR(255) NOT NULL,
+    middle_names                VARCHAR(255),
+    date_of_birth               DATE,
+    sapsa_number                INT,
+    competitor_number           VARCHAR(255) NOT NULL,
+    default_competitor_category VARCHAR(255)
 );
 
-# Match Stage
-create table if not exists match_stage
+-- IpscMatchStage table
+CREATE TABLE IF NOT EXISTS ipsc_match_stage
 (
-    id           int auto_increment primary key,
-    match_id     int not null,
-    stage_number int not null,
-    range_number int null,
-    foreign key (match_id) references `match` (id),
-    constraint match_stage_match_id_stage_number_uindex unique (match_id, stage_number)
+    id               BIGINT PRIMARY KEY AUTO_INCREMENT,
+    match_id         BIGINT NOT NULL,
+    stage_number     INT    NOT NULL,
+    stage_name       VARCHAR(255),
+    range_number     INT,
+    target_paper     INT,
+    target_popper    INT,
+    target_plates    INT,
+    target_disappear INT,
+    target_penalty   INT,
+    min_rounds       INT,
+    max_points       INT,
+    FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
 
-# Match Competitor
-create table if not exists match_competitor
+-- MatchCompetitor table
+CREATE TABLE IF NOT EXISTS match_competitor
 (
-    id               int auto_increment primary key,
-    match_id         int            not null,
-    competitor_id    int            not null,
-    division         varchar(255)   null,
-    discipline       varchar(255)   null,
-    power_factor     varchar(255)   null,
-    match_points     decimal(10, 4) null,
-    match_percentage decimal(10, 2) null,
-    foreign key (match_id) references `match` (id),
-    foreign key (competitor_id) references competitor (id),
-    constraint match_competitor_match_id_competitor_id_uindex unique (match_id, competitor_id)
+    id                  BIGINT PRIMARY KEY AUTO_INCREMENT,
+    competitor_id       BIGINT   NOT NULL,
+    match_id            BIGINT   NOT NULL,
+    club                VARCHAR(255),
+    firearm_type        VARCHAR(255),
+    division            VARCHAR(255),
+    power_factor        VARCHAR(255),
+    match_points        DECIMAL(19, 2),
+    match_ranking       DECIMAL(19, 2),
+    competitor_category VARCHAR(255),
+    date_created        DATETIME NOT NULL,
+    date_updated        DATETIME,
+    date_edited         DATETIME,
+    FOREIGN KEY (competitor_id) REFERENCES competitor (id),
+    FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
 
-# Match Stage Competitor
-create table if not exists match_stage_competitor
+-- MatchStageCompetitor table
+CREATE TABLE IF NOT EXISTS match_stage_competitor
 (
-    id                  int auto_increment primary key,
-    match_stage_id      int            not null,
-    match_competitor_id int            not null,
-    points              int            null,
-    penalties           int            null,
-    time                decimal(10, 2) null,
-    hit_factor          decimal(10, 4) null,
-    stage_points        decimal(10, 4) null,
-    stage_percentage    decimal(10, 2) null,
-    foreign key (match_stage_id) references match_stage (id),
-    foreign key (match_competitor_id) references match_competitor (id),
-    constraint match_stage_competitor_match_stage_id_competitor_id_uindex
-        unique (match_stage_id, match_competitor_id)
+    id                   BIGINT PRIMARY KEY AUTO_INCREMENT,
+    competitor_id        BIGINT   NOT NULL,
+    match_stage_id       BIGINT   NOT NULL,
+    firearm_type         VARCHAR(255),
+    division             VARCHAR(255),
+    power_factor         VARCHAR(255),
+    score_a              INT,
+    score_b              INT,
+    score_c              INT,
+    score_d              INT,
+    points               INT,
+    misses               INT,
+    penalties            INT,
+    procedurals          INT,
+    has_deduction        BOOLEAN,
+    deduction_percentage DECIMAL(19, 2),
+    time                 DECIMAL(19, 2),
+    hit_factor           DECIMAL(19, 2),
+    stage_points         DECIMAL(19, 2),
+    stage_percentage     DECIMAL(19, 2),
+    stage_ranking        DECIMAL(19, 2),
+    is_disqualified      BOOLEAN,
+    competitor_category  VARCHAR(255),
+    date_created         DATETIME NOT NULL,
+    date_updated         DATETIME,
+    date_edited          DATETIME,
+    FOREIGN KEY (competitor_id) REFERENCES competitor (id),
+    FOREIGN KEY (match_stage_id) REFERENCES ipsc_match_stage (id)
 );
 
-#---------------------------------------------------------------------------------------------------
-# 2026-01-28
-#---------------------------------------------------------------------------------------------------
-
-# Log Match
-create table if not exists log_match
+-- Join tables for OneToMany relationships
+CREATE TABLE IF NOT EXISTS club_matches
 (
-    id            int auto_increment primary key,
-    competitor_id int            not null,
-    match_id      int            not null,
-    place         int            null,
-    points        decimal(10, 4) null,
-    percentage    decimal(10, 2) null,
-    foreign key (competitor_id) references competitor (id),
-    foreign key (match_id) references `match` (id),
-    constraint log_match_competitor_id_match_id_uindex unique (competitor_id, match_id)
+    club_id    BIGINT NOT NULL,
+    matches_id BIGINT NOT NULL,
+    FOREIGN KEY (club_id) REFERENCES club (id),
+    FOREIGN KEY (matches_id) REFERENCES ipsc_match (id)
 );
 
-# Log Matches
-create table if not exists log_matches
+CREATE TABLE IF NOT EXISTS ipsc_match_match_stages
 (
-    id            int auto_increment primary key,
-    competitor_id int            not null,
-    min_match_id  int            not null,
-    max_match_id  int            not null,
-    place         int            null,
-    points        decimal(10, 4) null,
-    percentage    decimal(10, 2) null,
-    foreign key (competitor_id) references competitor (id),
-    foreign key (min_match_id) references `match` (id),
-    foreign key (max_match_id) references `match` (id),
-    constraint log_matches_competitor_id_min_match_id_max_match_id_uindex
-        unique (competitor_id, min_match_id, max_match_id)
+    ipsc_match_id   BIGINT NOT NULL,
+    match_stages_id BIGINT NOT NULL,
+    FOREIGN KEY (ipsc_match_id) REFERENCES ipsc_match (id),
+    FOREIGN KEY (match_stages_id) REFERENCES ipsc_match_stage (id)
+);
+
+CREATE TABLE IF NOT EXISTS ipsc_match_match_competitors
+(
+    ipsc_match_id        BIGINT NOT NULL,
+    match_competitors_id BIGINT NOT NULL,
+    FOREIGN KEY (ipsc_match_id) REFERENCES ipsc_match (id),
+    FOREIGN KEY (match_competitors_id) REFERENCES match_competitor (id)
+);
+
+CREATE TABLE IF NOT EXISTS competitor_competitor_matches
+(
+    competitor_id         BIGINT NOT NULL,
+    competitor_matches_id BIGINT NOT NULL,
+    FOREIGN KEY (competitor_id) REFERENCES competitor (id),
+    FOREIGN KEY (competitor_matches_id) REFERENCES match_competitor (id)
+);
+
+CREATE TABLE IF NOT EXISTS competitor_competitor_stage_matches
+(
+    competitor_id               BIGINT NOT NULL,
+    competitor_stage_matches_id BIGINT NOT NULL,
+    FOREIGN KEY (competitor_id) REFERENCES competitor (id),
+    FOREIGN KEY (competitor_stage_matches_id) REFERENCES match_stage_competitor (id)
+);
+
+CREATE TABLE IF NOT EXISTS match_stage_match_stage_competitors
+(
+    match_stage_id             BIGINT NOT NULL,
+    match_stage_competitors_id BIGINT NOT NULL,
+    FOREIGN KEY (match_stage_id) REFERENCES ipsc_match_stage (id),
+    FOREIGN KEY (match_stage_competitors_id) REFERENCES match_stage_competitor (id)
 );
