@@ -2,72 +2,45 @@
 
 ## Release Notes
 
-### Version 1.2.0 - 2026-02-21
+### Version 2.0.0 - _2026-02-21_
 
-This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
-Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary
-tables.
+Major database schema enhancements focusing on improved data synchronisation tracking and normalisation.
 
-#### Database Schema Changes
+#### Breaking Changes
 
-**Added / Restored**
+- `club_name` column removed from `ipsc_match` table
+- `club_name` column removed from `match_competitor` table
 
-- Restored required join tables to support domain relationships
+#### New Features
 
-**Updated**
+Introduced `date_refreshed` timestamp tracking across core match tables for enhanced data synchronization
+monitoring:
 
-- Refreshed data updates for the `match` table
-- Updated schema generation and migration scripts:
-    - `scripts/table_create.sql`
-    - `scripts/table_alter.sql`
+- `ipsc_match` table
+- `match_competitor` table
+- `match_stage_competitor` table
 
-**Removed**
+#### Improvements
 
-- Removed unnecessary tables from the schema
+Removed `club_name` denormalization from `ipsc_match` and `match_competitor` tables to reduce data redundancy
+and improve maintainability.
 
-#### Schema Enhancements
+#### Schema Changes
 
-**Competitor**
+- Added `date_refreshed` DATETIME column to `ipsc_match`, `match_competitor`, and `match_stage_competitor`
+  tables
+- Removed `club_name` column from `ipsc_match` and `match_competitor` tables
 
-- Made `sapsa_number` optional (nullable, `varchar(255)`)
-- Added `place` (nullable) to store competitor placing
+#### Migration Notes
 
-**Match Competitor**
+- **2026-02-14**: Initial refresh date tracking implementation for match data
+- **2026-02-15**: Extended refresh tracking to competitor relationship tables
+- **2026-02-21**: Completed database normalization by removing redundant club name fields
 
-- Added `is_disqualified` (nullable boolean) for match-level DQ tracking
-- Added `place` (nullable) for match-level placing
+#### Tests and Quality Assurance
 
-**Match Stage Competitor**
+Schema changes validated across all dependent queries and stored procedures.
 
-- Added per-stage score buckets: `score_a`, `score_b`, `score_c`, `score_d` (nullable integers)
-- Added penalty detail fields: `misses`, `procedurals` (nullable integers)
-- Added `is_disqualified` (nullable boolean) for stage-level DQ tracking
-
-#### Documentation & Configuration
-
-- Created `README.md` and `ARCHITECTURE.md`
-- Added documentation templates: `CHANGELOG.md` and `RELEASE_NOTES.md`
-- Added `suggestions.md` for future enhancements
-- Updated `.gitignore` and IDE configuration (`.idea/`)
-- Removed `db-forest-config.xml`
-
-#### Migration Guide
-
-**For new environments:** Use `scripts/table_create.sql`
-
-**For existing environments:** Apply `scripts/table_alter.sql` against databases based on the `main` branch
-schema
-
-**Post-migration validation:**
-
-- Verify expected join tables exist
-- Confirm removed tables are not referenced by downstream queries/jobs
-- Validate `match` table data is refreshed as intended
-
-#### Known Considerations
-
-- `.idea/` changes are environment-specific; confirm whether your workflow expects these files to be tracked
-
-#### Changes by
+#### Contributors
 
 @tahoni
