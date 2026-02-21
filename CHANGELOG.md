@@ -4,7 +4,8 @@
 
 ### Table of Contents
 
-- [Version 1.2.0](#version-110---_2026-02-21_)
+- [Version 1.2.0](#version-120---_2026-02-21_)
+- [Version 1.1.0](#version-110---_2026-02-03_)
 - [Version 1.0.0](#version-100---_2026-01-28_)
 
 ### [Version 1.2.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.2.0) - _2026-02-21_
@@ -74,6 +75,54 @@ schema
 - `.idea/` changes are environment-specific; confirm whether your workflow expects these files to be tracked
 
 #### Changes by
+
+@tahoni
+
+### [Version 1.1.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.1.0) - _2026-02-03_
+
+This release introduces several schema enhancements to support improved match and stage scoring, placing, and
+disqualification tracking. It also includes documentation updates and configuration improvements.
+
+### Database schema changes (MySQL)
+
+#### Match
+
+- Allow matches without a club by making `match.club_id` nullable.
+- Add audit timestamps:
+    - `match.date_created` (nullable `datetime`)
+    - `match.date_updated` (nullable `datetime`)
+
+#### Match stage
+
+- Add `match_stage.stage_name` (nullable `varchar(255)`)
+
+#### Match stage competitor
+
+- Add scoring deduction support:
+    - `has_deduction` (nullable `int`)
+    - `deduction_percentage` (nullable `decimal(10,2)`)
+- Add audit timestamp:
+    - `date_updated` (nullable `datetime`)
+- (Also includes earlier addition) `is_disqualified` (nullable `boolean`)
+
+#### Match competitor
+
+- Add audit timestamp:
+    - `match_competitor.date_updated` (nullable `datetime`)
+
+### Developer/Tooling
+
+- Configure IDE SQL dialect mapping so `scripts/table_alter.sql` is recognized as MySQL (in
+  `.idea/sqldialects.xml`).
+
+### Upgrade notes
+
+- Apply the new statements in `scripts/table_alter.sql` to bring an existing `version-1.0.0` database up to
+  `version-1.1.0`.
+- If your application layer assumes `match.club_id` is always present, update validation/queries to handle
+  `NULL`.
+
+### Changes by
 
 @tahoni
 
