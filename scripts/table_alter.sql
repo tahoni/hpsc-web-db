@@ -14,3 +14,14 @@ ALTER TABLE match_competitor
 
 ALTER TABLE match_stage_competitor
     ADD COLUMN date_refreshed DATETIME NULL;
+
+
+#---------------------------------------------------------------------------------------------------
+# 2026-02-21
+#---------------------------------------------------------------------------------------------------
+
+ALTER TABLE ipsc_match
+    DROP COLUMN club_name;
+
+ALTER TABLE match_competitor
+    DROP COLUMN club_name;
