@@ -87,7 +87,7 @@ FROM ipsc_match m
 
 ## Bug Fixes
 
-- Fixed data consistency issues by removing denormalized `club_name` columns
+- Fixed data consistency issues by removing denormalised `club_name` columns
 - Corrected SQL script formatting and dialect consistency
 
 ---
