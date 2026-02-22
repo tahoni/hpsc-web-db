@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS ipsc_match
     club_id            BIGINT       NULL,
     name               VARCHAR(255) NOT NULL UNIQUE,
     scheduled_date     DATETIME     NOT NULL,
-    club_name          VARCHAR(255),
     match_firearm_type VARCHAR(255),
     match_category     VARCHAR(255),
     date_created       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
