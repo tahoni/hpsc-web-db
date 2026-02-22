@@ -110,8 +110,8 @@ CREATE TABLE IF NOT EXISTS match_stage_competitor
     stage_ranking        DECIMAL(19, 2),
     is_disqualified      BOOLEAN,
     competitor_category  VARCHAR(255),
-    date_created         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    date_updated         TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    date_created         DATETIME NOT NULL,
+    date_updated         DATETIME NOT NULL,
     date_edited          DATETIME,
     FOREIGN KEY (competitor_id) REFERENCES competitor (id),
     FOREIGN KEY (match_stage_id) REFERENCES ipsc_match_stage (id)
