@@ -1,6 +1,6 @@
 # MIT Licence
 
-Copyright (c) 2026 Hartbeespoortdam Practical Shooting Club
+Copyright © 2026 Hartbeespoortdam Practical Shooting Club
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

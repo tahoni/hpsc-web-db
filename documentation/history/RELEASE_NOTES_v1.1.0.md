@@ -1,6 +1,6 @@
 # Release Notes
 
-## Version 1.1.0
+## Version 1.2.0
 
 **Release Date:** January 28, 2026  
 **Branch:** develop → main
@@ -21,7 +21,7 @@ documentation. The release transforms the initial prototype into a production-re
 
 #### Complete Schema Definition
 
-- **Core domain tables**: Finalized definitions for `club`, `competitor`, `match`, and `match_stage` tables
+- **Core domain tables**: Finalised definitions for `club`, `competitor`, `match`, and `match_stage` tables
   with proper data types and constraints
 - **Participation tables**: Implemented `match_competitor` to track competitor participation in matches with
   division, discipline, and power factor
@@ -36,7 +36,7 @@ documentation. The release transforms the initial prototype into a production-re
   results
 - **Constraint naming**: Applied consistent naming conventions for all foreign key constraints
 
-### SQL Script Organization
+### SQL Script Organisation
 
 #### Core Scripts Established
 
@@ -77,7 +77,7 @@ None. This is a feature addition release with no breaking changes.
 
 ## Bug Fixes
 
-- Initial release - no bug fixes applicable
+- Initial release – no bug fixes applicable
 
 ---
 
@@ -91,16 +91,16 @@ None. This is a feature addition release with no breaking changes.
 
 ### Code Quality
 
-- Organized SQL scripts with clear separation of concerns
+- Organised SQL scripts with clear separation of concerns
 - Implemented consistent naming conventions (snake_case for columns, InnoDB for storage)
 - Added comprehensive inline comments for complex relationships
 
 ### Developer Experience
 
-- Created quick start guide for DataGrip users
+- Created a quick start guide for DataGrip users
 - Documented conventions and constraints for developers
 - Provided seed data for immediate testing and development
-- Established clear project structure with organized directories
+- Established clear project structure with organised directories
 
 ---
 
@@ -112,7 +112,7 @@ None. This is a feature addition release with no breaking changes.
 
 **Core Domain:**
 
-- `club`: Organization entity with name and abbreviation
+- `club`: Organisation entity with name and abbreviation
 - `competitor`: Athlete/person entity with identity fields and SAPSA number
 - `ipsc_match`: Scheduled event entity hosted by clubs
 - `ipsc_match_stage`: Stage definition within matches
@@ -164,7 +164,7 @@ None. This is a feature addition release with no breaking changes.
 ### Verification Steps
 
 1. Check that all tables are created with proper primary keys
-2. Verify foreign key relationships in database diagram view
+2. Verify foreign key relationships in the database diagram view
 3. Confirm seed data is present in `club` table
 4. Test inserting sample match and competitor data
 
@@ -192,11 +192,11 @@ None. This is an initial feature release.
 
 - [Architecture Documentation](../../ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
-- [Project Overview & Quick Start Guide](../../README.md) - Introduction to the HPSC Database with schema
+- [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database with schema
   entities, conventions, and typical workflows
 - [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies, and change
   management best practices
-- [Changelog](../../CHANGELOG.md) - Complete version history with categorized changes
+- [Changelog](../../CHANGELOG.md) – Complete version history with categorised changes
 
 ---
 
@@ -209,5 +209,5 @@ For questions, issues, or suggestions, please contact:
 
 ---
 
-**Full Changelog**: [`v1.0.0...v1.1.0`](../../../../compare/v1.0.0...v1.1.0)
+**Full Changelog**: v1.0.0 vs v1.1.0 `git log v1.0.0..v1.1.0`
 

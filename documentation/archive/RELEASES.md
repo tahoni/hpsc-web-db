@@ -1,6 +1,6 @@
 # HPSC Database
 
-## History
+## Releases
 
 ### Table of Contents
 
@@ -112,7 +112,7 @@ disqualification tracking. It also includes documentation updates and configurat
 
 ### Developer/Tooling
 
-- Configure IDE SQL dialect mapping so `scripts/table_alter.sql` is recognized as MySQL (in
+- Configure IDE SQL dialect mapping so `scripts/table_alter.sql` is recognised as MySQL (in
   `.idea/sqldialects.xml`).
 
 ### Upgrade notes

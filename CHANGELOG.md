@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Views for leaderboards (per match, per division/category, per competitor history)
 - Stored procedures for computing match totals and populating log tables
 - Seed/demo data scripts for local development
-- Additional indexing optimizations for common query patterns
+- Additional indexing optimisations for common query patterns
 
 ---
 
@@ -31,10 +31,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Database Schema**: New `date_refreshed` column to `ipsc_match` table for tracking data synchronization (
-  2026-02-14)
-- **Database Schema**: New `date_refreshed` column to `match_competitor` table for tracking record updates (
-  2026-02-15)
+- **Database Schema**: New `date_refreshed` column to `ipsc_match` table for tracking data synchronisation
+  (2026-02-14)
+- **Database Schema**: New `date_refreshed` column to `match_competitor` table for tracking record updates
+  (2026-02-15)
 - **Database Schema**: New `date_refreshed` column to `match_stage_competitor` table for tracking score
   refreshes (2026-02-15)
 - **Documentation**: CHANGELOG.md for structured version tracking following Keep a Changelog format
@@ -51,14 +51,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Licence**: Changed LICENCE.md from proprietary "All Rights Reserved" to MIT Licence for open source
   distribution
 - **Documentation**: Enhanced SUGGESTIONS.md with additional guidance on change management
-- **Documentation**: Improved README.md structure and content organization
+- **Documentation**: Improved README.md structure and content organisation
 
 ### Removed
 
-- **Database Schema**: `club_name` column from `ipsc_match` table to enforce referential integrity (
-  2026-02-21)
-- **Database Schema**: `club_name` column from `match_competitor` table to reduce data duplication (
-  2026-02-21)
+- **Database Schema**: `club_name` column from `ipsc_match` table to enforce referential integrity
+  (2026-02-21)
+- **Database Schema**: `club_name` column from `match_competitor` table to reduce data duplication
+  (2026-02-21)
 
 ### Fixed
 
@@ -98,7 +98,7 @@ ALTER TABLE match_competitor
 
 ---
 
-## [1.1.0] - 2026-01-28
+## [1.2.0] - 2026-01-28
 
 ### Added
 
@@ -130,20 +130,20 @@ ALTER TABLE match_competitor
 - **Documentation**: `LICENCE.md` with copyright information
 - **Documentation**: `suggestions.md` with improvement roadmap
 - **SQL Scripts**: Basic schema creation scripts
-- **Repository**: Git repository initialization with `.gitignore` configuration
+- **Repository**: Git repository initialisation with `.gitignore` configuration
 
 ### Technical Details
 
 - **Database**: MySQL 8.x with InnoDB storage engine
-- **Character Set**: utf8mb4 with utf8mb4_0900_ai_ci collation
-- **Architecture**: Database-first design with normalized relational schema
+- **Character Set**: utf8mb4 with `utf8mb4_0900_ai_ci` collation
+- **Architecture**: Database-first design with normalised relational schema
 
 ---
 
 ## Version Comparison Links
 
-- [2.0.0 vs 1.1.0](../../compare/v1.1.0...v2.0.0)
-- [1.1.0 vs 1.0.0](../../compare/v1.0.0...v1.1.0)
+- 2.0.0 vs 1.1.0: `git log v1.1.0...v2.0.0`
+- 1.1.0 vs 1.0.0: `git log v1.0.0...v1.1.0`
 
 ---
 
@@ -154,14 +154,14 @@ When adding new versions to this changelog:
 1. Add a new section under [Unreleased](#unreleased) with the format: `## [X.Y.Z] - YYYY-MM-DD`
 2. Move relevant items from the Unreleased section to the new version
 3. Organize changes under appropriate categories:
-    - **Added** - New features or functionality
-    - **Changed** - Changes to existing functionality
-    - **Deprecated** - Features marked for removal in future versions
-    - **Removed** - Features removed in this version
+    - **Added** – New features or functionality
+    - **Changed** – Changes to existing functionality
+    - **Deprecated** – Features marked for removal in future versions
+    - **Removed** – Features removed in this version
     - **Fixed** - Bug fixes
-    - **Security** - Security vulnerability fixes
-    - **Breaking Changes** - Changes that break backward compatibility
-    - **Migration Notes** - SQL or code changes required for upgrading
+    - **Security** – Security vulnerability fixes
+    - **Breaking Changes** – Changes that break backward compatibility
+    - **Migration Notes** – SQL or code changes required for upgrading
 4. Update the Table of Contents with the new version
 5. Add version comparison links at the bottom
 
@@ -177,9 +177,9 @@ When adding new versions to this changelog:
 
 ## Additional Resources
 
-- [Release Notes](RELEASE_NOTES.md) - Detailed release information for version 2.0.0
-- [Architecture Documentation](ARCHITECTURE.md) - Database architecture and design principles
-- [Project Overview](README.md) - Getting started and project introduction
+- [Release Notes](RELEASE_NOTES.md) – Detailed release information for version 2.0.0
+- [Architecture Documentation](ARCHITECTURE.md) – Database architecture and design principles
+- [Project Overview](README.md) – Getting started and project introduction
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements and roadmap
 
 ---

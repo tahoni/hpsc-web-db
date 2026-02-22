@@ -11,17 +11,17 @@
 
 The inaugural release of the HPSC Database project, establishing the foundational schema for managing
 practical shooting club data. This release provides the core data model for tracking clubs, competitors,
-matches, stages, and results for the Hartbeespoortdam Practical Shooting Club and associated organizations.
+matches, stages, and results for the Hartbeespoortdam Practical Shooting Club and associated organisations.
 
 ---
 
 ## What's New
 
-### Database Schema - Initial Release
+### Database Schema – Initial Release
 
 #### Core Domain Tables
 
-- **`club`**: Organization entity for managing shooting clubs
+- **`club`**: Organisation entity for managing shooting clubs
     - Club name and abbreviation
     - Timestamp tracking for record management
 
@@ -111,7 +111,7 @@ This initial release enables the following workflows:
 
 ## Breaking Changes
 
-Not applicable - this is the initial release.
+Not applicable – this is the initial release.
 
 ---
 
@@ -138,7 +138,7 @@ Not applicable - this is the initial release.
 - log_match
 - log_matches
 
-**Join Tables:** 5 tables for managing relationships
+**Join Tables:** five tables for managing relationships
 
 #### Key Features
 
@@ -194,9 +194,9 @@ Not applicable - this is the initial release.
 
 ## Known Issues
 
-- Join tables are present but not fully documented in initial release
-- Log tables structure defined but aggregation procedures not yet implemented
-- Some redundant columns present (club_name) that may be optimized in future releases
+- Join tables are present but not fully documented in the initial release
+- Log tables structure is defined, but aggregation procedures are not yet implemented
+- Some redundant columns are present (club_name) that may be optimised in future releases
 
 ---
 
@@ -206,7 +206,7 @@ Planned for upcoming releases:
 
 - Views for leaderboards and competitor history
 - Stored procedures for score aggregation
-- Additional indexing for query optimization
+- Additional indexing for query optimisation
 - Enhanced documentation and examples
 - Sample data sets for testing
 
@@ -220,8 +220,8 @@ Planned for upcoming releases:
 
 ## Additional Resources
 
-- [Project Overview & Quick Start Guide](../../README.md) - Introduction to the HPSC Database
-- [Changelog](../../CHANGELOG.md) - Version history and changes
+- [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database
+- [Changelog](../../CHANGELOG.md) – Version history and changes
 
 ---
 
@@ -242,5 +242,5 @@ requirements gathering.
 
 ---
 
-**Initial Release** - December 28, 2025
+**Initial Release** – December 28, 2025
 

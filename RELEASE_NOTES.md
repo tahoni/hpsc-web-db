@@ -2,14 +2,14 @@
 
 ## Version 2.0.0
 
-**Release Date:** February 22, 2026  
+**Release Date:** 2026-02-22  
 **Branch:** develop → main
 
 ---
 
 ## Overview
 
-This release introduces significant database schema improvements, enhanced SQL script organization, and
+This release introduces significant database schema improvements, enhanced SQL script organisation, and
 documentation template updates for the HPSC Database. The changes focus on better data tracking capabilities,
 improved referential integrity, and streamlined schema management.
 
@@ -43,9 +43,9 @@ improved referential integrity, and streamlined schema management.
 
 #### New Documentation Templates
 
-- **CHANGELOG.md**: Introduced structured changelog format following Keep a Changelog standards for version
+- **CHANGELOG.md**: Introduced a structured changelog format following Keep a Changelog standards for version
   tracking and documentation
-- **RELEASE_NOTES.md**: Established standardized release notes format aligned with modern documentation
+- **RELEASE_NOTES.md**: Established standardised release notes format aligned with modern documentation
   practices
 - **HISTORY.md**: Added comprehensive release history with narrative descriptions for each version
 - **Versioned Release Notes**: Created historical release notes (v2.0.0, v1.1.0, v1.0.0) in
@@ -102,7 +102,7 @@ FROM ipsc_match m
 
 ### Code Quality
 
-- Organized schema change scripts with chronological date markers
+- Organised schema change scripts with chronological date markers
 - Improved SQL script readability and maintainability
 - Added proper documentation for schema evolution
 
@@ -112,7 +112,7 @@ FROM ipsc_match m
 - Better structured SQL migration files
 - Enhanced documentation templates for future releases
 - **MIT Licence adoption**: Transitioned to open source licensing for wider community adoption
-- **Organized documentation structure**: Established `documentation/history/` directory for versioned release
+- **Organised documentation structure**: Established `documentation/history/` directory for versioned release
   notes
 - **Comprehensive version history**: Created CHANGELOG.md and HISTORY.md for better version tracking
 
@@ -196,7 +196,7 @@ None at this time.
 
 - [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
-- [Project Overview & Quick Start Guide](README.md) - Introduction to the HPSC Database with schema entities,
+- [Project Overview & Quick Start Guide](README.md) – Introduction to the HPSC Database with schema entities,
   conventions, and typical workflows
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
@@ -212,5 +212,5 @@ For questions, issues, or suggestions, please contact:
 
 ---
 
-**Full Changelog**: [`main...feature/ai`](../../compare/main...feature/ai)
+**Full Changelog**: main vs develop - `git log main..develop`
 

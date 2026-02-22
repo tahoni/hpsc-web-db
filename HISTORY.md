@@ -8,8 +8,8 @@ themes and objectives for each version.
 ## Table of Contents
 
 - [Version 2.0.0 - Schema Refinement & Data Integrity](#version-200---schema-refinement--data-integrity)
-- [Version 1.1.0 - Enhanced Schema & Documentation](#version-110---enhanced-schema--documentation)
-- [Version 1.0.0 - Initial Release](#version-100---initial-release)
+- [Version 1.1.0 – Enhanced Schema & Documentation](#version-110--enhanced-schema--documentation)
+- [Version 1.0.0 – Initial Release](#version-100--initial-release)
 
 ---
 
@@ -20,17 +20,17 @@ themes and objectives for each version.
 
 ### Release Theme
 
-This major release focuses on **database normalization** and **temporal data tracking**, introducing breaking
+This major release focuses on **database normalisation** and **temporal data tracking**, introducing breaking
 changes to improve long-term maintainability and data integrity. The primary goal was to eliminate data
-redundancy and add synchronization tracking capabilities.
+redundancy and add synchronisation tracking capabilities.
 
 ### Key Objectives
 
-1. **Enforce Referential Integrity**: Remove denormalized data columns and enforce proper foreign key
+1. **Enforce Referential Integrity**: Remove de-normalised data columns and enforce proper foreign key
    relationships
-2. **Add Temporal Tracking**: Introduce timestamp tracking for data synchronization and refresh operations
+2. **Add Temporal Tracking**: Introduce timestamp tracking for data synchronisation and refresh operations
 3. **Improve Schema Management**: Establish better documentation practices and migration patterns
-4. **Enhance Maintainability**: Organize SQL scripts with chronological markers for easier change tracking
+4. **Enhance Maintainability**: Organise SQL scripts with chronological markers for easier change tracking
 5. **Adopt Open Source**: Transition from proprietary licence to MIT Licence for community adoption
 6. **Establish Documentation Standards**: Create comprehensive CHANGELOG, HISTORY, and versioned release notes
 
@@ -38,10 +38,10 @@ redundancy and add synchronization tracking capabilities.
 
 Version 2.0.0 represents a significant architectural improvement in how the database maintains data
 consistency. By removing redundant `club_name` columns from result tables and enforcing JOIN operations, the
-schema now follows database normalization best practices more strictly. This prevents data inconsistencies
+schema now follows database normalisation best practices more strictly. This prevents data inconsistencies
 that could arise from duplicate club names stored across multiple tables.
 
-The addition of `date_refreshed` columns enables better tracking of when data was last synchronized from
+The addition of `date_refreshed` columns enables better tracking of when data was last synchronised from
 external sources, which is crucial for match scoring systems that may import results from external platforms
 or devices.
 
@@ -71,16 +71,16 @@ structure provides a solid foundation for future community contributions and ver
 
 ### Related Documentation
 
-- [Full Release Notes](RELEASE_NOTES.md) - Complete details for version 2.0.0
-- [Versioned Release Notes](documentation/history/RELEASE_NOTES.md) - Archived release notes in history
-  directory
-- [Changelog Entry](CHANGELOG.md#200---2026-02-22) - Categorized list of all changes
+- [Full Release Notes](RELEASE_NOTES.md) – Complete details for version 2.0.0
+- [Versioned Release Notes](documentation/history/RELEASE_NOTES.md) – Archived release notes in
+  the history directory
+- [Changelog Entry](CHANGELOG.md#200---2026-02-22) – Categorised list of all changes
 - [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
 - [MIT Licence](LICENCE.md) - Open source licence details
 
 ---
 
-## Version 1.1.0 - Enhanced Schema & Documentation
+## Version 1.1.0 – Enhanced Schema & Documentation
 
 **Released:** January 28, 2026  
 **Type:** Minor Release (Feature Addition)
@@ -93,7 +93,7 @@ architectural documentation.
 
 ### Key Objectives
 
-1. **Complete Schema Definition**: Finalize all core domain tables with proper relationships
+1. **Complete Schema Definition**: Finalise all core domain tables with proper relationships
 2. **Establish Foreign Keys**: Implement referential integrity constraints across all tables
 3. **Document Architecture**: Create comprehensive technical documentation
 4. **Provide Quick Start**: Enable developers to quickly understand and deploy the database
@@ -104,7 +104,7 @@ Version 1.1.0 transformed the initial prototype into a production-ready database
 comprehensive documentation (ARCHITECTURE.md) and enhanced README provided developers with the context and
 guidance needed to understand the database design principles and deployment procedures.
 
-This release established the pattern of "database-first" design with a normalized relational schema, setting
+This release established the pattern of "database-first" design with a normalised relational schema, setting
 the architectural direction for future enhancements.
 
 ### Major Changes
@@ -112,7 +112,7 @@ the architectural direction for future enhancements.
 - **New**: Complete table definitions in `table_create.sql`
 - **New**: Foreign key constraints for referential integrity
 - **New**: Comprehensive architecture documentation
-- **Improved**: Enhanced README with quick start guide
+- **Improved**: Enhanced README with a quick start guide
 - **Added**: Schema creation and seed data scripts
 
 ### Impact
@@ -122,12 +122,12 @@ for setting up new database instances.
 
 ### Related Documentation
 
-- [Changelog Entry](CHANGELOG.md#110---2026-01-28) - Complete list of additions and changes
+- [Changelog Entry](CHANGELOG.md#110---2026-01-28) – Complete list of additions and changes
 - [Architecture Documentation](ARCHITECTURE.md) - Database design principles and technical requirements
 
 ---
 
-## Version 1.0.0 - Initial Release
+## Version 1.0.0 – Initial Release
 
 **Released:** December 28, 2025  
 **Type:** Major Release (Initial)
@@ -151,7 +151,7 @@ match management. This release established the core data model that supports typ
 registering clubs and competitors, creating matches with stages, recording participation, and tracking
 stage-by-stage scoring.
 
-The initial schema design prioritized flexibility and extensibility, with support for multiple divisions,
+The initial schema design prioritised flexibility and extensibility, with support for multiple divisions,
 disciplines, power factors, and categories—all essential for IPSC-style shooting competitions.
 
 ### Major Changes
@@ -169,8 +169,8 @@ enabling the club to begin tracking match results and competitor performance dig
 
 ### Related Documentation
 
-- [Changelog Entry](CHANGELOG.md#100---2025-12-28) - Initial release details
-- [README](README.md) - Project introduction and overview
+- [Changelog Entry](CHANGELOG.md#100---2025-12-28) – Initial release details
+- [README](README.md) – Project introduction and overview
 
 ---
 
@@ -222,13 +222,13 @@ practical shooting clubs worldwide, supporting:
 
 ## Additional Resources
 
-- [Changelog](CHANGELOG.md) - Detailed, categorized list of changes for each version following Keep a
+- [Changelog](CHANGELOG.md) – Detailed, categorised list of changes for each version following Keep a
   Changelog format
-- [Release Notes](RELEASE_NOTES.md) - Comprehensive release information for version 2.0.0 with upgrade guides
+- [Release Notes](RELEASE_NOTES.md) – Comprehensive release information for version 2.0.0 with upgrade guides
   and breaking changes
 - [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
-- [Project Overview & Quick Start Guide](README.md) - Introduction to the HPSC Database with schema entities,
+- [Project Overview & Quick Start Guide](README.md) – Introduction to the HPSC Database with schema entities,
   conventions, and typical workflows
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
