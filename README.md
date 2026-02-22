@@ -10,7 +10,7 @@ The official repository for the Hartbeespoortdam Practical Shooting Club (HPSC) 
 - [Conventions and Constraints](#conventions-and-constraints)
 - [Typical Workflows Supported](#typical-workflows-supported)
 - [Architecture](#architecture)
-- [License](#license)
+- [Licence](#licence)
 - [Author](#author)
 
 ## Introduction
@@ -76,9 +76,9 @@ It also includes logging tables for derived/aggregated competitor standings acro
 
 A detailed explanation of the architecture can be found in the [`ARCHITECTURE.md`](ARCHITECTURE.md) file.
 
-## License
+## Licence
 
-The copyright licence can be found in the [`LICENSE.md`](LICENSE.md) file.
+The copyright licence can be found in the [`LICENCE.md`](LICENCE.md) file.
 
 ## Author
 

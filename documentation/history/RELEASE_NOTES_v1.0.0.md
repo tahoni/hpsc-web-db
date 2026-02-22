@@ -74,7 +74,7 @@ matches, stages, and results for the Hartbeespoortdam Practical Shooting Club an
 #### Documentation
 
 - **README.md**: Initial project description and overview
-- **LICENSE.md**: Copyright notice (All Rights Reserved)
+- **LICENCE.md**: Copyright notice (All Rights Reserved)
 - **suggestions.md**: Initial improvement suggestions and roadmap
 
 #### SQL Scripts

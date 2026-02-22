@@ -37,9 +37,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   2026-02-15)
 - **Database Schema**: New `date_refreshed` column to `match_stage_competitor` table for tracking score
   refreshes (2026-02-15)
-- **Documentation**: CHANGELOG template for structured version tracking and documentation
-- **Documentation**: RELEASE_NOTES template aligned with modern documentation practices
-- **Documentation**: Template history documentation for the transition to new structures
+- **Documentation**: CHANGELOG.md for structured version tracking following Keep a Changelog format
+- **Documentation**: RELEASE_NOTES.md template aligned with modern documentation practices
+- **Documentation**: HISTORY.md with comprehensive release history and narrative descriptions for each version
+- **Documentation**: Versioned release notes (v2.0.0, v1.1.0, v1.0.0) in `documentation/history/` directory
 
 ### Changed
 
@@ -47,8 +48,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   markers
 - **SQL Scripts**: Enhanced `schema.sql` with proper user and schema creation for development and production
 - **SQL Scripts**: Updated `table_data.sql` with corrected club names for seed data
-- **Documentation**: Enhanced `suggestions.md` with additional guidance on change management
-- **Documentation**: Improved `README.md` structure and content organization
+- **Licence**: Changed LICENCE.md from proprietary "All Rights Reserved" to MIT Licence for open source
+  distribution
+- **Documentation**: Enhanced SUGGESTIONS.md with additional guidance on change management
+- **Documentation**: Improved README.md structure and content organization
 
 ### Removed
 
@@ -124,7 +127,7 @@ ALTER TABLE match_competitor
 - **Database Schema**: Result tracking tables for match and stage performance
 - **Database Schema**: Logging tables for derived standings
 - **Documentation**: Initial `README.md` with project description
-- **Documentation**: `LICENSE.md` with copyright information
+- **Documentation**: `LICENCE.md` with copyright information
 - **Documentation**: `suggestions.md` with improvement roadmap
 - **SQL Scripts**: Basic schema creation scripts
 - **Repository**: Git repository initialization with `.gitignore` configuration

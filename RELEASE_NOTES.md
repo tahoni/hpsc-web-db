@@ -3,7 +3,7 @@
 ## Version 2.0.0
 
 **Release Date:** February 22, 2026  
-**Branch:** feature/ai → main
+**Branch:** develop → main
 
 ---
 
@@ -43,16 +43,20 @@ improved referential integrity, and streamlined schema management.
 
 #### New Documentation Templates
 
-- **CHANGELOG template**: Introduced structured changelog format for version tracking and documentation
-- **RELEASE_NOTES template**: Established standardized release notes format aligned with modern documentation
+- **CHANGELOG.md**: Introduced structured changelog format following Keep a Changelog standards for version
+  tracking and documentation
+- **RELEASE_NOTES.md**: Established standardized release notes format aligned with modern documentation
   practices
-- **Template History**: Added documentation for the transition to new template structures
+- **HISTORY.md**: Added comprehensive release history with narrative descriptions for each version
+- **Versioned Release Notes**: Created historical release notes (v2.0.0, v1.1.0, v1.0.0) in
+  `documentation/history/` directory
 
 #### Updated Documentation
 
+- **LICENCE.md**: Changed from proprietary "All Rights Reserved" to MIT Licence for open source distribution
 - **README.md**: Maintained comprehensive project overview with table of contents and quick start guides
 - **ARCHITECTURE.md**: Preserved detailed architectural documentation with MySQL-specific considerations
-- **suggestions.md**: Enhanced improvement suggestions with additional guidance on change management
+- **SUGGESTIONS.md**: Enhanced improvement suggestions with additional guidance on change management
 
 ---
 
@@ -107,6 +111,10 @@ FROM ipsc_match m
 - Clearer separation between development and production schemas
 - Better structured SQL migration files
 - Enhanced documentation templates for future releases
+- **MIT Licence adoption**: Transitioned to open source licensing for wider community adoption
+- **Organized documentation structure**: Established `documentation/history/` directory for versioned release
+  notes
+- **Comprehensive version history**: Created CHANGELOG.md and HISTORY.md for better version tracking
 
 ---
 

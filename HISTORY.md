@@ -31,6 +31,8 @@ redundancy and add synchronization tracking capabilities.
 2. **Add Temporal Tracking**: Introduce timestamp tracking for data synchronization and refresh operations
 3. **Improve Schema Management**: Establish better documentation practices and migration patterns
 4. **Enhance Maintainability**: Organize SQL scripts with chronological markers for easier change tracking
+5. **Adopt Open Source**: Transition from proprietary licence to MIT Licence for community adoption
+6. **Establish Documentation Standards**: Create comprehensive CHANGELOG, HISTORY, and versioned release notes
 
 ### Why This Release Matters
 
@@ -43,12 +45,19 @@ The addition of `date_refreshed` columns enables better tracking of when data wa
 external sources, which is crucial for match scoring systems that may import results from external platforms
 or devices.
 
+Beyond schema improvements, this release marks the project's **transition to open source** with the adoption
+of the MIT Licence, making it freely available for use, modification, and distribution by the broader shooting
+sports community. The establishment of comprehensive documentation standards (CHANGELOG.md, HISTORY.md, and
+versioned release notes) ensures long-term maintainability and transparency.
+
 ### Major Changes
 
 - **Breaking**: Removed `club_name` columns from `ipsc_match` and `match_competitor` tables
 - **New**: Added `date_refreshed` tracking columns to match and result tables
 - **Improved**: Consolidated schema modification scripts with clear date markers
 - **Enhanced**: Documentation templates for changelog and release notes
+- **Licence**: Changed from proprietary "All Rights Reserved" to MIT Licence
+- **Documentation**: Created CHANGELOG.md, HISTORY.md, and versioned release notes in `documentation/history/`
 
 ### Impact
 
@@ -56,11 +65,18 @@ This release requires **database migration** and **application code updates** fo
 queries that previously accessed `club_name` directly must be updated to use JOIN operations with the `club`
 table.
 
+The **MIT Licence adoption** makes this project freely available to the shooting sports community, enabling
+clubs worldwide to use, modify, and contribute to the database schema. The comprehensive documentation
+structure provides a solid foundation for future community contributions and version management.
+
 ### Related Documentation
 
 - [Full Release Notes](RELEASE_NOTES.md) - Complete details for version 2.0.0
+- [Versioned Release Notes](documentation/history/RELEASE_NOTES.md) - Archived release notes in history
+  directory
 - [Changelog Entry](CHANGELOG.md#200---2026-02-22) - Categorized list of all changes
 - [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
+- [MIT Licence](LICENCE.md) - Open source licence details
 
 ---
 
@@ -144,7 +160,7 @@ disciplines, power factors, and categories—all essential for IPSC-style shooti
 - **New**: Result tracking tables (match_competitor, match_stage_competitor)
 - **New**: Logging tables for derived standings (log_match, log_matches)
 - **New**: Basic schema creation scripts
-- **New**: Initial project documentation and license
+- **New**: Initial project documentation and licence
 
 ### Impact
 
@@ -193,13 +209,14 @@ Future releases will focus on:
 
 ### Long-term Vision
 
-The HPSC Database aims to become a comprehensive, production-ready database solution for practical shooting
-clubs, supporting:
+The HPSC Database aims to become a comprehensive, production-ready, **open source** database solution for
+practical shooting clubs worldwide, supporting:
 
 - Multi-club management and series tracking
 - Historical performance analytics
 - Integration with scoring devices and platforms
 - Flexible reporting and leaderboard generation
+- **Community contributions** and collaborative improvements under the MIT Licence
 
 ---
 
@@ -215,6 +232,7 @@ clubs, supporting:
   conventions, and typical workflows
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
+- [MIT Licence](LICENCE.md) - Open source licence terms and conditions
 
 ---
 
