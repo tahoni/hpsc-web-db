@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS competitor
     first_name                  VARCHAR(255) NOT NULL,
     last_name                   VARCHAR(255) NOT NULL,
     middle_names                VARCHAR(255),
-    date_of_birth               DATETIME,
+    date_of_birth               DATE,
     sapsa_number                INT,
     competitor_number           VARCHAR(255) NOT NULL,
     default_competitor_category VARCHAR(255)
