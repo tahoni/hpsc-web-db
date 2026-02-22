@@ -1,46 +1,208 @@
-# HPSC Database
+# Release Notes
 
-## Release Notes
+## Version 2.0.0
 
-### Version 2.0.0 - _2026-02-21_
+**Release Date:** February 22, 2026  
+**Branch:** feature/ai → main
 
-Major database schema enhancements focusing on improved data synchronisation tracking and normalisation.
+---
 
-#### Breaking Changes
+## Overview
 
-- `club_name` column removed from `ipsc_match` table
-- `club_name` column removed from `match_competitor` table
+This release introduces significant database schema improvements, enhanced SQL script organization, and
+documentation template updates for the HPSC Database. The changes focus on better data tracking capabilities,
+improved referential integrity, and streamlined schema management.
 
-#### New Features
+---
 
-Introduced `date_refreshed` timestamp tracking across core match tables for enhanced data synchronization
-monitoring:
+## What's New
 
-- `ipsc_match` table
-- `match_competitor` table
-- `match_stage_competitor` table
+### Database Schema Enhancements
 
-#### Improvements
+#### New Columns Added
 
-Removed `club_name` denormalization from `ipsc_match` and `match_competitor` tables to reduce data redundancy
-and improve maintainability.
+- **`date_refreshed`**: Added to `ipsc_match`, `match_competitor`, and `match_stage_competitor` tables to
+  track when records were last refreshed from external sources (2026-02-14, 2026-02-15)
 
-#### Schema Changes
+#### Schema Refinements
 
-- Added `date_refreshed` DATETIME column to `ipsc_match`, `match_competitor`, and `match_stage_competitor`
-  tables
-- Removed `club_name` column from `ipsc_match` and `match_competitor` tables
+- **Removed redundant `club_name` columns**: Eliminated from `ipsc_match` and `match_competitor` tables to
+  reduce data duplication and enforce proper use of foreign key relationships to the `club` table (2026-02-21)
 
-#### Migration Notes
+### SQL Script Organization
 
-- **2026-02-14**: Initial refresh date tracking implementation for match data
-- **2026-02-15**: Extended refresh tracking to competitor relationship tables
-- **2026-02-21**: Completed database normalization by removing redundant club name fields
+#### Improved Script Structure
 
-#### Tests and Quality Assurance
+- **`table_alter.sql`**: Consolidated schema modification scripts with clear date markers for change tracking
+- **`table_create.sql`**: Maintained comprehensive table creation scripts with proper foreign key constraints
+- **`table_data.sql`**: Updated seed data with corrected club names
+- **`schema.sql`**: Enhanced with proper user and schema creation for both development and production
+  environments
 
-Schema changes validated across all dependent queries and stored procedures.
+### Documentation Improvements
 
-#### Contributors
+#### New Documentation Templates
 
-@tahoni
+- **CHANGELOG template**: Introduced structured changelog format for version tracking and documentation
+- **RELEASE_NOTES template**: Established standardized release notes format aligned with modern documentation
+  practices
+- **Template History**: Added documentation for the transition to new template structures
+
+#### Updated Documentation
+
+- **README.md**: Maintained comprehensive project overview with table of contents and quick start guides
+- **ARCHITECTURE.md**: Preserved detailed architectural documentation with MySQL-specific considerations
+- **suggestions.md**: Enhanced improvement suggestions with additional guidance on change management
+
+---
+
+## Breaking Changes
+
+### Schema Changes
+
+⚠️ **Removed Columns**
+
+- `ipsc_match.club_name` - Use `club_id` foreign key relationship instead
+- `match_competitor.club_name` - Use `match_id` → `club_id` relationship instead
+
+**Migration Path:**
+Applications should now retrieve club information via proper JOIN operations:
+
+```sql
+-- Old approach (no longer supported):
+SELECT club_name
+FROM ipsc_match;
+
+-- New approach:
+SELECT c.name, c.abbreviation
+FROM ipsc_match m
+         JOIN club c ON m.club_id = c.id;
+```
+
+---
+
+## Bug Fixes
+
+- Fixed data consistency issues by removing denormalized `club_name` columns
+- Corrected SQL script formatting and dialect consistency
+
+---
+
+## Improvements
+
+### Data Integrity
+
+- Enhanced referential integrity by enforcing club relationships through foreign keys only
+- Added temporal tracking capabilities with `date_refreshed` columns
+- Improved audit trail for data synchronization operations
+
+### Code Quality
+
+- Organized schema change scripts with chronological date markers
+- Improved SQL script readability and maintainability
+- Added proper documentation for schema evolution
+
+### Developer Experience
+
+- Clearer separation between development and production schemas
+- Better structured SQL migration files
+- Enhanced documentation templates for future releases
+
+---
+
+## Technical Details
+
+### Database Changes
+
+#### Tables Modified
+
+- `ipsc_match`: Added `date_refreshed`, removed `club_name`
+- `match_competitor`: Added `date_refreshed`, removed `club_name`
+- `match_stage_competitor`: Added `date_refreshed`
+
+#### Schema Scripts Updated
+
+- `scripts/schema.sql`: Database and user creation with proper permissions
+- `scripts/table_create.sql`: Core table definitions with foreign key constraints
+- `scripts/table_alter.sql`: Chronological schema modifications
+- `scripts/table_data.sql`: Updated seed data for clubs
+
+### Dependencies
+
+**Database Requirements:**
+
+- MySQL 8.x
+- InnoDB storage engine
+- utf8mb4 character set
+- utf8mb4_0900_ai_ci collation
+
+---
+
+## Upgrade Guide
+
+### For New Installations
+
+1. Run `scripts/schema.sql` to create databases and users
+2. Run `scripts/table_create.sql` to create all tables
+3. Run `scripts/table_data.sql` to insert initial seed data
+
+### For Existing Installations
+
+1. **Backup your database** before applying changes
+2. Update application code to remove references to `club_name` columns
+3. Run the following migration scripts in order:
+   ```sql
+   -- Add date_refreshed columns (2026-02-14, 2026-02-15)
+   ALTER TABLE ipsc_match ADD COLUMN date_refreshed DATETIME NULL;
+   ALTER TABLE match_competitor ADD COLUMN date_refreshed DATETIME NULL;
+   ALTER TABLE match_stage_competitor ADD COLUMN date_refreshed DATETIME NULL;
+   
+   -- Remove redundant club_name columns (2026-02-21)
+   ALTER TABLE ipsc_match DROP COLUMN club_name;
+   ALTER TABLE match_competitor DROP COLUMN club_name;
+   ```
+4. Update application queries to use JOIN operations for club information
+5. Test all functionality thoroughly
+
+---
+
+## Known Issues
+
+None at this time.
+
+---
+
+## Deprecations
+
+- Direct storage of `club_name` in `ipsc_match` and `match_competitor` tables (removed)
+
+---
+
+## Contributors
+
+**Leoni Lubbinge** - Database architecture and implementation
+
+---
+
+## Additional Resources
+
+- [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
+  technical requirements
+- [Project Overview & Quick Start Guide](README.md) - Introduction to the HPSC Database with schema entities,
+  conventions, and typical workflows
+- [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
+  and change management best practices
+
+---
+
+## Feedback
+
+For questions, issues, or suggestions, please contact:
+
+- **Email**: leonil@tahoni.info
+- **GitHub**: [@tahoni](https://github.com/tahoni)
+
+---
+
+**Full Changelog**: [`main...feature/ai`](../../compare/main...feature/ai)
+

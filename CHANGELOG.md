@@ -1,156 +1,185 @@
-# HPSC Database
+# Changelog
 
-## Change Log
+All notable changes to the HPSC Database project will be documented in this file.
 
-### Table of Contents
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-- [Version 1.2.0](#version-120---_2026-02-21_)
-- [Version 1.1.0](#version-110---_2026-02-03_)
-- [Version 1.0.0](#version-100---_2026-01-28_)
+---
 
-### [Version 1.2.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.2.0) - _2026-02-21_
+## Table of Contents
 
-This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
-Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary
-tables.
+- [Unreleased](#unreleased)
+- [2.0.0](#200---2026-02-22)
+- [1.1.0](#110---2026-01-28)
+- [1.0.0](#100---2025-12-28)
 
-#### Database Schema Changes
+---
 
-**Added / Restored**
+## [Unreleased]
 
-- Restored required join tables to support domain relationships
+### Planned
 
-**Updated**
+- Views for leaderboards (per match, per division/category, per competitor history)
+- Stored procedures for computing match totals and populating log tables
+- Seed/demo data scripts for local development
+- Additional indexing optimizations for common query patterns
 
-- Refreshed data updates for the `match` table
-- Updated schema generation and migration scripts:
-    - `scripts/table_create.sql`
-    - `scripts/table_alter.sql`
+---
 
-**Removed**
+## [2.0.0] - 2026-02-22
 
-- Removed unnecessary tables from the schema
+### Added
 
-#### Schema Enhancements
+- **Database Schema**: New `date_refreshed` column to `ipsc_match` table for tracking data synchronization (
+  2026-02-14)
+- **Database Schema**: New `date_refreshed` column to `match_competitor` table for tracking record updates (
+  2026-02-15)
+- **Database Schema**: New `date_refreshed` column to `match_stage_competitor` table for tracking score
+  refreshes (2026-02-15)
+- **Documentation**: CHANGELOG template for structured version tracking and documentation
+- **Documentation**: RELEASE_NOTES template aligned with modern documentation practices
+- **Documentation**: Template history documentation for the transition to new structures
 
-**Competitor**
+### Changed
 
-- Made `sapsa_number` optional (nullable, `varchar(255)`)
-- Added `place` (nullable) to store competitor placing
+- **SQL Scripts**: Consolidated schema modification scripts in `table_alter.sql` with chronological date
+  markers
+- **SQL Scripts**: Enhanced `schema.sql` with proper user and schema creation for development and production
+- **SQL Scripts**: Updated `table_data.sql` with corrected club names for seed data
+- **Documentation**: Enhanced `suggestions.md` with additional guidance on change management
+- **Documentation**: Improved `README.md` structure and content organization
 
-**Match Competitor**
+### Removed
 
-- Added `is_disqualified` (nullable boolean) for match-level DQ tracking
-- Added `place` (nullable) for match-level placing
+- **Database Schema**: `club_name` column from `ipsc_match` table to enforce referential integrity (
+  2026-02-21)
+- **Database Schema**: `club_name` column from `match_competitor` table to reduce data duplication (
+  2026-02-21)
 
-**Match Stage Competitor**
+### Fixed
 
-- Added per-stage score buckets: `score_a`, `score_b`, `score_c`, `score_d` (nullable integers)
-- Added penalty detail fields: `misses`, `procedurals` (nullable integers)
-- Added `is_disqualified` (nullable boolean) for stage-level DQ tracking
+- Data consistency issues by removing denormalized `club_name` columns
+- SQL script formatting and dialect consistency across all scripts
 
-#### Documentation & Configuration
+### Breaking Changes
 
-- Created `README.md` and `ARCHITECTURE.md`
-- Added documentation templates: `CHANGELOG.md` and `RELEASE_NOTES.md`
-- Added `suggestions.md` for future enhancements
-- Updated `.gitignore` and IDE configuration (`.idea/`)
-- Removed `db-forest-config.xml`
+- ⚠️ **Removed `ipsc_match.club_name` column** - Applications must now use `club_id` foreign key relationship
+- ⚠️ **Removed `match_competitor.club_name` column** - Applications must retrieve club information via JOIN
+  operations
+- **Migration Required**: Update all queries to use JOIN operations for club information retrieval
 
-#### Migration Guide
+### Migration Notes
 
-**For new environments:** Use `scripts/table_create.sql`
+```sql
+-- Migration for version 2.0.0
 
-**For existing environments:** Apply `scripts/table_alter.sql` against databases based on the `main` branch
-schema
+-- Step 1: Add date_refreshed columns (2026-02-14, 2026-02-15)
+ALTER TABLE ipsc_match
+    ADD COLUMN date_refreshed DATETIME NULL;
+ALTER TABLE match_competitor
+    ADD COLUMN date_refreshed DATETIME NULL;
+ALTER TABLE match_stage_competitor
+    ADD COLUMN date_refreshed DATETIME NULL;
 
-**Post-migration validation:**
+-- Step 2: Remove redundant club_name columns (2026-02-21)
+ALTER TABLE ipsc_match
+    DROP COLUMN club_name;
+ALTER TABLE match_competitor
+    DROP COLUMN club_name;
+```
 
-- Verify expected join tables exist
-- Confirm removed tables are not referenced by downstream queries/jobs
-- Validate `match` table data is refreshed as intended
+### Deprecated
 
-#### Known Considerations
+- Direct storage of `club_name` in result tables (removed in this version)
 
-- `.idea/` changes are environment-specific; confirm whether your workflow expects these files to be tracked
+---
 
-#### Changes by
+## [1.1.0] - 2026-01-28
 
-@tahoni
+### Added
 
-### [Version 1.1.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.1.0) - _2026-02-03_
+- **Database Schema**: Initial schema creation with core domain tables
+- **Database Schema**: Participation and scoring tables for match results
+- **Database Schema**: Foreign key constraints for referential integrity
+- **Documentation**: Comprehensive `ARCHITECTURE.md` with design principles
+- **Documentation**: Enhanced `README.md` with project overview and quick start guide
+- **SQL Scripts**: `table_create.sql` with complete table definitions
+- **SQL Scripts**: `schema.sql` for database and user setup
+- **SQL Scripts**: `table_data.sql` with initial seed data for clubs
 
-This release introduces several schema enhancements to support improved match and stage scoring, placing, and
-disqualification tracking. It also includes documentation updates and configuration improvements.
+### Changed
 
-### Database schema changes (MySQL)
+- Improved table naming conventions for clarity
+- Enhanced foreign key relationships for better data integrity
 
-#### Match
+---
 
-- Allow matches without a club by making `match.club_id` nullable.
-- Add audit timestamps:
-    - `match.date_created` (nullable `datetime`)
-    - `match.date_updated` (nullable `datetime`)
+## [1.0.0] - 2025-12-28
 
-#### Match stage
+### Added
 
-- Add `match_stage.stage_name` (nullable `varchar(255)`)
+- **Initial Release**: HPSC Database project initialization
+- **Database Schema**: Core tables for clubs, competitors, matches, and stages
+- **Database Schema**: Result tracking tables for match and stage performance
+- **Database Schema**: Logging tables for derived standings
+- **Documentation**: Initial `README.md` with project description
+- **Documentation**: `LICENSE.md` with copyright information
+- **Documentation**: `suggestions.md` with improvement roadmap
+- **SQL Scripts**: Basic schema creation scripts
+- **Repository**: Git repository initialization with `.gitignore` configuration
 
-#### Match stage competitor
+### Technical Details
 
-- Add scoring deduction support:
-    - `has_deduction` (nullable `int`)
-    - `deduction_percentage` (nullable `decimal(10,2)`)
-- Add audit timestamp:
-    - `date_updated` (nullable `datetime`)
-- (Also includes earlier addition) `is_disqualified` (nullable `boolean`)
+- **Database**: MySQL 8.x with InnoDB storage engine
+- **Character Set**: utf8mb4 with utf8mb4_0900_ai_ci collation
+- **Architecture**: Database-first design with normalized relational schema
 
-#### Match competitor
+---
 
-- Add audit timestamp:
-    - `match_competitor.date_updated` (nullable `datetime`)
+## Version Comparison Links
 
-### Developer/Tooling
+- [2.0.0 vs 1.1.0](../../compare/v1.1.0...v2.0.0)
+- [1.1.0 vs 1.0.0](../../compare/v1.0.0...v1.1.0)
 
-- Configure IDE SQL dialect mapping so `scripts/table_alter.sql` is recognized as MySQL (in
-  `.idea/sqldialects.xml`).
+---
 
-### Upgrade notes
+## Contributing
 
-- Apply the new statements in `scripts/table_alter.sql` to bring an existing `version-1.0.0` database up to
-  `version-1.1.0`.
-- If your application layer assumes `match.club_id` is always present, update validation/queries to handle
-  `NULL`.
+When adding new versions to this changelog:
 
-### Changes by
+1. Add a new section under [Unreleased](#unreleased) with the format: `## [X.Y.Z] - YYYY-MM-DD`
+2. Move relevant items from the Unreleased section to the new version
+3. Organize changes under appropriate categories:
+    - **Added** - New features or functionality
+    - **Changed** - Changes to existing functionality
+    - **Deprecated** - Features marked for removal in future versions
+    - **Removed** - Features removed in this version
+    - **Fixed** - Bug fixes
+    - **Security** - Security vulnerability fixes
+    - **Breaking Changes** - Changes that break backward compatibility
+    - **Migration Notes** - SQL or code changes required for upgrading
+4. Update the Table of Contents with the new version
+5. Add version comparison links at the bottom
 
-@tahoni
+---
 
-### [Version 1.0.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.0.0) - _2026-01-28_
+## Semantic Versioning Guide
 
-Extended the database schema to better support match/stage scoring, placing, and disqualification tracking.
+- **Major version (X.0.0)**: Breaking changes, incompatible API/schema changes
+- **Minor version (0.X.0)**: New features, backward-compatible additions
+- **Patch version (0.0.X)**: Bug fixes, backward-compatible fixes
 
-#### Enhancements and Updates
+---
 
-- **Competitor**
-    - Make `sapsa_number` optional (nullable, stored as `varchar(255)`).
-    - Add `place` (nullable) to store competitor placing where relevant.
+## Additional Resources
 
-- **Match competitor**
-    - Add `is_disqualified` (nullable boolean) to flag DQ status at match level.
-    - Add `place` (nullable) for match-level placing.
+- [Release Notes](RELEASE_NOTES.md) - Detailed release information for version 2.0.0
+- [Architecture Documentation](ARCHITECTURE.md) - Database architecture and design principles
+- [Project Overview](README.md) - Getting started and project introduction
+- [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements and roadmap
 
-- **Match stage competitor**
-    - Add per-stage score buckets: `score_a`, `score_b`, `score_c`, `score_d` (nullable ints).
-    - Add penalty detail fields: `misses`, `procedurals` (nullable ints).
-    - Add `is_disqualified` (nullable boolean) for stage-level DQ tracking.
+---
 
-#### Licence and Documentation
+**Maintainer**: Leoni Lubbinge (leonil@tahoni.info)
 
-- Created the `README.md` and `ARCHITECTURE.md` files.
-- Added documentation templates for `CHANGELOG.md` and `RELEASE_NOTES.md`.
-- Added a `suggestions.md` file for future enhancements.
-
-#### Changes by
-
-@tahoni

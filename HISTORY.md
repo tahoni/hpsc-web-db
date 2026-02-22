@@ -1,156 +1,232 @@
-# HPSC Database
+# Release History
 
-## History
+This document provides a historical overview of all HPSC Database releases, with descriptions of the key
+themes and objectives for each version.
 
-### Table of Contents
+---
 
-- [Version 1.2.0](#version-120---_2026-02-21_)
-- [Version 1.1.0](#version-110---_2026-02-03_)
-- [Version 1.0.0](#version-100---_2026-01-28_)
+## Table of Contents
 
-### [Version 1.2.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.2.0) - _2026-02-21_
+- [Version 2.0.0 - Schema Refinement & Data Integrity](#version-200---schema-refinement--data-integrity)
+- [Version 1.1.0 - Enhanced Schema & Documentation](#version-110---enhanced-schema--documentation)
+- [Version 1.0.0 - Initial Release](#version-100---initial-release)
 
-This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
-Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary
-tables.
+---
 
-#### Database Schema Changes
+## Version 2.0.0 - Schema Refinement & Data Integrity
 
-**Added / Restored**
+**Released:** February 22, 2026  
+**Type:** Major Release (Breaking Changes)
 
-- Restored required join tables to support domain relationships
+### Release Theme
 
-**Updated**
+This major release focuses on **database normalization** and **temporal data tracking**, introducing breaking
+changes to improve long-term maintainability and data integrity. The primary goal was to eliminate data
+redundancy and add synchronization tracking capabilities.
 
-- Refreshed data updates for the `match` table
-- Updated schema generation and migration scripts:
-    - `scripts/table_create.sql`
-    - `scripts/table_alter.sql`
+### Key Objectives
 
-**Removed**
+1. **Enforce Referential Integrity**: Remove denormalized data columns and enforce proper foreign key
+   relationships
+2. **Add Temporal Tracking**: Introduce timestamp tracking for data synchronization and refresh operations
+3. **Improve Schema Management**: Establish better documentation practices and migration patterns
+4. **Enhance Maintainability**: Organize SQL scripts with chronological markers for easier change tracking
 
-- Removed unnecessary tables from the schema
+### Why This Release Matters
 
-#### Schema Enhancements
+Version 2.0.0 represents a significant architectural improvement in how the database maintains data
+consistency. By removing redundant `club_name` columns from result tables and enforcing JOIN operations, the
+schema now follows database normalization best practices more strictly. This prevents data inconsistencies
+that could arise from duplicate club names stored across multiple tables.
 
-**Competitor**
+The addition of `date_refreshed` columns enables better tracking of when data was last synchronized from
+external sources, which is crucial for match scoring systems that may import results from external platforms
+or devices.
 
-- Made `sapsa_number` optional (nullable, `varchar(255)`)
-- Added `place` (nullable) to store competitor placing
+### Major Changes
 
-**Match Competitor**
+- **Breaking**: Removed `club_name` columns from `ipsc_match` and `match_competitor` tables
+- **New**: Added `date_refreshed` tracking columns to match and result tables
+- **Improved**: Consolidated schema modification scripts with clear date markers
+- **Enhanced**: Documentation templates for changelog and release notes
 
-- Added `is_disqualified` (nullable boolean) for match-level DQ tracking
-- Added `place` (nullable) for match-level placing
+### Impact
 
-**Match Stage Competitor**
+This release requires **database migration** and **application code updates** for existing installations. All
+queries that previously accessed `club_name` directly must be updated to use JOIN operations with the `club`
+table.
 
-- Added per-stage score buckets: `score_a`, `score_b`, `score_c`, `score_d` (nullable integers)
-- Added penalty detail fields: `misses`, `procedurals` (nullable integers)
-- Added `is_disqualified` (nullable boolean) for stage-level DQ tracking
+### Related Documentation
 
-#### Documentation & Configuration
+- [Full Release Notes](RELEASE_NOTES.md) - Complete details for version 2.0.0
+- [Changelog Entry](CHANGELOG.md#200---2026-02-22) - Categorized list of all changes
+- [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
 
-- Created `README.md` and `ARCHITECTURE.md`
-- Added documentation templates: `CHANGELOG.md` and `RELEASE_NOTES.md`
-- Added `suggestions.md` for future enhancements
-- Updated `.gitignore` and IDE configuration (`.idea/`)
-- Removed `db-forest-config.xml`
+---
 
-#### Migration Guide
+## Version 1.1.0 - Enhanced Schema & Documentation
 
-**For new environments:** Use `scripts/table_create.sql`
+**Released:** January 28, 2026  
+**Type:** Minor Release (Feature Addition)
 
-**For existing environments:** Apply `scripts/table_alter.sql` against databases based on the `main` branch
-schema
+### Release Theme
 
-**Post-migration validation:**
+This release focused on **schema maturity** and **comprehensive documentation**, establishing a solid
+foundation for the HPSC Database with complete table definitions, foreign key constraints, and detailed
+architectural documentation.
 
-- Verify expected join tables exist
-- Confirm removed tables are not referenced by downstream queries/jobs
-- Validate `match` table data is refreshed as intended
+### Key Objectives
 
-#### Known Considerations
+1. **Complete Schema Definition**: Finalize all core domain tables with proper relationships
+2. **Establish Foreign Keys**: Implement referential integrity constraints across all tables
+3. **Document Architecture**: Create comprehensive technical documentation
+4. **Provide Quick Start**: Enable developers to quickly understand and deploy the database
 
-- `.idea/` changes are environment-specific; confirm whether your workflow expects these files to be tracked
+### Why This Release Matters
 
-#### Changes by
+Version 1.1.0 transformed the initial prototype into a production-ready database schema. The addition of
+comprehensive documentation (ARCHITECTURE.md) and enhanced README provided developers with the context and
+guidance needed to understand the database design principles and deployment procedures.
 
-@tahoni
+This release established the pattern of "database-first" design with a normalized relational schema, setting
+the architectural direction for future enhancements.
 
-### [Version 1.1.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.1.0) - _2026-02-03_
+### Major Changes
 
-This release introduces several schema enhancements to support improved match and stage scoring, placing, and
-disqualification tracking. It also includes documentation updates and configuration improvements.
+- **New**: Complete table definitions in `table_create.sql`
+- **New**: Foreign key constraints for referential integrity
+- **New**: Comprehensive architecture documentation
+- **Improved**: Enhanced README with quick start guide
+- **Added**: Schema creation and seed data scripts
 
-### Database schema changes (MySQL)
+### Impact
 
-#### Match
+This release provided the foundation for production deployment, with all necessary scripts and documentation
+for setting up new database instances.
 
-- Allow matches without a club by making `match.club_id` nullable.
-- Add audit timestamps:
-    - `match.date_created` (nullable `datetime`)
-    - `match.date_updated` (nullable `datetime`)
+### Related Documentation
 
-#### Match stage
+- [Changelog Entry](CHANGELOG.md#110---2026-01-28) - Complete list of additions and changes
+- [Architecture Documentation](ARCHITECTURE.md) - Database design principles and technical requirements
 
-- Add `match_stage.stage_name` (nullable `varchar(255)`)
+---
 
-#### Match stage competitor
+## Version 1.0.0 - Initial Release
 
-- Add scoring deduction support:
-    - `has_deduction` (nullable `int`)
-    - `deduction_percentage` (nullable `decimal(10,2)`)
-- Add audit timestamp:
-    - `date_updated` (nullable `datetime`)
-- (Also includes earlier addition) `is_disqualified` (nullable `boolean`)
+**Released:** December 28, 2025  
+**Type:** Major Release (Initial)
 
-#### Match competitor
+### Release Theme
 
-- Add audit timestamp:
-    - `match_competitor.date_updated` (nullable `datetime`)
+The inaugural release of the HPSC Database, establishing the **foundational schema** for managing practical
+shooting club data, including clubs, competitors, matches, stages, and results.
 
-### Developer/Tooling
+### Key Objectives
 
-- Configure IDE SQL dialect mapping so `scripts/table_alter.sql` is recognized as MySQL (in
-  `.idea/sqldialects.xml`).
+1. **Define Core Entities**: Establish the primary database tables for clubs, competitors, and matches
+2. **Support Results Tracking**: Create tables for recording match and stage-level performance data
+3. **Enable Standings Logs**: Implement logging tables for derived competitor standings
+4. **Initialize Project**: Set up repository structure and basic documentation
 
-### Upgrade notes
+### Why This Release Matters
 
-- Apply the new statements in `scripts/table_alter.sql` to bring an existing `version-1.0.0` database up to
-  `version-1.1.0`.
-- If your application layer assumes `match.club_id` is always present, update validation/queries to handle
-  `NULL`.
+Version 1.0.0 launched the HPSC Database project, providing the first working schema for practical shooting
+match management. This release established the core data model that supports typical shooting club workflows:
+registering clubs and competitors, creating matches with stages, recording participation, and tracking
+stage-by-stage scoring.
 
-### Changes by
+The initial schema design prioritized flexibility and extensibility, with support for multiple divisions,
+disciplines, power factors, and categories—all essential for IPSC-style shooting competitions.
 
-@tahoni
+### Major Changes
 
-### [Version 1.0.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.0.0) - _2026-01-28_
+- **New**: Core domain tables (club, competitor, match, match_stage)
+- **New**: Result tracking tables (match_competitor, match_stage_competitor)
+- **New**: Logging tables for derived standings (log_match, log_matches)
+- **New**: Basic schema creation scripts
+- **New**: Initial project documentation and license
 
-Extended the database schema to better support match/stage scoring, placing, and disqualification tracking.
+### Impact
 
-#### Enhancements and Updates
+This release provided the initial working database schema for the Hartbeespoortdam Practical Shooting Club,
+enabling the club to begin tracking match results and competitor performance digitally.
 
-- **Competitor**
-    - Make `sapsa_number` optional (nullable, stored as `varchar(255)`).
-    - Add `place` (nullable) to store competitor placing where relevant.
+### Related Documentation
 
-- **Match competitor**
-    - Add `is_disqualified` (nullable boolean) to flag DQ status at match level.
-    - Add `place` (nullable) for match-level placing.
+- [Changelog Entry](CHANGELOG.md#100---2025-12-28) - Initial release details
+- [README](README.md) - Project introduction and overview
 
-- **Match stage competitor**
-    - Add per-stage score buckets: `score_a`, `score_b`, `score_c`, `score_d` (nullable ints).
-    - Add penalty detail fields: `misses`, `procedurals` (nullable ints).
-    - Add `is_disqualified` (nullable boolean) for stage-level DQ tracking.
+---
 
-#### Licence and Documentation
+## Release Versioning Strategy
 
-- Created the `README.md` and `ARCHITECTURE.md` files.
-- Added documentation templates for `CHANGELOG.md` and `RELEASE_NOTES.md`.
-- Added a `suggestions.md` file for future enhancements.
+The HPSC Database project follows [Semantic Versioning](https://semver.org/) (SemVer):
 
-#### Changes by
+- **Major versions (X.0.0)**: Breaking changes, significant schema modifications requiring migration
+- **Minor versions (0.X.0)**: New features, backward-compatible additions
+- **Patch versions (0.0.X)**: Bug fixes, documentation updates, backward-compatible fixes
 
-@tahoni
+### Version History Timeline
+
+```
+v1.0.0 (2025-12-28) ─── Initial Release
+   │
+   └─> v1.1.0 (2026-01-28) ─── Schema Maturity
+          │
+          └─> v2.0.0 (2026-02-22) ─── Breaking Changes
+                 │
+                 └─> Future releases...
+```
+
+---
+
+## Looking Forward
+
+### Upcoming Enhancements
+
+Future releases will focus on:
+
+- **Query Optimization**: Views for leaderboards and competitor history
+- **Automation**: Stored procedures for computing match aggregates
+- **Developer Tools**: Additional seed data and demo scripts
+- **Performance**: Indexing strategies for common query patterns
+
+### Long-term Vision
+
+The HPSC Database aims to become a comprehensive, production-ready database solution for practical shooting
+clubs, supporting:
+
+- Multi-club management and series tracking
+- Historical performance analytics
+- Integration with scoring devices and platforms
+- Flexible reporting and leaderboard generation
+
+---
+
+## Additional Resources
+
+- [Changelog](CHANGELOG.md) - Detailed, categorized list of changes for each version following Keep a
+  Changelog format
+- [Release Notes](RELEASE_NOTES.md) - Comprehensive release information for version 2.0.0 with upgrade guides
+  and breaking changes
+- [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
+  technical requirements
+- [Project Overview & Quick Start Guide](README.md) - Introduction to the HPSC Database with schema entities,
+  conventions, and typical workflows
+- [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
+  and change management best practices
+
+---
+
+## Questions or Feedback?
+
+For questions about release history, version strategy, or to provide feedback:
+
+- **Maintainer**: Leoni Lubbinge
+- **Email**: leonil@tahoni.info
+- **GitHub**: [@tahoni](https://github.com/tahoni)
+
+---
+
+*Last Updated: February 22, 2026*
+
