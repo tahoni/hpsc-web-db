@@ -1,8 +1,8 @@
 # Release Notes
 
-## Version 1.2.0
+## Version 1.1.0
 
-**Release Date:** January 28, 2026  
+**Release Date:** 2026-01-28  
 **Branch:** develop → main
 
 ---

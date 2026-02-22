@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Table of Contents
 
 - [Unreleased](#unreleased)
-- [2.0.0](#200---2026-02-22)
+- [2.0.0](#200---2026-02-23)
 - [1.1.0](#110---2026-01-28)
 - [1.0.0](#100---2025-12-28)
 
@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.0.0] - 2026-02-22
+## [2.0.0] - 2026-02-23
 
 ### Added
 
@@ -98,7 +98,7 @@ ALTER TABLE match_competitor
 
 ---
 
-## [1.2.0] - 2026-01-28
+## [1.1.0] - 2026-01-28
 
 ### Added
 

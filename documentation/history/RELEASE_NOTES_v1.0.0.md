@@ -2,7 +2,7 @@
 
 ## Version 1.0.0
 
-**Release Date:** December 28, 2025  
+**Release Date:** 2025-12-28  
 **Branch:** Initial Release
 
 ---
