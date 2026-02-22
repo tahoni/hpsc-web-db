@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS match_stage_competitor
     division             VARCHAR(255),
     power_factor         VARCHAR(255),
     score_a              INT,
+    score_b              INT,
     score_c              INT,
     score_d              INT,
     points               INT,
