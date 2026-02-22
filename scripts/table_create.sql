@@ -37,9 +37,7 @@ CREATE TABLE IF NOT EXISTS competitor
     date_of_birth               DATETIME,
     sapsa_number                INT,
     competitor_number           VARCHAR(255) NOT NULL,
-    default_competitor_category VARCHAR(255),
-    date_created                TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    date_updated                TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    default_competitor_category VARCHAR(255)
 );
 
 -- IpscMatchStage table
