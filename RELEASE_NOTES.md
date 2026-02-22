@@ -98,7 +98,7 @@ FROM ipsc_match m
 
 - Enhanced referential integrity by enforcing club relationships through foreign keys only
 - Added temporal tracking capabilities with `date_refreshed` columns
-- Improved audit trail for data synchronization operations
+- Improved audit trail for data synchronisation operations
 
 ### Code Quality
 
