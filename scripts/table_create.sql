@@ -61,8 +61,6 @@ CREATE TABLE IF NOT EXISTS ipsc_match_stage
     target_penalty   INT,
     min_rounds       INT,
     max_points       INT,
-    date_created     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    date_updated     TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
 
