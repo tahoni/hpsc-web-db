@@ -170,8 +170,8 @@ When adding new versions to this changelog:
 ## Semantic Versioning Guide
 
 - **Major version (X.0.0)**: Breaking changes, incompatible API/schema changes
-- **Minor version (0.X.0)**: New features, backward-compatible additions
-- **Patch version (0.0.X)**: Bug fixes, backward-compatible fixes
+- **Minor version (X.Y.0)**: New features, backward-compatible additions
+- **Patch version (X.Y.Z)**: Bug fixes, backward-compatible fixes
 
 ---
 
