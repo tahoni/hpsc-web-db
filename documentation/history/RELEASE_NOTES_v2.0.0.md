@@ -84,7 +84,7 @@ improved referential integrity, and streamlined schema management.
 ⚠️ **Removed Columns**
 
 - `ipsc_match.club_name` - Use `club_id` foreign key relationship instead
-- `match_competitor.club_name` - Use `match_id` → `club_id` relationship instead
+- `match_competitor.club` - Use `match_id` → `club_id` relationship instead
 
 **Migration Path:**
 Applications should now retrieve club information via proper JOIN operations:
@@ -213,7 +213,7 @@ FROM ipsc_match m
    
    -- Remove redundant club_name columns (2026-02-21)
    ALTER TABLE ipsc_match DROP COLUMN club_name;
-   ALTER TABLE match_competitor DROP COLUMN club_name;
+   ALTER TABLE match_competitor DROP COLUMN club;
    ```
 4. Update application queries to use JOIN operations for club information
 5. Test all functionality thoroughly
