@@ -1,6 +1,8 @@
 # HPSC Database
 
-> Note: This archive uses a legacy versioning scheme that is not compatible with Semantic Versioning (SemVer).
+> **Note:** This archive contains the history of releases from the legacy non-semantic versioning structure
+> that was previously used for this project. This versioning approach is no longer active. For current release
+> information, please refer to the main documentation.
 
 ## Archives
 
