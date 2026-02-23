@@ -232,7 +232,7 @@ practical shooting clubs worldwide, supporting:
   conventions, and typical workflows
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
-- [MIT Licence](LICENSE.md) - Open source licence terms and conditions
+- [MIT Licence](LICENCE.md) - Open source licence terms and conditions
 
 ---
 
