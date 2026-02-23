@@ -1,14 +1,16 @@
 # HPSC Database
 
-## Archives
+> **Note:** This archive contains the history of releases from the old semantic versioning (semver) structure that was previously used for this project. This versioning approach is no longer active. For current release information, please refer to the main documentation.
+
+## Releases
 
 ### Table of Contents
 
-- [Archive 1.2.0](#archive-120---_2026-02-21_)
-- [Archive 1.1.0](#archive-110---_2026-02-03_)
-- [Archive 1.0.0](#archive-100---_2026-01-28_)
+- [Version 1.2.0](#version-120---_2026-02-21_)
+- [Version 1.1.0](#version-110---_2026-02-03_)
+- [Version 1.0.0](#version-100---_2026-01-28_)
 
-### Archive 1.2.0 - _2026-02-21_
+### [Version 1.2.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.2.0) - _2026-02-21_
 
 This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
 Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary
@@ -78,7 +80,7 @@ schema
 
 @tahoni
 
-### Archive 1.1.0 - _2026-02-03_
+### [Version 1.1.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.1.0) - _2026-02-03_
 
 This release introduces several schema enhancements to support improved match and stage scoring, placing, and
 disqualification tracking. It also includes documentation updates and configuration improvements.
@@ -126,7 +128,7 @@ disqualification tracking. It also includes documentation updates and configurat
 
 @tahoni
 
-### Archive 1.0.0 - _2026-01-28_
+### [Version 1.0.0](https://github.com/tahoni/hpsc-db/releases/tag/version-1.0.0) - _2026-01-28_
 
 Extended the database schema to better support match/stage scoring, placing, and disqualification tracking.
 
