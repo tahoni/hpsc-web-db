@@ -240,11 +240,12 @@ None at this time.
 
 ## Additional Resources
 
-- [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
+- [Architecture Documentation](../../ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
-- [Project Overview & Quick Start Guide](README.md) – Introduction to the HPSC Database with schema entities,
+- [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database with schema
+  entities,
   conventions, and typical workflows
-- [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
+- [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
 
 ---

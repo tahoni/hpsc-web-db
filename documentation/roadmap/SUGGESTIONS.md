@@ -60,7 +60,7 @@ Document and apply any change deliberately (and consistently across environments
 
 ### Principles
 
-- Treat schema changes as code: reviewable, repeatable, and version controlled.
+- Treat schema changes as code: reviewable, repeatable, and version-controlled.
 - Prefer small, incremental change scripts over editing the live database manually.
 - Avoid editing historical change scripts after they have been applied to a shared environment.
 
@@ -76,12 +76,12 @@ Document and apply any change deliberately (and consistently across environments
 ### Guardrails
 
 - Always take a backup before applying patches in production.
-- Run patches inside an explicit transaction where feasible.
+- Run patches inside an explicit transaction where possible.
 - Validate the resulting schema (constraints and indexes) after applying changes.
 
 ## Environment configuration (MySQL)
 
-At minimum you will need:
+At minimum, you will need:
 
 - host/port/database name
 - username/password
