@@ -171,7 +171,7 @@ FROM ipsc_match m
 - **Auto-increment primary keys**: All tables use `BIGINT PRIMARY KEY AUTO_INCREMENT`
 - **Automatic timestamps**: `date_created` and `date_updated` columns with automatic timestamp management
 - **Foreign key constraints**: Proper referential integrity across all relationships
-- **Unique constraints**: Enforced on club names, abbreviations, and match names
+- **Unique constraints**: Enforced on club names and match names
 - **Audit fields**: `date_edited` and `date_refreshed` for change tracking
 
 #### Schema Scripts Updated
