@@ -120,7 +120,7 @@ A detailed explanation of the architecture can be found in the [`ARCHITECTURE.md
 
 ## Licence
 
-The copyright licence can be found in the [`LICENCE.md`](LICENCE.md) file.
+The copyright licence can be found in the [`LICENCE.md`](LICENSE.md) file.
 
 ## Additional Resources
 

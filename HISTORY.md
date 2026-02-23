@@ -76,7 +76,7 @@ structure provides a solid foundation for future community contributions and ver
   the history directory
 - [Changelog Entry](CHANGELOG.md#200---2026-02-23) – Categorised list of all changes
 - [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
-- [MIT Licence](LICENCE.md) - Open source licence details
+- [MIT Licence](LICENSE.md) - Open source licence details
 
 ---
 
@@ -232,7 +232,7 @@ practical shooting clubs worldwide, supporting:
   conventions, and typical workflows
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
-- [MIT Licence](LICENCE.md) - Open source licence terms and conditions
+- [MIT Licence](LICENSE.md) - Open source licence terms and conditions
 
 ---
 
