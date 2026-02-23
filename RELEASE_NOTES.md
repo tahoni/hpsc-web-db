@@ -213,7 +213,7 @@ FROM ipsc_match m
    
    -- Remove redundant club_name columns (2026-02-21)
    ALTER TABLE ipsc_match DROP COLUMN club_name;
-   ALTER TABLE match_competitor DROP COLUMN club_name;
+   ALTER TABLE match_competitor DROP COLUMN club;
    ```
 4. Update application queries to use JOIN operations for club information
 5. Test all functionality thoroughly
