@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Data consistency issues by removing denormalized `club_name` columns
+- Data consistency issues by removing denormalised `club_name` columns
 - SQL script formatting and dialect consistency across all scripts
 
 ### Breaking Changes
