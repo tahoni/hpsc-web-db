@@ -23,12 +23,12 @@ ALTER TABLE ipsc_match
 -- Align date_created/date_updated definitions with table_create.sql (2026-02-23)
 -- Ensure TIMESTAMP types with appropriate defaults across all relevant tables.
 
--- Club table: add or normalize date_created/date_updated to TIMESTAMP
+-- Club table: ensure date_created/date_updated exist with TIMESTAMP defaults
 ALTER TABLE club
-    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+    ADD COLUMN IF NOT EXISTS date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ADD COLUMN IF NOT EXISTS date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
--- Competitor table: add or normalize date_created/date_updated to TIMESTAMP
+-- Competitor table: normalize date_created/date_updated to TIMESTAMP
 ALTER TABLE competitor
     MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
