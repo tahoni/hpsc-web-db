@@ -139,7 +139,8 @@ CREATE TABLE IF NOT EXISTS ipsc_match_stage_match_stage_competitors
     ipsc_match_stage_id        BIGINT NOT NULL,
     match_stage_competitors_id BIGINT NOT NULL,
     FOREIGN KEY (ipsc_match_stage_id) REFERENCES ipsc_match_stage (id),
-    FOREIGN KEY (match_stage_competitors_id) REFERENCES match_stage_competitor (id)
+    FOREIGN KEY (match_stage_competitors_id) REFERENCES match_stage_competitor (id),
+    PRIMARY KEY (ipsc_match_stage_id, match_stage_competitors_id)
 );
 
 CREATE TABLE IF NOT EXISTS ipsc_match_match_competitors
