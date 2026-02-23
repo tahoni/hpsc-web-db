@@ -25,8 +25,8 @@ ALTER TABLE ipsc_match
 
 -- Club table: ensure date_created/date_updated exist with TIMESTAMP defaults
 ALTER TABLE club
-    ADD COLUMN IF NOT EXISTS date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ADD COLUMN IF NOT EXISTS date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+    ADD COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ADD COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
 -- Competitor table: normalize date_created/date_updated to TIMESTAMP
 ALTER TABLE competitor
