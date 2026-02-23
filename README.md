@@ -9,8 +9,11 @@ The official repository for the Hartbeespoortdam Practical Shooting Club (HPSC) 
 - [Quick Start (DataGrip)](#quick-start-datagrip)
 - [Conventions and Constraints](#conventions-and-constraints)
 - [Typical Workflows Supported](#typical-workflows-supported)
+- [Version Information](#version-information)
+- [Breaking Changes in v2.0.0](#breaking-changes-in-v200)
 - [Architecture](#architecture)
-- [License](#license)
+- [Licence](#licence)
+- [Additional Resources](#additional-resources)
 - [Author](#author)
 
 ## Introduction
@@ -72,13 +75,63 @@ It also includes logging tables for derived/aggregated competitor standings acro
 - Record stage-by-stage scoring and compute stage/match aggregates (or store them when computed elsewhere).
 - Store leaderboard snapshots in log tables (single match or match window).
 
+## Version Information
+
+**Current Version:** 2.0.0 (Released February 23, 2026)
+
+This release introduces significant improvements to database normalisation, temporal tracking, and
+documentation standards. For detailed version history and upgrade information, see [HISTORY.md](HISTORY.md)
+and [RELEASE_NOTES.md](RELEASE_NOTES.md).
+
+### Key v2.0.0 Improvements
+
+- **Temporal Tracking**: Added `date_refreshed` columns to track external data synchronisation
+- **Enhanced Normalisation**: Removed redundant `club_name` columns to enforce referential integrity
+- **Open Source**: Transitioned to MIT Licence for community adoption
+- **Comprehensive Documentation**: Established CHANGELOG.md, HISTORY.md, and versioned release notes
+
+## Breaking Changes in v2.0.0
+
+⚠️ **Schema Changes:**
+
+The following columns have been removed to enforce database normalisation:
+
+- `ipsc_match.club_name` – Use JOIN with `club` table instead
+- `match_competitor.club` – Retrieve via `match_id` → `club_id` relationship
+
+**Update Required:** Applications must use proper JOIN operations to retrieve club information:
+
+```sql
+-- Old approach (no longer supported):
+SELECT m.name, m.club_name
+FROM ipsc_match m;
+
+-- New approach:
+SELECT m.name, c.name AS club_name, c.abbreviation
+FROM ipsc_match m
+         JOIN club c ON m.club_id = c.id;
+```
+
+For complete upgrade instructions, see [RELEASE_NOTES.md](RELEASE_NOTES.md#upgrade-guide).
+
 ## Architecture
 
 A detailed explanation of the architecture can be found in the [`ARCHITECTURE.md`](ARCHITECTURE.md) file.
 
-## License
+## Licence
 
-The copyright licence can be found in the [`LICENSE.md`](LICENSE.md) file.
+The copyright licence can be found in the [`LICENCE.md`](LICENSE.md) file.
+
+## Additional Resources
+
+- [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
+  technical requirements
+- [Release Notes](RELEASE_NOTES.md) – Comprehensive information for version 2.0.0 including upgrade guides and
+  breaking changes
+- [Release History](HISTORY.md) – Historical overview of all releases with version themes and objectives
+- [Changelog](CHANGELOG.md) – Categorised list of all changes for each version
+- [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) – Future enhancements and change management
+  best practices
 
 ## Author
 
