@@ -16,6 +16,8 @@ of the database used by the Hartbeespoortdam Practical Shooting Club (HPSC) webs
 - [Key Relationships (conceptual)](#key-relationships-conceptual)
 - [Integrity Strategy](#integrity-strategy)
 - [Aggregation Strategy](#aggregation-strategy)
+- [Temporal Tracking & Data Synchronisation](#temporal-tracking--data-synchronisation)
+- [Normalisation & Breaking Changes](#normalisation--breaking-changes)
 
 ## Introduction
 
@@ -137,3 +139,87 @@ Which approach you choose depends on scale, performance needs, and whether you w
 snapshots.
 
 The approach used in this project is **compute-and-store**.
+
+## Temporal Tracking & Data Synchronisation
+
+As of version 2.0.0, the schema includes temporal tracking capabilities to support external data
+synchronisation operations. The following tables now include a `date_refreshed` column:
+
+- **ipsc_match**: Tracks when match data was last synchronised with external sources
+- **match_competitor**: Tracks when competitor match data was last updated
+- **match_stage_competitor**: Tracks when stage results were last refreshed
+
+### Purpose
+
+The `date_refreshed` field (nullable DATETIME) serves as an audit trail for data integration workflows. This
+is particularly important for systems that import results from external platforms, scoring devices, or
+third-party match management systems. By recording refresh timestamps, you can:
+
+- Identify stale data that may require re-synchronisation
+- Audit the currency of results
+- Implement selective refresh strategies for high-frequency integrations
+- Track synchronisation patterns and troubleshoot integration issues
+
+### Usage
+
+Applications should update `date_refreshed` whenever external data is imported or synchronised:
+
+```sql
+UPDATE ipsc_match
+SET date_refreshed = NOW()
+WHERE id = ?;
+```
+
+## Normalisation & Breaking Changes
+
+### Version 2.0.0 Breaking Changes
+
+As of version 2.0.0, the following changes enforce stricter database normalisation:
+
+#### Removed Denormalised Columns
+
+The following columns have been removed to eliminate data redundancy and enforce referential integrity:
+
+- **ipsc_match.club_name** (removed in v2.0.0)
+- **match_competitor.club_name** (removed in v2.0.0)
+
+### Rationale
+
+Storing `club_name` as a denormalised column in multiple tables introduces several risks:
+
+1. **Data Inconsistency**: Club names could diverge across tables if not carefully maintained
+2. **Update Anomalies**: Updating a club name would require changes across multiple tables
+3. **Storage Waste**: The same club name is stored redundantly
+4. **Foreign Key Enforcement**: Direct foreign key relationships are clearer and more maintainable
+
+### Migration Path
+
+Applications must be updated to retrieve club information via JOIN operations:
+
+**Old approach (no longer supported):**
+
+```sql
+SELECT m.name, m.club_name, m.scheduled_date
+FROM ipsc_match m
+WHERE m.id = ?;
+```
+
+**New approach (required):**
+
+```sql
+SELECT m.name, c.name AS club_name, c.abbreviation, m.scheduled_date
+FROM ipsc_match m
+         INNER JOIN club c ON m.club_id = c.id
+WHERE m.id = ?;
+```
+
+### Design Philosophy
+
+This change reflects the project's commitment to **database normalisation best practices**. By enforcing
+JOINs rather than storing redundant data, we ensure:
+
+- A single source of truth for club information
+- Automatic consistency across all references
+- Simpler maintenance and schema evolution
+- Better scalability for multi-club systems
+
