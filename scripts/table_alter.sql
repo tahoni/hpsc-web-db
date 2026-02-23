@@ -16,6 +16,6 @@ ALTER TABLE ipsc_match
 ALTER TABLE match_competitor
     DROP COLUMN club;
 
--- Update scheduled_date type to DATETIME (2026-02-21)
+-- Update the scheduled_date type to DATETIME (2026-02-21)
 ALTER TABLE ipsc_match
     MODIFY COLUMN scheduled_date DATETIME NOT NULL;

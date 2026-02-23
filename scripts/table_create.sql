@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS club
     name         VARCHAR(255) NOT NULL UNIQUE,
     abbreviation VARCHAR(255),
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- IpscMatch table
@@ -141,6 +141,7 @@ CREATE TABLE IF NOT EXISTS ipsc_match_stage_match_stage_competitors
     FOREIGN KEY (ipsc_match_stage_id) REFERENCES ipsc_match_stage (id),
     FOREIGN KEY (match_stage_competitors_id) REFERENCES match_stage_competitor (id)
 );
+
 CREATE TABLE IF NOT EXISTS ipsc_match_match_competitors
 (
     ipsc_match_id        BIGINT NOT NULL,

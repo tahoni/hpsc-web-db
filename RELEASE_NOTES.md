@@ -22,7 +22,7 @@ improved referential integrity, and streamlined schema management.
 #### Table Creation (2026-02-01 to 2026-02-15)
 
 - **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
-    - `club`: Organisation information with a unique constraint on name and an abbreviation field
+    - `club`: Organisation information with a unique constraint on name
     - `ipsc_match`: Match details with club relationships and scheduling information
     - `competitor`: Competitor profiles with SAPSA numbers and personal details
     - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
