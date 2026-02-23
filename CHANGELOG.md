@@ -57,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Database Schema**: `club_name` column from `ipsc_match` table to enforce referential integrity
   (2026-02-21)
-- **Database Schema**: `club_name` column from `match_competitor` table to reduce data duplication
+- **Database Schema**: `club` column from `match_competitor` table to reduce data duplication
   (2026-02-21)
 
 ### Fixed
@@ -68,7 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaking Changes
 
 - ⚠️ **Removed `ipsc_match.club_name` column** - Applications must now use `club_id` foreign key relationship
-- ⚠️ **Removed `match_competitor.club_name` column** - Applications must retrieve club information via JOIN
+- ⚠️ **Removed `match_competitor.club` column** - Applications must retrieve club information via JOIN
   operations
 - **Migration Required**: Update all queries to use JOIN operations for club information retrieval
 
