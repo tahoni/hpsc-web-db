@@ -2,7 +2,7 @@
 
 ## Version 2.0.0
 
-**Release Date:** 2026-02-22  
+**Release Date:** 2026-02-23  
 **Branch:** develop → main
 
 ---
@@ -19,15 +19,32 @@ improved referential integrity, and streamlined schema management.
 
 ### Database Schema Enhancements
 
-#### New Columns Added
+#### Table Creation (2026-02-01 to 2026-02-15)
 
-- **`date_refreshed`**: Added to `ipsc_match`, `match_competitor`, and `match_stage_competitor` tables to
-  track when records were last refreshed from external sources (2026-02-14, 2026-02-15)
+- **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
+    - `club`: Organization information with unique constraints on name and abbreviation
+    - `ipsc_match`: Match details with club relationships and scheduling information
+    - `competitor`: Competitor profiles with SAPSA numbers and personal details
+    - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
+    - `match_competitor`: Competitor match participation and overall results
+    - `match_stage_competitor`: Detailed stage-level performance data
 
-#### Schema Refinements
+- **Join Tables**: Established proper many-to-many relationships
+    - `club_matches`, `ipsc_match_match_stages`, `ipsc_match_match_competitors`
+    - `ipsc_match_stage_match_stage_competitors`, `competitor_competitor_matches`,
+      `competitor_competitor_stage_matches`
 
-- **Removed redundant `club_name` columns**: Eliminated from `ipsc_match` and `match_competitor` tables to
-  reduce data duplication and enforce proper use of foreign key relationships to the `club` table (2026-02-21)
+#### Schema Modifications (2026-02-14 to 2026-02-21)
+
+- **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
+    - `ipsc_match.date_refreshed` - Track when match data was last synchronized
+    - `match_competitor.date_refreshed` - Track when competitor match data was last updated
+    - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
+    - All columns are nullable DATETIME fields for external data source tracking
+
+- **Removed redundant `club_name` columns** (2026-02-21):
+    - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
+    - `match_competitor.club_name` - Removed to reduce data duplication and improve data integrity
 
 ### SQL Script Organization
 

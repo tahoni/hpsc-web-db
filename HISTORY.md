@@ -15,7 +15,7 @@ themes and objectives for each version.
 
 ## Version 2.0.0 - Schema Refinement & Data Integrity
 
-**Released:** February 22, 2026  
+**Released:** February 23, 2026  
 **Type:** Major Release (Breaking Changes)
 
 ### Release Theme
@@ -74,7 +74,7 @@ structure provides a solid foundation for future community contributions and ver
 - [Full Release Notes](RELEASE_NOTES.md) – Complete details for version 2.0.0
 - [Versioned Release Notes](documentation/history/RELEASE_NOTES.md) – Archived release notes in
   the history directory
-- [Changelog Entry](CHANGELOG.md#200---2026-02-22) – Categorised list of all changes
+- [Changelog Entry](CHANGELOG.md#200---2026-02-23) – Categorised list of all changes
 - [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
 - [MIT Licence](LICENCE.md) - Open source licence details
 

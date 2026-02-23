@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------------------------------------
-# 2026-02-01, 2026-02-16, 2026-02-18
+# 2026-02-01 - 2026-02-15
 #---------------------------------------------------------------------------------------------------
 
 -- Club table
@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS club
     name         VARCHAR(255) NOT NULL UNIQUE,
     abbreviation VARCHAR(255),
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT club_name_uindex UNIQUE (name),
+    CONSTRAINT club_abbreviation_uindex UNIQUE (abbreviation)
 );
 
 -- IpscMatch table
@@ -18,12 +20,13 @@ CREATE TABLE IF NOT EXISTS ipsc_match
     id                 BIGINT PRIMARY KEY AUTO_INCREMENT,
     club_id            BIGINT       NULL,
     name               VARCHAR(255) NOT NULL UNIQUE,
-    scheduled_date     DATE         NOT NULL,
+    scheduled_date     DATETIME     NOT NULL,
     match_firearm_type VARCHAR(255),
     match_category     VARCHAR(255),
     date_created       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_updated       TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     date_edited        DATETIME,
+    date_refreshed     DATETIME     NULL,
     FOREIGN KEY (club_id) REFERENCES club (id)
 );
 
@@ -37,7 +40,9 @@ CREATE TABLE IF NOT EXISTS competitor
     date_of_birth               DATE,
     sapsa_number                INT,
     competitor_number           VARCHAR(255) NOT NULL,
-    default_competitor_category VARCHAR(255)
+    default_competitor_category VARCHAR(255),
+    date_created                TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_updated                TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- IpscMatchStage table
@@ -55,6 +60,8 @@ CREATE TABLE IF NOT EXISTS ipsc_match_stage
     target_penalty   INT,
     min_rounds       INT,
     max_points       INT,
+    date_created     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_updated     TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
 
@@ -62,8 +69,8 @@ CREATE TABLE IF NOT EXISTS ipsc_match_stage
 CREATE TABLE IF NOT EXISTS match_competitor
 (
     id                  BIGINT PRIMARY KEY AUTO_INCREMENT,
-    competitor_id       BIGINT NOT NULL,
-    match_id            BIGINT NOT NULL,
+    competitor_id       BIGINT   NOT NULL,
+    match_id            BIGINT   NOT NULL,
     club_name           VARCHAR(255),
     firearm_type        VARCHAR(255),
     division            VARCHAR(255),
@@ -74,6 +81,7 @@ CREATE TABLE IF NOT EXISTS match_competitor
     date_created        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_updated        TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     date_edited         DATETIME,
+    date_refreshed      DATETIME NULL,
     FOREIGN KEY (competitor_id) REFERENCES competitor (id),
     FOREIGN KEY (match_id) REFERENCES ipsc_match (id)
 );
@@ -82,8 +90,8 @@ CREATE TABLE IF NOT EXISTS match_competitor
 CREATE TABLE IF NOT EXISTS match_stage_competitor
 (
     id                   BIGINT PRIMARY KEY AUTO_INCREMENT,
-    competitor_id        BIGINT NOT NULL,
-    match_stage_id       BIGINT NOT NULL,
+    competitor_id        BIGINT   NOT NULL,
+    match_stage_id       BIGINT   NOT NULL,
     firearm_type         VARCHAR(255),
     division             VARCHAR(255),
     power_factor         VARCHAR(255),
@@ -104,9 +112,10 @@ CREATE TABLE IF NOT EXISTS match_stage_competitor
     stage_ranking        DECIMAL(19, 2),
     is_disqualified      BOOLEAN,
     competitor_category  VARCHAR(255),
-    date_created         DATETIME NOT NULL,
-    date_updated         DATETIME NOT NULL,
+    date_created         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_updated         TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     date_edited          DATETIME,
+    date_refreshed       DATETIME NULL,
     FOREIGN KEY (competitor_id) REFERENCES competitor (id),
     FOREIGN KEY (match_stage_id) REFERENCES ipsc_match_stage (id)
 );
