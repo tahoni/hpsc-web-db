@@ -189,7 +189,7 @@ v1.0.0 (2025-12-28) ─── Initial Release
    │
    └─> v1.1.0 (2026-01-28) ─── Schema Maturity
           │
-          └─> v2.0.0 (2026-02-22) ─── Breaking Changes
+          └─> v2.0.0 (2026-02-23) ─── Breaking Changes
                  │
                  └─> Future releases...
 ```

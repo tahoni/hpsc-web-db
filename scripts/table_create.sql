@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS match_competitor
     id                  BIGINT PRIMARY KEY AUTO_INCREMENT,
     competitor_id       BIGINT   NOT NULL,
     match_id            BIGINT   NOT NULL,
-    club_name           VARCHAR(255),
     firearm_type        VARCHAR(255),
     division            VARCHAR(255),
     power_factor        VARCHAR(255),
