@@ -52,7 +52,7 @@ versioned release notes) ensures long-term maintainability and transparency.
 
 ### Major Changes
 
-- **Breaking**: Removed `club_name` columns from `ipsc_match` and `match_competitor` tables
+- **Breaking**: Removed `club_name` from `ipsc_match` and `club` from `match_competitor` tables
 - **New**: Added `date_refreshed` tracking columns to match and result tables
 - **Improved**: Consolidated schema modification scripts with clear date markers
 - **Enhanced**: Documentation templates for changelog and release notes

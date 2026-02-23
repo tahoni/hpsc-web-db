@@ -163,7 +163,7 @@ FROM ipsc_match m
 #### Tables Modified
 
 - `ipsc_match`: Added `date_refreshed DATETIME NULL`, removed `club_name VARCHAR(255)`
-- `match_competitor`: Added `date_refreshed DATETIME NULL`, removed `club_name VARCHAR(255)`
+- `match_competitor`: Added `date_refreshed DATETIME NULL`, removed `club VARCHAR(255)`
 - `match_stage_competitor`: Added `date_refreshed DATETIME NULL`
 
 #### Key Features

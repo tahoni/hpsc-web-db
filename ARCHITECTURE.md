@@ -181,7 +181,7 @@ As of version 2.0.0, the following changes enforce stricter database normalisati
 The following columns have been removed to eliminate data redundancy and enforce referential integrity:
 
 - **ipsc_match.club_name** (removed in v2.0.0)
-- **match_competitor.club_name** (removed in v2.0.0)
+- **match_competitor.club** (removed in v2.0.0)
 
 ### Rationale
 

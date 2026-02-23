@@ -97,7 +97,7 @@ and [RELEASE_NOTES.md](RELEASE_NOTES.md).
 The following columns have been removed to enforce database normalisation:
 
 - `ipsc_match.club_name` – Use JOIN with `club` table instead
-- `match_competitor.club_name` – Retrieve via `match_id` → `club_id` relationship
+- `match_competitor.club` – Retrieve via `match_id` → `club_id` relationship
 
 **Update Required:** Applications must use proper JOIN operations to retrieve club information:
 
