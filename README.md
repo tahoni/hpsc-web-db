@@ -107,7 +107,7 @@ SELECT m.name, m.club_name
 FROM ipsc_match m;
 
 -- New approach:
-SELECT m.name, c.name, c.abbreviation
+SELECT m.name, c.name AS club_name, c.abbreviation
 FROM ipsc_match m
          JOIN club c ON m.club_id = c.id;
 ```
