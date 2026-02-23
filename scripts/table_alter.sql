@@ -19,3 +19,36 @@ ALTER TABLE match_competitor
 -- Update the scheduled_date type to DATETIME (2026-02-21)
 ALTER TABLE ipsc_match
     MODIFY COLUMN scheduled_date DATETIME NOT NULL;
+
+-- Align date_created/date_updated definitions with table_create.sql (2026-02-23)
+-- Ensure TIMESTAMP types with appropriate defaults across all relevant tables.
+
+-- Club table: add or normalize date_created/date_updated to TIMESTAMP
+ALTER TABLE club
+    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- Competitor table: add or normalize date_created/date_updated to TIMESTAMP
+ALTER TABLE competitor
+    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- IPSC match stage table: add or normalize date_created/date_updated to TIMESTAMP
+ALTER TABLE ipsc_match_stage
+    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- IPSC match table: normalize date_created/date_updated to TIMESTAMP
+ALTER TABLE ipsc_match
+    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- Match competitor table: normalize date_created/date_updated to TIMESTAMP
+ALTER TABLE match_competitor
+    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+-- Match stage competitor table: normalize date_created/date_updated to TIMESTAMP
+ALTER TABLE match_stage_competitor
+    MODIFY COLUMN date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    MODIFY COLUMN date_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
