@@ -89,7 +89,7 @@ ALTER TABLE match_stage_competitor
 ALTER TABLE ipsc_match
     DROP COLUMN club_name;
 ALTER TABLE match_competitor
-    DROP COLUMN club_name;
+    DROP COLUMN club;
 ```
 
 ### Deprecated
