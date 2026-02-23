@@ -15,3 +15,6 @@ ALTER TABLE ipsc_match
     DROP COLUMN club_name;
 ALTER TABLE match_competitor
     DROP COLUMN club;
+
+ALTER TABLE ipsc_match
+    MODIFY COLUMN scheduled_date DATETIME NOT NULL;

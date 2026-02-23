@@ -10,8 +10,6 @@ CREATE TABLE IF NOT EXISTS club
     abbreviation VARCHAR(255),
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT club_name_uindex UNIQUE (name),
-    CONSTRAINT club_abbreviation_uindex UNIQUE (abbreviation)
 );
 
 -- IpscMatch table
