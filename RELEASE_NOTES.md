@@ -44,7 +44,7 @@ improved referential integrity, and streamlined schema management.
 
 - **Removed redundant `club_name` columns** (2026-02-21):
     - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
-    - `match_competitor.club_name` - Removed to reduce data duplication and improve data integrity
+    - `match_competitor.club` - Removed to reduce data duplication and improve data integrity
 
 ### SQL Script Organization
 
