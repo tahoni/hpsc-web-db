@@ -22,7 +22,7 @@ improved referential integrity, and streamlined schema management.
 #### Table Creation (2026-02-01 to 2026-02-15)
 
 - **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
-    - `club`: Organisation information with unique constraints on name and abbreviation
+    - `club`: Organisation information with a unique constraint on name and an abbreviation field
     - `ipsc_match`: Match details with club relationships and scheduling information
     - `competitor`: Competitor profiles with SAPSA numbers and personal details
     - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
@@ -44,7 +44,7 @@ improved referential integrity, and streamlined schema management.
 
 - **Removed redundant `club_name` columns** (2026-02-21):
     - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
-    - `match_competitor.club_name` - Removed to reduce data duplication and improve data integrity
+    - `match_competitor.club` - Removed to reduce data duplication and improve data integrity
 
 ### SQL Script Organization
 
