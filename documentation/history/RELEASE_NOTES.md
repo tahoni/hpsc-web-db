@@ -2,7 +2,7 @@
 
 ## Version 2.0.0
 
-**Release Date:** 2026-02-22  
+**Release Date:** 2026-02-23
 **Branch:** develop → main
 
 ---
@@ -19,15 +19,32 @@ improved referential integrity, and streamlined schema management.
 
 ### Database Schema Enhancements
 
-#### New Columns Added
+#### Table Creation (2026-02-01 to 2026-02-15)
 
-- **`date_refreshed`**: Added to `ipsc_match`, `match_competitor`, and `match_stage_competitor` tables to
-  track when records were last refreshed from external sources (2026-02-14, 2026-02-15)
+- **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
+    - `club`: Organisation information with unique constraints on name and abbreviation
+    - `ipsc_match`: Match details with club relationships and scheduling information
+    - `competitor`: Competitor profiles with SAPSA numbers and personal details
+    - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
+    - `match_competitor`: Competitor match participation and overall results
+    - `match_stage_competitor`: Detailed stage-level performance data
 
-#### Schema Refinements
+- **Join Tables**: Established proper many-to-many relationships
+    - `club_matches`, `ipsc_match_match_stages`, `ipsc_match_match_competitors`
+    - `ipsc_match_stage_match_stage_competitors`, `competitor_competitor_matches`,
+      `competitor_competitor_stage_matches`
 
-- **Removed redundant `club_name` columns**: Eliminated from `ipsc_match` and `match_competitor` tables to
-  reduce data duplication and enforce proper use of foreign key relationships to the `club` table (2026-02-21)
+#### Schema Modifications (2026-02-14 to 2026-02-21)
+
+- **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
+    - `ipsc_match.date_refreshed` - Track when match data was last synchronised
+    - `match_competitor.date_refreshed` - Track when competitor match data was last updated
+    - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
+    - All columns are nullable DATETIME fields for external data source tracking
+
+- **Removed redundant `club_name` columns** (2026-02-21):
+    - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
+    - `match_competitor.club_name` - Removed to reduce data duplication and improve data integrity
 
 ### SQL Script Organization
 
@@ -122,11 +139,40 @@ FROM ipsc_match m
 
 ### Database Changes
 
+#### Tables Created (Complete Schema)
+
+**Core Tables:**
+
+- `club`: Club/organisation management with unique name and abbreviation constraints
+- `ipsc_match`: Match scheduling and configuration with a foreign key to club
+- `competitor`: Competitor profiles with SAPSA number and personal information
+- `ipsc_match_stage`: Stage details including target counts (paper, popper, plates, disappear, penalty) and
+  scoring parameters
+- `match_competitor`: Match participation records with division, power factor, and overall match results
+- `match_stage_competitor`: Detailed stage performance including hit factor, stage points, and ranking
+
+**Join Tables:**
+
+- `club_matches`: Links clubs to their hosted matches
+- `ipsc_match_match_stages`: Links matches to their stages
+- `ipsc_match_match_competitors`: Links matches to competitors
+- `ipsc_match_stage_match_stage_competitors`: Links stages to stage results
+- `competitor_competitor_matches`: Links competitors to their match participations
+- `competitor_competitor_stage_matches`: Links competitors to their stage results
+
 #### Tables Modified
 
-- `ipsc_match`: Added `date_refreshed`, removed `club_name`
-- `match_competitor`: Added `date_refreshed`, removed `club_name`
-- `match_stage_competitor`: Added `date_refreshed`
+- `ipsc_match`: Added `date_refreshed DATETIME NULL`, removed `club_name VARCHAR(255)`
+- `match_competitor`: Added `date_refreshed DATETIME NULL`, removed `club_name VARCHAR(255)`
+- `match_stage_competitor`: Added `date_refreshed DATETIME NULL`
+
+#### Key Features
+
+- **Auto-increment primary keys**: All tables use `BIGINT PRIMARY KEY AUTO_INCREMENT`
+- **Automatic timestamps**: `date_created` and `date_updated` columns with automatic timestamp management
+- **Foreign key constraints**: Proper referential integrity across all relationships
+- **Unique constraints**: Enforced on club names, abbreviations, and match names
+- **Audit fields**: `date_edited` and `date_refreshed` for change tracking
 
 #### Schema Scripts Updated
 
@@ -197,9 +243,10 @@ None at this time.
 - [Architecture Documentation](../../ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
 - [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database with schema
-  entities, conventions, and typical workflows
-- [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies, and change
-  management best practices
+  entities,
+  conventions, and typical workflows
+- [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
+  and change management best practices
 
 ---
 

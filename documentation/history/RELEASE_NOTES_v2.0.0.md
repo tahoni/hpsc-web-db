@@ -22,7 +22,7 @@ improved referential integrity, and streamlined schema management.
 #### Table Creation (2026-02-01 to 2026-02-15)
 
 - **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
-    - `club`: Organization information with unique constraints on name and abbreviation
+    - `club`: Organisation information with unique constraints on name and abbreviation
     - `ipsc_match`: Match details with club relationships and scheduling information
     - `competitor`: Competitor profiles with SAPSA numbers and personal details
     - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
@@ -37,7 +37,7 @@ improved referential integrity, and streamlined schema management.
 #### Schema Modifications (2026-02-14 to 2026-02-21)
 
 - **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
-    - `ipsc_match.date_refreshed` - Track when match data was last synchronized
+    - `ipsc_match.date_refreshed` - Track when match data was last synchronised
     - `match_competitor.date_refreshed` - Track when competitor match data was last updated
     - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
     - All columns are nullable DATETIME fields for external data source tracking
@@ -139,11 +139,40 @@ FROM ipsc_match m
 
 ### Database Changes
 
+#### Tables Created (Complete Schema)
+
+**Core Tables:**
+
+- `club`: Club/organisation management with unique name and abbreviation constraints
+- `ipsc_match`: Match scheduling and configuration with a foreign key to club
+- `competitor`: Competitor profiles with SAPSA number and personal information
+- `ipsc_match_stage`: Stage details including target counts (paper, popper, plates, disappear, penalty) and
+  scoring parameters
+- `match_competitor`: Match participation records with division, power factor, and overall match results
+- `match_stage_competitor`: Detailed stage performance including hit factor, stage points, and ranking
+
+**Join Tables:**
+
+- `club_matches`: Links clubs to their hosted matches
+- `ipsc_match_match_stages`: Links matches to their stages
+- `ipsc_match_match_competitors`: Links matches to competitors
+- `ipsc_match_stage_match_stage_competitors`: Links stages to stage results
+- `competitor_competitor_matches`: Links competitors to their match participations
+- `competitor_competitor_stage_matches`: Links competitors to their stage results
+
 #### Tables Modified
 
-- `ipsc_match`: Added `date_refreshed`, removed `club_name`
-- `match_competitor`: Added `date_refreshed`, removed `club_name`
-- `match_stage_competitor`: Added `date_refreshed`
+- `ipsc_match`: Added `date_refreshed DATETIME NULL`, removed `club_name VARCHAR(255)`
+- `match_competitor`: Added `date_refreshed DATETIME NULL`, removed `club_name VARCHAR(255)`
+- `match_stage_competitor`: Added `date_refreshed DATETIME NULL`
+
+#### Key Features
+
+- **Auto-increment primary keys**: All tables use `BIGINT PRIMARY KEY AUTO_INCREMENT`
+- **Automatic timestamps**: `date_created` and `date_updated` columns with automatic timestamp management
+- **Foreign key constraints**: Proper referential integrity across all relationships
+- **Unique constraints**: Enforced on club names, abbreviations, and match names
+- **Audit fields**: `date_edited` and `date_refreshed` for change tracking
 
 #### Schema Scripts Updated
 
@@ -214,9 +243,10 @@ None at this time.
 - [Architecture Documentation](../../ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
 - [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database with schema
-  entities, conventions, and typical workflows
-- [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies, and change
-  management best practices
+  entities,
+  conventions, and typical workflows
+- [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
+  and change management best practices
 
 ---
 
@@ -229,5 +259,5 @@ For questions, issues, or suggestions, please contact:
 
 ---
 
-**Full Changelog**: v1.1.0 vs v2.0.0 `git log v1.1.0..v2.0.0`
+**Full Changelog**: main vs develop - `git log main..develop`
 

@@ -22,7 +22,7 @@ improved referential integrity, and streamlined schema management.
 #### Table Creation (2026-02-01 to 2026-02-15)
 
 - **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
-    - `club`: Organization information with unique constraints on name and abbreviation
+    - `club`: Organisation information with unique constraints on name and abbreviation
     - `ipsc_match`: Match details with club relationships and scheduling information
     - `competitor`: Competitor profiles with SAPSA numbers and personal details
     - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
@@ -37,7 +37,7 @@ improved referential integrity, and streamlined schema management.
 #### Schema Modifications (2026-02-14 to 2026-02-21)
 
 - **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
-    - `ipsc_match.date_refreshed` - Track when match data was last synchronized
+    - `ipsc_match.date_refreshed` - Track when match data was last synchronised
     - `match_competitor.date_refreshed` - Track when competitor match data was last updated
     - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
     - All columns are nullable DATETIME fields for external data source tracking
@@ -104,7 +104,7 @@ FROM ipsc_match m
 
 ## Bug Fixes
 
-- Fixed data consistency issues by removing denormalized `club_name` columns
+- Fixed data consistency issues by removing denormalised `club_name` columns
 - Corrected SQL script formatting and dialect consistency
 
 ---
@@ -143,8 +143,8 @@ FROM ipsc_match m
 
 **Core Tables:**
 
-- `club`: Club/organization management with unique name and abbreviation constraints
-- `ipsc_match`: Match scheduling and configuration with foreign key to club
+- `club`: Club/organisation management with unique name and abbreviation constraints
+- `ipsc_match`: Match scheduling and configuration with a foreign key to club
 - `competitor`: Competitor profiles with SAPSA number and personal information
 - `ipsc_match_stage`: Stage details including target counts (paper, popper, plates, disappear, penalty) and
   scoring parameters
