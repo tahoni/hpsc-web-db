@@ -1,68 +1,17 @@
-# Release Notes
+# Release Notes History
 
-## Version 2.0.0
+This directory contains versioned release notes for the project. To avoid duplication and keep a single source
+of truth for each release, detailed notes are stored in version-specific files and in the root `RELEASE_NOTES.md`.
 
-**Release Date:** 2026-02-23
-**Branch:** develop → main
+## Available versions
 
----
+- [v2.0.0](RELEASE_NOTES_v2.0.0.md) — detailed notes for the 2.0.0 release
 
-## Overview
+## Latest release notes
 
-This release introduces significant database schema improvements, enhanced SQL script organisation, and
-documentation template updates for the HPSC Database. The changes focus on better data tracking capabilities,
-improved referential integrity, and streamlined schema management.
+For the latest consolidated release notes, see the root file:
 
----
-
-## What's New
-
-### Database Schema Enhancements
-
-#### Table Creation (2026-02-01 to 2026-02-15)
-
-- **Core Tables**: Created comprehensive database schema with 6 main tables and 6 join tables
-    - `club`: Organisation information with a unique constraint on name
-    - `ipsc_match`: Match details with club relationships and scheduling information
-    - `competitor`: Competitor profiles with SAPSA numbers and personal details
-    - `ipsc_match_stage`: Stage configuration with target counts and scoring parameters
-    - `match_competitor`: Competitor match participation and overall results
-    - `match_stage_competitor`: Detailed stage-level performance data
-
-- **Join Tables**: Established proper many-to-many relationships
-    - `club_matches`, `ipsc_match_match_stages`, `ipsc_match_match_competitors`
-    - `ipsc_match_stage_match_stage_competitors`, `competitor_competitor_matches`,
-      `competitor_competitor_stage_matches`
-
-#### Schema Modifications (2026-02-14 to 2026-02-21)
-
-- **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
-    - `ipsc_match.date_refreshed` - Track when match data was last synchronised
-    - `match_competitor.date_refreshed` - Track when competitor match data was last updated
-    - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
-    - All columns are nullable DATETIME fields for external data source tracking
-
-- **Removed redundant `club_name` columns** (2026-02-21):
-    - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
-    - `match_competitor.club` - Removed to reduce data duplication and improve data integrity
-
-### SQL Script Organisation
-
-#### Improved Script Structure
-
-- **`table_alter.sql`**: Consolidated schema modification scripts with clear date markers for change tracking
-- **`table_create.sql`**: Maintained comprehensive table creation scripts with proper foreign key constraints
-- **`table_data.sql`**: Updated seed data with corrected club names
-- **`schema.sql`**: Enhanced with proper user and schema creation for both development and production
-  environments
-
-### Documentation Improvements
-
-#### New Documentation Templates
-
-- **CHANGELOG.md**: Introduced a structured changelog format following Keep a Changelog standards for version
-  tracking and documentation
-- **RELEASE_NOTES.md**: Established standardised release notes format aligned with modern documentation
+- [Latest RELEASE_NOTES.md](../../RELEASE_NOTES.md)
   practices
 - **HISTORY.md**: Added comprehensive release history with narrative descriptions for each version
 - **Versioned Release Notes**: Created historical release notes (v2.0.0, v1.1.0, v1.0.0) in
