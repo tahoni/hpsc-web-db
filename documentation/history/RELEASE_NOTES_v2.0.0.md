@@ -106,6 +106,8 @@ FROM ipsc_match m
 
 - Fixed data consistency issues by removing denormalised `club_name` columns
 - Corrected SQL script formatting and dialect consistency
+- **match_competitor table**: Removed redundant `club` column to enforce proper club information retrieval via
+  foreign key relationships with the club table
 
 ---
 
