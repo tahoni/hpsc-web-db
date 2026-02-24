@@ -1,4 +1,4 @@
-# 📚 Release History
+# Release History
 
 This document provides a historical overview of all HPSC Database releases, with descriptions of the key
 themes and objectives for each version.

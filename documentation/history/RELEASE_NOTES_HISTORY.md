@@ -1,4 +1,4 @@
-# 🧾📚 Release Notes History
+# Release Notes History
 
 This directory contains versioned release notes for the project. To avoid duplication and keep a single source
 of truth for each release, detailed notes are stored in version-specific files and in the root

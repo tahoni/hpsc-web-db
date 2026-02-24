@@ -1,4 +1,4 @@
-# 📚 Release History & Documentation
+# Release History & Documentation
 
 Complete historical archive and documentation of all HPSC Database releases.
 

@@ -1,4 +1,4 @@
-# 📒 Changelog
+# Changelog
 
 All notable changes to the HPSC Database project will be documented in this file.
 
