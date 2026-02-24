@@ -15,9 +15,9 @@ improved referential integrity, and streamlined schema management.
 
 ---
 
-## What's New
+## ✨ What's New
 
-### Database Schema Enhancements
+### 🗄️ Database Schema Enhancements
 
 #### Table Creation (2026-02-01 to 2026-02-15)
 
@@ -36,17 +36,17 @@ improved referential integrity, and streamlined schema management.
 
 #### Schema Modifications (2026-02-14 to 2026-02-21)
 
-- **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
+- **📅 Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
     - `ipsc_match.date_refreshed` - Track when match data was last synchronised
     - `match_competitor.date_refreshed` - Track when competitor match data was last updated
     - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
     - All columns are nullable DATETIME fields for external data source tracking
 
-- **Removed redundant `club_name` columns** (2026-02-21):
+- **🗑️ Removed redundant `club_name` columns** (2026-02-21):
     - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
     - `match_competitor.club` - Removed to reduce data duplication and improve data integrity
 
-### SQL Script Organisation
+### 📋 SQL Script Organisation
 
 #### Improved Script Structure
 
@@ -56,7 +56,7 @@ improved referential integrity, and streamlined schema management.
 - **`schema.sql`**: Enhanced with proper user and schema creation for both development and production
   environments
 
-### Documentation Improvements
+### 📚 Documentation Improvements
 
 #### New Documentation Templates
 
@@ -77,11 +77,11 @@ improved referential integrity, and streamlined schema management.
 
 ---
 
-## Breaking Changes
+## ⚠️ Breaking Changes
 
 ### Schema Changes
 
-⚠️ **Removed Columns**
+📌 **Removed Columns**
 
 - `ipsc_match.club_name` - Use `club_id` foreign key relationship instead
 - `match_competitor.club` - Use `match_id` → `club_id` relationship instead
@@ -102,7 +102,7 @@ FROM ipsc_match m
 
 ---
 
-## Bug Fixes
+## 🐛 Bug Fixes
 
 - Fixed data consistency issues by removing denormalised `club_name` columns
 - Corrected SQL script formatting and dialect consistency
@@ -111,33 +111,34 @@ FROM ipsc_match m
 
 ---
 
-## Improvements
+## 🚀 Improvements
 
-### Data Integrity
+### 🔐 Data Integrity
 
 - Enhanced referential integrity by enforcing club relationships through foreign keys only
 - Added temporal tracking capabilities with `date_refreshed` columns
 - Improved audit trail for data synchronisation operations
 
-### Code Quality
+### 📝 Code Quality
 
 - Organised schema change scripts with chronological date markers
 - Improved SQL script readability and maintainability
 - Added proper documentation for schema evolution
 
-### Developer Experience
+### 👨‍💻 Developer Experience
 
 - Clearer separation between development and production schemas
 - Better structured SQL migration files
 - Enhanced documentation templates for future releases
-- **MIT Licence adoption**: Transitioned to open source licensing for wider community adoption
-- **Organised documentation structure**: Established `documentation/history/` directory for versioned release
+- **🔓 MIT Licence adoption**: Transitioned to open source licensing for wider community adoption
+- **📁 Organised documentation structure**: Established `documentation/history/` directory for versioned
+  release
   notes
-- **Comprehensive version history**: Created CHANGELOG.md and HISTORY.md for better version tracking
+- **📖 Comprehensive version history**: Created CHANGELOG.md and HISTORY.md for better version tracking
 
 ---
 
-## Technical Details
+## 🔧 Technical Details
 
 ### Database Changes
 
@@ -194,7 +195,7 @@ FROM ipsc_match m
 
 ---
 
-## Upgrade Guide
+## 📦 Upgrade Guide
 
 ### For New Installations
 
@@ -222,25 +223,25 @@ FROM ipsc_match m
 
 ---
 
-## Known Issues
+## ℹ️ Known Issues
 
 None at this time.
 
 ---
 
-## Deprecations
+## 📢 Deprecations
 
 - Direct storage of `club_name` in `ipsc_match` and `match_competitor` tables (removed)
 
 ---
 
-## Contributors
+## 👥 Contributors
 
 **Leoni Lubbinge** - Database architecture and implementation
 
 ---
 
-## Additional Resources
+## 🔗 Additional Resources
 
 - [Architecture Documentation](../../ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
@@ -252,7 +253,7 @@ None at this time.
 
 ---
 
-## Feedback
+## 💬 Feedback
 
 For questions, issues, or suggestions, please contact:
 

@@ -138,7 +138,7 @@ FROM ipsc_match m
 
 ---
 
-## Technical Details
+## 🔧 Technical Details
 
 ### Database Changes
 
@@ -195,7 +195,7 @@ FROM ipsc_match m
 
 ---
 
-## Upgrade Guide
+## 📦 Upgrade Guide
 
 ### For New Installations
 
@@ -223,7 +223,7 @@ FROM ipsc_match m
 
 ---
 
-## Known Issues
+## ℹ️ Known Issues
 
 None at this time.
 
