@@ -41,6 +41,10 @@ consistency. By removing redundant `club_name` columns from result tables and en
 schema now follows database normalisation best practices more strictly. This prevents data inconsistencies
 that could arise from duplicate club names stored across multiple tables.
 
+In particular, the removal of the `club` column from the `match_competitor` table ensures that club
+information is maintained in a single, authoritative location (the `club` table). This eliminates the risk of
+data synchronisation issues where the same club could have different representations in different tables.
+
 The addition of `date_refreshed` columns enables better tracking of when data was last synchronised from
 external sources, which is crucial for match scoring systems that may import results from external platforms
 or devices.
@@ -246,5 +250,5 @@ For questions about release history, version strategy, or to provide feedback:
 
 ---
 
-*Last Updated: February 23, 2026*
+*Last Updated: 2025-02-23*
 

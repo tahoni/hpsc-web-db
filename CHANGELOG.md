@@ -64,6 +64,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Data consistency issues by removing denormalised `club_name` columns
 - SQL script formatting and dialect consistency across all scripts
+- **match_competitor table**: Removed redundant `club` column to enforce proper club information retrieval via
+  foreign key relationships with the club table
 
 ### Breaking Changes
 

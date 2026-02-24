@@ -15,9 +15,9 @@ matches, stages, and results for the Hartbeespoortdam Practical Shooting Club an
 
 ---
 
-## What's New
+## ✨ What's New
 
-### Database Schema – Initial Release
+### 🗄️ Database Schema – Initial Release
 
 #### Core Domain Tables
 
@@ -109,13 +109,13 @@ This initial release enables the following workflows:
 
 ---
 
-## Breaking Changes
+## ⚠️ Breaking Changes
 
 Not applicable – this is the initial release.
 
 ---
 
-## Technical Details
+## 🔧 Technical Details
 
 ### Database Schema
 
@@ -165,7 +165,7 @@ Not applicable – this is the initial release.
 
 ---
 
-## Installation Guide
+## 📦 Installation Guide
 
 ### Prerequisites
 
@@ -192,7 +192,7 @@ Not applicable – this is the initial release.
 
 ---
 
-## Known Issues
+## ℹ️ Known Issues
 
 - Join tables are present but not fully documented in the initial release
 - Log tables structure is defined, but aggregation procedures are not yet implemented
@@ -200,7 +200,7 @@ Not applicable – this is the initial release.
 
 ---
 
-## Future Enhancements
+## 🚀 Future Enhancements
 
 Planned for upcoming releases:
 
@@ -212,20 +212,20 @@ Planned for upcoming releases:
 
 ---
 
-## Contributors
+## 👥 Contributors
 
 **Leoni Lubbinge** - Database architecture and implementation
 
 ---
 
-## Additional Resources
+## 🔗 Additional Resources
 
 - [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database
 - [Changelog](../../CHANGELOG.md) – Version history and changes
 
 ---
 
-## Feedback
+## 💬 Feedback
 
 For questions, issues, or suggestions, please contact:
 

@@ -1,18 +1,25 @@
-# HPSC Database
+# HPSC Database - Legacy Release Archive
 
 > **Note:** This archive contains the history of releases from the legacy non-semantic versioning structure
-> that was previously used for this project. This versioning approach is no longer active. For current release
-> information, please refer to the main documentation.
+> that was previously used for this project. This versioning approach is no longer active and has been
+> superseded by [Semantic Versioning (SemVer)](https://semver.org/) as of version 2.0.0.
+>
+> **The v1.x.x release notes below are historical records only.** For current release information and active
+> version history, please refer to:
+> - [Current Release Notes](../../RELEASE_NOTES.md)
+> - [Release History](../history/RELEASE_NOTES.md)
+> - [Changelog](../../CHANGELOG.md)
+> - [History Document](../../HISTORY.md)
 
-## Archives
+## Releases
 
 ### Table of Contents
 
-- [Archive 1.2.0](#archive-120---_2026-02-21_)
-- [Archive 1.1.0](#archive-110---_2026-02-03_)
-- [Archive 1.0.0](#archive-100---_2026-01-28_)
+- [Version 1.2.0](#version-120---_2026-02-21_)
+- [Version 1.1.0](#version-110---_2026-02-03_)
+- [Version 1.0.0](#version-100---_2026-01-28_)
 
-### Archive 1.2.0 - _2026-02-21_
+### Version 1.2.0 - _2026-02-21_
 
 This release updates the database schema scripts and documentation templates as part of the IPSC workstream.
 Key improvements include refreshed match table data handling, restored join tables, and removal of unnecessary
@@ -82,7 +89,7 @@ schema
 
 @tahoni
 
-### Archive 1.1.0 - _2026-02-03_
+### Version 1.1.0 - _2026-02-03_
 
 This release introduces several schema enhancements to support improved match and stage scoring, placing, and
 disqualification tracking. It also includes documentation updates and configuration improvements.
@@ -130,7 +137,7 @@ disqualification tracking. It also includes documentation updates and configurat
 
 @tahoni
 
-### Archive 1.0.0 - _2026-01-28_
+### Version 1.0.0 - _2026-01-28_
 
 Extended the database schema to better support match/stage scoring, placing, and disqualification tracking.
 
