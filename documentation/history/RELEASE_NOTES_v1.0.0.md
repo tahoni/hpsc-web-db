@@ -7,7 +7,7 @@
 
 ---
 
-## Overview
+## 📌 Overview
 
 The inaugural release of the HPSC Database project, establishing the foundational schema for managing
 practical shooting club data. This release provides the core data model for tracking clubs, competitors,
@@ -243,4 +243,3 @@ requirements gathering.
 ---
 
 **Initial Release** – December 28, 2025
-

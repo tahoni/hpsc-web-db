@@ -7,7 +7,7 @@
 
 ---
 
-## Overview
+## 📌 Overview
 
 This release focuses on schema maturity and comprehensive documentation, establishing a solid foundation for
 the HPSC Database with complete table definitions, foreign key constraints, and detailed architectural
@@ -210,4 +210,3 @@ For questions, issues, or suggestions, please contact:
 ---
 
 **Full Changelog**: v1.0.0 vs v1.1.0 `git log v1.0.0..v1.1.0`
-

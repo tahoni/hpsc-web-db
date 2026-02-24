@@ -7,7 +7,7 @@
 
 ---
 
-## Overview
+## 📌 Overview
 
 This release introduces significant database schema improvements, enhanced SQL script organisation, and
 documentation template updates for the HPSC Database. The changes focus on better data tracking capabilities,
@@ -262,4 +262,3 @@ For questions, issues, or suggestions, please contact:
 ---
 
 **Full Changelog**: main vs develop - `git log main..develop`
-
