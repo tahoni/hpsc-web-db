@@ -1,65 +1,65 @@
-# HPSC Database Architecture
+# 🏗️ HPSC Database Architecture
 
 This document describes the architectural design, directory structure, and core concepts
 of the database used by the Hartbeespoortdam Practical Shooting Club (HPSC) website.
 
-## Table of Contents
+## 📌 Table of Contents
 
-- [Introduction](#introduction)
-- [Target Database](#target-database)
-- [Project Structure](#project-structure)
-- [Goals](#goals)
-- [Data Model Overview](#data-model-overview)
-    - [Core Domain Tables](#core-domain-tables)
-    - [Participation and Scoring Tables](#participation-and-scoring-tables)
-    - [Logging and Summary Tables](#logging-and-summary-tables)
-- [Key Relationships (conceptual)](#key-relationships-conceptual)
-- [Integrity Strategy](#integrity-strategy)
-- [Aggregation Strategy](#aggregation-strategy)
-- [Temporal Tracking & Data Synchronisation](#temporal-tracking--data-synchronisation)
-- [Normalisation & Breaking Changes](#normalisation--breaking-changes)
+- [📖 Introduction](#introduction)
+- [🗄️ Target Database](#target-database)
+- [🗂️ Project Structure](#project-structure)
+- [🎯 Goals](#goals)
+- [🧱 Data Model Overview](#data-model-overview)
+    - [🧩 Core Domain Tables](#core-domain-tables)
+    - [🎯 Participation and Scoring Tables](#participation-and-scoring-tables)
+    - [🗃️ Logging and Summary Tables](#logging-and-summary-tables)
+- [🔗 Key Relationships (conceptual)](#key-relationships-conceptual)
+- [🔐 Integrity Strategy](#integrity-strategy)
+- [🧮 Aggregation Strategy](#aggregation-strategy)
+- [⏱️ Temporal Tracking & Data Synchronisation](#temporal-tracking--data-synchronisation)
+- [⚠️ Normalisation & Breaking Changes](#normalisation--breaking-changes)
 
-## Introduction
+## 📖 Introduction
 
 This project is a **database-first** design centered on a normalised relational schema for shooting match
 results and derived standings.
 
-## Target Database
+## 🗄️ Target Database
 
-### Technical Requirements
+### 🛠️ Technical Requirements
 
 - **Database engine**: **MySQL 8.x**
 - **Storage engine**: **InnoDB**
 - **Character set**: `utf8mb4`
 - **Collation**: `utf8mb4_0900_ai_ci`
 
-### Design Considerations
+### 🧠 Design Considerations
 
 - Collation: use a consistent collation across environments (e.g., `utf8mb4_0900_ai_ci`)
 - Time zone: keep server/app time zone consistent; store match dates as `DATE` (already aligned)
 
-### Why MySQL / InnoDB
+### ❓ Why MySQL / InnoDB
 
 - Foreign keys and transactional integrity for match → stage → results relationships
 - Good support for indexing and uniqueness constraints used to prevent duplicate entries
 - Operationally simple for local development and small deployments
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```text
 ├───documentation       # Project documentation and templates
 └───scripts             # Database scripts, including baseline schema and change scripts.
 ```
 
-## Goals
+## 🎯 Goals
 
 - Represent matches, stages, competitors, and clubs with clear ownership.
 - Prevent duplicates via foreign keys and uniqueness constraints.
 - Support both **raw scoring data** (stage results) and **derived summaries** (match totals, logs).
 
-## Data Model Overview
+## 🧱 Data Model Overview
 
-### Core Domain Tables
+### 🧩 Core Domain Tables
 
 - **club**
     - Represents an organising club.
@@ -79,7 +79,7 @@ results and derived standings.
     - Represents a stage within a match.
     - Stage numbering is unique per match.
 
-### Participation and Scoring Tables
+### 🎯 Participation and Scoring Tables
 
 - **match_competitor**
     - A join table between match and competitor (a competitor’s participation in a match).
@@ -91,7 +91,7 @@ results and derived standings.
     - Stores stage metrics (points, penalties, time, hit factor) and optional persisted aggregates
       (stage points/percentage).
 
-### Logging and Summary Tables
+### 🗃️ Logging and Summary Tables
 
 - **log_match**
     - Snapshot/summary of competitor performance for a single match (place, points, percentage).
@@ -101,7 +101,7 @@ results and derived standings.
     - Snapshot/summary across a window of matches (min_match_id → max_match_id).
     - Useful for series scoring, season windows, or rolling comparisons.
 
-## Key Relationships (conceptual)
+## 🔗 Key Relationships (conceptual)
 
 - club 1 → N match
 - match 1 → N match_stage
@@ -111,7 +111,7 @@ results and derived standings.
 
 Logging tables reference competitor and match (or match ranges) to maintain provenance.
 
-## Integrity Strategy
+## 🔐 Integrity Strategy
 
 - **Primary keys**: surrogate integer IDs for stable references.
 - **Foreign keys**: enforce that dependent rows cannot exist without parents.
@@ -122,7 +122,7 @@ Logging tables reference competitor and match (or match ranges) to maintain prov
     - stage result uniqueness per (stage, competitor-in-match)
     - match uniqueness per (club, name, scheduled_date)
 
-## Aggregation Strategy
+## 🧮 Aggregation Strategy
 
 There are two common patterns this schema supports:
 
@@ -140,7 +140,7 @@ snapshots.
 
 The approach used in this project is **compute-and-store**.
 
-## Temporal Tracking & Data Synchronisation
+## ⏱️ Temporal Tracking & Data Synchronisation
 
 As of version 2.0.0, the schema includes temporal tracking capabilities to support external data
 synchronisation operations. The following tables now include a `date_refreshed` column:
@@ -149,7 +149,7 @@ synchronisation operations. The following tables now include a `date_refreshed` 
 - **match_competitor**: Tracks when competitor match data was last updated
 - **match_stage_competitor**: Tracks when stage results were last refreshed
 
-### Purpose
+### 🎯 Purpose
 
 The `date_refreshed` field (nullable DATETIME) serves as an audit trail for data integration workflows. This
 is particularly important for systems that import results from external platforms, scoring devices, or
@@ -160,7 +160,7 @@ third-party match management systems. By recording refresh timestamps, you can:
 - Implement selective refresh strategies for high-frequency integrations
 - Track synchronisation patterns and troubleshoot integration issues
 
-### Usage
+### 🧪 Usage
 
 Applications should update `date_refreshed` whenever external data is imported or synchronised:
 
@@ -170,20 +170,20 @@ SET date_refreshed = NOW()
 WHERE id = ?;
 ```
 
-## Normalisation & Breaking Changes
+## ⚠️ Normalisation & Breaking Changes
 
-### Version 2.0.0 Breaking Changes
+### 🧭 Version 2.0.0 Breaking Changes
 
 As of version 2.0.0, the following changes enforce stricter database normalisation:
 
-#### Removed Denormalised Columns
+#### 🗑️ Removed Denormalised Columns
 
 The following columns have been removed to eliminate data redundancy and enforce referential integrity:
 
 - **ipsc_match.club_name** (removed in v2.0.0)
 - **match_competitor.club** (removed in v2.0.0)
 
-### Rationale
+### 📌 Rationale
 
 Storing `club_name` as a denormalised column in multiple tables introduces several risks:
 
@@ -192,7 +192,7 @@ Storing `club_name` as a denormalised column in multiple tables introduces sever
 3. **Storage Waste**: The same club name is stored redundantly
 4. **Foreign Key Enforcement**: Direct foreign key relationships are clearer and more maintainable
 
-### Migration Path
+### 🛣️ Migration Path
 
 Applications must be updated to retrieve club information via JOIN operations:
 

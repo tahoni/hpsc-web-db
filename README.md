@@ -1,49 +1,59 @@
-# HPSC Database
+# 🗄️ HPSC Database
 
 The official repository for the Hartbeespoortdam Practical Shooting Club (HPSC) database schema.
 
-## Table of contents
+## 📌 Table of contents
 
-- [Introduction](#introduction)
-- [Schema Entities](#schema-entities)
-- [Quick Start (DataGrip)](#quick-start-datagrip)
-- [Conventions and Constraints](#conventions-and-constraints)
-- [Typical Workflows Supported](#typical-workflows-supported)
-- [Version Information](#version-information)
-- [Breaking Changes in v2.0.0](#breaking-changes-in-v200)
-- [Architecture](#architecture)
-- [Licence](#licence)
-- [Additional Resources](#additional-resources)
-- [Author](#author)
+- [📖 Introduction](#introduction)
+- [🧩 Schema Entities](#schema-entities)
+    - [🧱 Core Entities](#-core-entities)
+    - [🏁 Results](#-results)
+    - [📊 Logging / Derived Standings](#-logging--derived-standings)
+- [🧭 Quick Start (DataGrip)](#quick-start-datagrip)
+- [📏 Conventions and Constraints](#conventions-and-constraints)
+    - [🔗 Foreign Keys](#-foreign-keys)
+    - [✅ Uniqueness Constraints](#-uniqueness-constraints)
+- [✅ Typical Workflows Supported](#typical-workflows-supported)
+    - [🧭 Common Workflow Steps](#-common-workflow-steps)
+- [🧭 Version Information](#version-information)
+    - [✨ Key v2.0.0 Improvements](#-key-v200-improvements)
+- [⚠️ Breaking Changes in v2.0.0](#breaking-changes-in-v200)
+- [🏗️ Architecture](#architecture)
+- [📜 Licence](#licence)
+- [🔗 Additional Resources](#additional-resources)
+- [👤 Author](#author)
 
-## Introduction
+## 📖 Introduction
 
 This repository contains a relational database schema for managing shooting match results:
 clubs, competitors, matches, stages, per-match competitor performance, and per-stage scores.
 It also includes logging tables for derived/aggregated competitor standings across matches.
 
-## Schema Entities
+## 🧩 Schema Entities
 
-- **Core entities**
-    - **Club**: organizing entity (name, abbreviation).
-    - **Competitor**: person identity and competitor identifiers (e.g. competitor number, optional SAPSA
-      number)
-      and optional category.
-    - **Match**: a scheduled match hosted by a club (name/date and optional division/category).
-    - **Match stage**: stages within a match (stage number, optional range number).
+### 🧱 Core Entities
 
-- **Results**
-    - **Match competitor**: a competitor’s participation in a specific match, including
-      division/discipline/power factor and overall match points/percentage.
-    - **Match stage competitor**: stage-level performance for a match competitor (points, penalties,
-      time, hit factor, stage points/percentage).
+- **Club**: organizing entity (name, abbreviation).
+- **Competitor**: person identity and competitor identifiers (e.g. competitor number, optional SAPSA
+  number)
+  and optional category.
+- **Match**: a scheduled match hosted by a club (name/date and optional division/category).
+- **Match stage**: stages within a match (stage number, optional range number).
 
-- **Logging / derived standings**
-    - **Log match**: per-competitor results for a single match (place, points, percentage).
-    - **Log matches**: per-competitor results across a match range/window (min/max match IDs and
-      place/points/percentage).
+### 🏁 Results
 
-## Quick Start (DataGrip)
+- **Match competitor**: a competitor’s participation in a specific match, including
+  division/discipline/power factor and overall match points/percentage.
+- **Match stage competitor**: stage-level performance for a match competitor (points, penalties,
+  time, hit factor, stage points/percentage).
+
+### 📊 Logging / Derived Standings
+
+- **Log match**: per-competitor results for a single match (place, points, percentage).
+- **Log matches**: per-competitor results across a match range/window (min/max match IDs and
+  place/points/percentage).
+
+## 🧭 Quick Start (DataGrip)
 
 1. Create or select a database/schema (e.g. MySQL-compatible).
 2. Open the SQL migration/schema file(s) in DataGrip.
@@ -51,15 +61,19 @@ It also includes logging tables for derived/aggregated competitor standings acro
 4. Verify tables and relationships in the **Database Explorer** diagram view (helps confirm foreign keys and
    uniqueness constraints).
 
-## Conventions and Constraints
+## 📏 Conventions and Constraints
 
-- Tables use integer auto-increment primary keys.
+### 🔗 Foreign Keys
+
 - Foreign keys enforce referential integrity between:
     - match → club
     - match_stage → match
     - match_competitor → match, competitor
     - match_stage_competitor → match_stage, match_competitor
     - log tables → competitor, match (and match ranges)
+
+### ✅ Uniqueness Constraints
+
 - Uniqueness constraints prevent duplicates such as:
     - duplicate club names/abbreviations
     - duplicate competitor identity composites / identifiers
@@ -67,7 +81,9 @@ It also includes logging tables for derived/aggregated competitor standings acro
     - duplicate competitor enrollment per match
     - duplicate stage result rows per (stage, competitor-in-match)
 
-## Typical Workflows Supported
+## ✅ Typical Workflows Supported
+
+### 🧭 Common Workflow Steps
 
 - Register clubs and competitors.
 - Create matches and stages for a scheduled event.
@@ -75,7 +91,7 @@ It also includes logging tables for derived/aggregated competitor standings acro
 - Record stage-by-stage scoring and compute stage/match aggregates (or store them when computed elsewhere).
 - Store leaderboard snapshots in log tables (single match or match window).
 
-## Version Information
+## 🧭 Version Information
 
 **Current Version:** 2.0.0 (Released February 23, 2026)
 
@@ -83,14 +99,14 @@ This release introduces significant improvements to database normalisation, temp
 documentation standards. For detailed version history and upgrade information, see [HISTORY.md](HISTORY.md)
 and [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
-### Key v2.0.0 Improvements
+### ✨ Key v2.0.0 Improvements
 
 - **Temporal Tracking**: Added `date_refreshed` columns to track external data synchronisation
 - **Enhanced Normalisation**: Removed redundant `club_name` columns to enforce referential integrity
 - **Open Source**: Transitioned to MIT Licence for community adoption
 - **Comprehensive Documentation**: Established CHANGELOG.md, HISTORY.md, and versioned release notes
 
-## Breaking Changes in v2.0.0
+## ⚠️ Breaking Changes in v2.0.0
 
 ⚠️ **Schema Changes:**
 
@@ -114,15 +130,15 @@ FROM ipsc_match m
 
 For complete upgrade instructions, see [RELEASE_NOTES.md](RELEASE_NOTES.md#upgrade-guide).
 
-## Architecture
+## 🏗️ Architecture
 
 A detailed explanation of the architecture can be found in the [`ARCHITECTURE.md`](ARCHITECTURE.md) file.
 
-## Licence
+## 📜 Licence
 
 The copyright licence can be found in the [`LICENSE.md`](LICENSE.md) file.
 
-## Additional Resources
+## 🔗 Additional Resources
 
 - [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
@@ -133,7 +149,7 @@ The copyright licence can be found in the [`LICENSE.md`](LICENSE.md) file.
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) – Future enhancements and change management
   best practices
 
-## Author
+## 👤 Author
 
 **Leoni Lubbinge**
 

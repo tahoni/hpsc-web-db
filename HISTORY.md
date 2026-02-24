@@ -1,30 +1,38 @@
-# Release History
+# 📚 Release History
 
 This document provides a historical overview of all HPSC Database releases, with descriptions of the key
 themes and objectives for each version.
 
 ---
 
-## Table of Contents
+## 📌 Table of Contents
 
-- [Version 2.0.0 - Schema Refinement & Data Integrity](#version-200---schema-refinement--data-integrity)
-- [Version 1.1.0 – Enhanced Schema & Documentation](#version-110--enhanced-schema--documentation)
-- [Version 1.0.0 – Initial Release](#version-100--initial-release)
+- [🧭 Version 2.0.0 - Schema Refinement & Data Integrity](#version-200---schema-refinement--data-integrity)
+- [🧭 Version 1.1.0 – Enhanced Schema & Documentation](#version-110--enhanced-schema--documentation)
+- [🧭 Version 1.0.0 – Initial Release](#version-100--initial-release)
+- [🧭 Release Versioning Strategy](#-release-versioning-strategy)
+    - [🧩 Version Types](#-version-types)
+    - [🗺️ Version History Timeline](#-version-history-timeline)
+- [🚀 Looking Forward](#-looking-forward)
+    - [🛠️ Upcoming Enhancements](#-upcoming-enhancements)
+    - [🔭 Long-term Vision](#-long-term-vision)
+- [🔗 Additional Resources](#-additional-resources)
+- [💬 Questions or Feedback?](#-questions-or-feedback)
 
 ---
 
-## Version 2.0.0 - Schema Refinement & Data Integrity
+## 🧭 Version 2.0.0 - Schema Refinement & Data Integrity
 
 **Released:** February 23, 2026  
 **Type:** Major Release (Breaking Changes)
 
-### Release Theme
+### ✨ Release Theme
 
 This major release focuses on **database normalisation** and **temporal data tracking**, introducing breaking
 changes to improve long-term maintainability and data integrity. The primary goal was to eliminate data
 redundancy and add synchronisation tracking capabilities.
 
-### Key Objectives
+### 🎯 Key Objectives
 
 1. **Enforce Referential Integrity**: Remove de-normalised data columns and enforce proper foreign key
    relationships
@@ -34,7 +42,7 @@ redundancy and add synchronisation tracking capabilities.
 5. **Adopt Open Source**: Transition from proprietary licence to MIT Licence for community adoption
 6. **Establish Documentation Standards**: Create comprehensive CHANGELOG, HISTORY, and versioned release notes
 
-### Why This Release Matters
+### 📖 Why This Release Matters
 
 Version 2.0.0 represents a significant architectural improvement in how the database maintains data
 consistency. By removing redundant `club_name` columns from result tables and enforcing JOIN operations, the
@@ -54,7 +62,7 @@ of the MIT Licence, making it freely available for use, modification, and distri
 sports community. The establishment of comprehensive documentation standards (CHANGELOG.md, HISTORY.md, and
 versioned release notes) ensures long-term maintainability and transparency.
 
-### Major Changes
+### 📋 Major Changes
 
 - **Breaking**: Removed `club_name` from `ipsc_match` and `club` from `match_competitor` tables
 - **New**: Added `date_refreshed` tracking columns to match and result tables
@@ -63,7 +71,7 @@ versioned release notes) ensures long-term maintainability and transparency.
 - **Licence**: Changed from proprietary "All Rights Reserved" to MIT Licence
 - **Documentation**: Created CHANGELOG.md, HISTORY.md, and versioned release notes in `documentation/history/`
 
-### Impact
+### ⚠️ Impact
 
 This release requires **database migration** and **application code updates** for existing installations. All
 queries that previously accessed `club_name` directly must be updated to use JOIN operations with the `club`
@@ -73,10 +81,10 @@ The **MIT Licence adoption** makes this project freely available to the shooting
 clubs worldwide to use, modify, and contribute to the database schema. The comprehensive documentation
 structure provides a solid foundation for future community contributions and version management.
 
-### Related Documentation
+### 🔗 Related Documentation
 
 - [Full Release Notes](RELEASE_NOTES.md) – Complete details for version 2.0.0
-- [Versioned Release Notes](documentation/history/RELEASE_NOTES.md) – Archived release notes in
+- [Versioned Release Notes](documentation/history/RELEASE_NOTES_HISTORY.md) – Archived release notes in
   the history directory
 - [Changelog Entry](CHANGELOG.md#200---2026-02-23) – Categorised list of all changes
 - [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
@@ -84,25 +92,25 @@ structure provides a solid foundation for future community contributions and ver
 
 ---
 
-## Version 1.1.0 – Enhanced Schema & Documentation
+## 🧭 Version 1.1.0 – Enhanced Schema & Documentation
 
 **Released:** January 28, 2026  
 **Type:** Minor Release (Feature Addition)
 
-### Release Theme
+### ✨ Release Theme
 
 This release focused on **schema maturity** and **comprehensive documentation**, establishing a solid
 foundation for the HPSC Database with complete table definitions, foreign key constraints, and detailed
 architectural documentation.
 
-### Key Objectives
+### 🎯 Key Objectives
 
 1. **Complete Schema Definition**: Finalise all core domain tables with proper relationships
 2. **Establish Foreign Keys**: Implement referential integrity constraints across all tables
 3. **Document Architecture**: Create comprehensive technical documentation
 4. **Provide Quick Start**: Enable developers to quickly understand and deploy the database
 
-### Why This Release Matters
+### 📖 Why This Release Matters
 
 Version 1.1.0 transformed the initial prototype into a production-ready database schema. The addition of
 comprehensive documentation (ARCHITECTURE.md) and enhanced README provided developers with the context and
@@ -111,7 +119,7 @@ guidance needed to understand the database design principles and deployment proc
 This release established the pattern of "database-first" design with a normalised relational schema, setting
 the architectural direction for future enhancements.
 
-### Major Changes
+### 📋 Major Changes
 
 - **New**: Complete table definitions in `table_create.sql`
 - **New**: Foreign key constraints for referential integrity
@@ -119,36 +127,36 @@ the architectural direction for future enhancements.
 - **Improved**: Enhanced README with a quick start guide
 - **Added**: Schema creation and seed data scripts
 
-### Impact
+### ⚠️ Impact
 
 This release provided the foundation for production deployment, with all necessary scripts and documentation
 for setting up new database instances.
 
-### Related Documentation
+### 🔗 Related Documentation
 
 - [Changelog Entry](CHANGELOG.md#110---2026-01-28) – Complete list of additions and changes
 - [Architecture Documentation](ARCHITECTURE.md) - Database design principles and technical requirements
 
 ---
 
-## Version 1.0.0 – Initial Release
+## 🧭 Version 1.0.0 – Initial Release
 
 **Released:** December 28, 2025  
 **Type:** Major Release (Initial)
 
-### Release Theme
+### ✨ Release Theme
 
 The inaugural release of the HPSC Database, establishing the **foundational schema** for managing practical
 shooting club data, including clubs, competitors, matches, stages, and results.
 
-### Key Objectives
+### 🎯 Key Objectives
 
 1. **Define Core Entities**: Establish the primary database tables for clubs, competitors, and matches
 2. **Support Results Tracking**: Create tables for recording match and stage-level performance data
 3. **Enable Standings Logs**: Implement logging tables for derived competitor standings
 4. **Initialize Project**: Set up repository structure and basic documentation
 
-### Why This Release Matters
+### 📖 Why This Release Matters
 
 Version 1.0.0 launched the HPSC Database project, providing the first working schema for practical shooting
 match management. This release established the core data model that supports typical shooting club workflows:
@@ -158,7 +166,7 @@ stage-by-stage scoring.
 The initial schema design prioritised flexibility and extensibility, with support for multiple divisions,
 disciplines, power factors, and categories—all essential for IPSC-style shooting competitions.
 
-### Major Changes
+### 📋 Major Changes
 
 - **New**: Core domain tables (club, competitor, match, match_stage)
 - **New**: Result tracking tables (match_competitor, match_stage_competitor)
@@ -166,19 +174,19 @@ disciplines, power factors, and categories—all essential for IPSC-style shooti
 - **New**: Basic schema creation scripts
 - **New**: Initial project documentation and licence
 
-### Impact
+### ⚠️ Impact
 
 This release provided the initial working database schema for the Hartbeespoortdam Practical Shooting Club,
 enabling the club to begin tracking match results and competitor performance digitally.
 
-### Related Documentation
+### 🔗 Related Documentation
 
 - [Changelog Entry](CHANGELOG.md#100---2025-12-28) – Initial release details
 - [README](README.md) – Project introduction and overview
 
 ---
 
-## Release Versioning Strategy
+## 🧭 Release Versioning Strategy
 
 The HPSC Database project follows [Semantic Versioning](https://semver.org/) (SemVer):
 
@@ -186,7 +194,14 @@ The HPSC Database project follows [Semantic Versioning](https://semver.org/) (Se
 - **Minor versions (0.X.0)**: New features, backward-compatible additions
 - **Patch versions (0.0.X)**: Bug fixes, documentation updates, backward-compatible fixes
 
-### Version History Timeline
+### 🧩 Version Types
+
+- **Feature Release**: Introduces new features or enhancements (e.g., 1.1.0)
+- **Breaking Change**: Involves changes that require migration or may affect existing functionality (e.g.,
+  2.0.0)
+- **Patch Release**: Contains bug fixes or minor improvements (e.g., 2.0.1)
+
+### 🗺️ Version History Timeline
 
 ```
 v1.0.0 (2025-12-28) ─── Initial Release
@@ -200,9 +215,9 @@ v1.0.0 (2025-12-28) ─── Initial Release
 
 ---
 
-## Looking Forward
+## 🚀 Looking Forward
 
-### Upcoming Enhancements
+### 🛠️ Upcoming Enhancements
 
 Future releases will focus on:
 
@@ -211,7 +226,7 @@ Future releases will focus on:
 - **Developer Tools**: Additional seed data and demo scripts
 - **Performance**: Indexing strategies for common query patterns
 
-### Long-term Vision
+### 🔭 Long-term Vision
 
 The HPSC Database aims to become a comprehensive, production-ready, **open source** database solution for
 practical shooting clubs worldwide, supporting:
@@ -224,7 +239,7 @@ practical shooting clubs worldwide, supporting:
 
 ---
 
-## Additional Resources
+## 🔗 Additional Resources
 
 - [Changelog](CHANGELOG.md) – Detailed, categorised list of changes for each version following Keep a
   Changelog format
@@ -240,7 +255,7 @@ practical shooting clubs worldwide, supporting:
 
 ---
 
-## Questions or Feedback?
+## 💬 Questions or Feedback?
 
 For questions about release history, version strategy, or to provide feedback:
 
@@ -251,4 +266,3 @@ For questions about release history, version strategy, or to provide feedback:
 ---
 
 *Last Updated: 2025-02-23*
-

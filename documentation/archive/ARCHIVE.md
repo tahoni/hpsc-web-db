@@ -7,7 +7,7 @@
 > **The v1.x.x release notes below are historical records only.** For current release information and active
 > version history, please refer to:
 > - [Current Release Notes](../../RELEASE_NOTES.md)
-> - [Release History](../history/RELEASE_NOTES.md)
+> - [Release History](../history/RELEASE_NOTES_HISTORY.md)
 > - [Changelog](../../CHANGELOG.md)
 > - [History Document](../../HISTORY.md)
 
