@@ -6,15 +6,26 @@ Complete historical archive and documentation of all HPSC Database releases.
 
 ## 📌 Table of Contents
 
-- [📌 Overview](#-overview)
-- [🧭 Quick Navigation](#-quick-navigation)
-- [📚 Comprehensive References](#-comprehensive-references)
-- [🧱 File Organization](#-file-organization)
-- [🧑‍💻 How to Use This Documentation](#-how-to-use-this-documentation)
-- [📊 Version Summary Table](#-version-summary-table)
-- [⚠️ Breaking Changes Overview](#-breaking-changes-overview)
-- [🔗 Related Documentation](#-related-documentation)
-- [📝 Document Metadata](#-document-metadata)
+- [📌 Overview](#overview)
+- [🧭 Quick Navigation](#quick-navigation)
+    - [✅ Current Release](#current-release)
+    - [🗂️ Previous Releases](#previous-releases)
+- [📚 Comprehensive References](#comprehensive-references)
+    - [🧾 Project History & Evolution](#project-history--evolution)
+    - [🗃️ Complete Release Notes Archive](#complete-release-notes-archive)
+- [🧱 File Organization](#file-organization)
+    - [📁 Directory Layout](#directory-layout)
+- [🧑‍💻 How to Use This Documentation](#how-to-use-this-documentation)
+    - [🔄 For Users Upgrading Between Versions](#for-users-upgrading-between-versions)
+    - [👋 For New Team Members](#for-new-team-members)
+- [📊 Version Summary Table](#version-summary-table)
+- [⚠️ Breaking Changes Overview](#breaking-changes-overview)
+    - [🚨 Major Breaking Changes (Require Code Updates)](#major-breaking-changes-require-code-updates)
+    - [✅ Non-Breaking Releases](#non-breaking-releases)
+- [🔗 Related Documentation](#related-documentation)
+    - [🏠 Root Directory](#root-directory)
+    - [🗂️ Archive Directory](#archive-directory)
+- [📝 Document Metadata](#document-metadata)
 
 ---
 

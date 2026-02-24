@@ -7,7 +7,9 @@ of truth for each release, detailed notes are stored in version-specific files a
 ## 📌 Table of Contents
 
 - [📚 Available versions](#available-versions)
+    - [🧾 v2.0.0](#v200)
 - [🧭 Latest release notes](#latest-release-notes)
+    - [📄 Consolidated release notes](#consolidated-release-notes)
 
 ## 📚 Available versions
 

@@ -10,10 +10,14 @@ themes and objectives for each version.
 - [🧭 Version 2.0.0 - Schema Refinement & Data Integrity](#version-200---schema-refinement--data-integrity)
 - [🧭 Version 1.1.0 – Enhanced Schema & Documentation](#version-110--enhanced-schema--documentation)
 - [🧭 Version 1.0.0 – Initial Release](#version-100--initial-release)
-- [🧭 Release Versioning Strategy](#-release-versioning-strategy)
-- [🚀 Looking Forward](#-looking-forward)
-- [🔗 Additional Resources](#-additional-resources)
-- [💬 Questions or Feedback?](#-questions-or-feedback)
+- [🧭 Release Versioning Strategy](#release-versioning-strategy)
+    - [🧩 Version Types](#version-types)
+    - [🗺️ Version History Timeline](#version-history-timeline)
+- [🚀 Looking Forward](#looking-forward)
+    - [🛠️ Upcoming Enhancements](#upcoming-enhancements)
+    - [🔭 Long-term Vision](#long-term-vision)
+- [🔗 Additional Resources](#additional-resources)
+- [💬 Questions or Feedback?](#questions-or-feedback)
 
 ---
 
