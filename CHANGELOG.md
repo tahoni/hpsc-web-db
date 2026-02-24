@@ -9,10 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 📌 Table of Contents
 
-- [🧪 Unreleased](#unreleased)
-- [🧾 2.0.0](#200---2026-02-23)
-- [🧾 1.1.0](#110---2026-01-28)
-- [🧾 1.0.0](#100---2025-12-28)
+- [🧪 Unreleased](#-unreleased)
+- [🧾 2.0.0](#-200---2026-02-23)
+- [🧾 1.1.0](#-110---2026-01-28)
+- [🧾 1.0.0](#-100---2025-12-28)
 
 ---
 
@@ -153,7 +153,7 @@ ALTER TABLE match_competitor
 
 When adding new versions to this changelog:
 
-1. Add a new section under [Unreleased](#unreleased) with the format: `## [X.Y.Z] - YYYY-MM-DD`
+1. Add a new section under [Unreleased](#-unreleased) with the format: `## [X.Y.Z] - YYYY-MM-DD`
 2. Move relevant items from the Unreleased section to the new version
 3. Organize changes under appropriate categories:
     - **Added** – New features or functionality

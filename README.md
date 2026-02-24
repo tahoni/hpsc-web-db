@@ -4,24 +4,24 @@ The official repository for the Hartbeespoortdam Practical Shooting Club (HPSC) 
 
 ## 📌 Table of contents
 
-- [📖 Introduction](#introduction)
-- [🧩 Schema Entities](#schema-entities)
-    - [🧱 Core Entities](#core-entities)
-    - [🏁 Results](#results)
-    - [📊 Logging / Derived Standings](#logging--derived-standings)
-- [🧭 Quick Start (DataGrip)](#quick-start-datagrip)
-- [📏 Conventions and Constraints](#conventions-and-constraints)
-    - [🔗 Foreign Keys](#foreign-keys)
-    - [✅ Uniqueness Constraints](#uniqueness-constraints)
-- [✅ Typical Workflows Supported](#typical-workflows-supported)
-    - [🧭 Common Workflow Steps](#common-workflow-steps)
-- [🧭 Version Information](#version-information)
-    - [✨ Key v2.0.0 Improvements](#key-v200-improvements)
-- [⚠️ Breaking Changes in v2.0.0](#breaking-changes-in-v200)
-- [🏗️ Architecture](#architecture)
-- [📜 Licence](#licence)
-- [🔗 Additional Resources](#additional-resources)
-- [👤 Author](#author)
+- [📖 Introduction](#-introduction)
+- [🧩 Schema Entities](#-schema-entities)
+    - [🧱 Core Entities](#-core-entities)
+    - [🏁 Results](#-results)
+    - [📊 Logging / Derived Standings](#-logging--derived-standings)
+- [🧭 Quick Start (DataGrip)](#-quick-start-datagrip)
+- [📏 Conventions and Constraints](#-conventions-and-constraints)
+    - [🔗 Foreign Keys](#-foreign-keys)
+    - [✅ Uniqueness Constraints](#-uniqueness-constraints)
+- [✅ Typical Workflows Supported](#-typical-workflows-supported)
+    - [🧭 Common Workflow Steps](#-common-workflow-steps)
+- [🧭 Version Information](#-version-information)
+    - [✨ Key v2.0.0 Improvements](#-key-v200-improvements)
+- [⚠️ Breaking Changes in v2.0.0](#-breaking-changes-in-v200)
+- [🏗️ Architecture](#-architecture)
+- [📜 Licence](#-licence)
+- [🔗 Additional Resources](#-additional-resources)
+- [👤 Author](#-author)
 
 ## 📖 Introduction
 
@@ -128,7 +128,7 @@ FROM ipsc_match m
          JOIN club c ON m.club_id = c.id;
 ```
 
-For complete upgrade instructions, see [RELEASE_NOTES.md](RELEASE_NOTES.md#upgrade-guide).
+For complete upgrade instructions, see [RELEASE_NOTES.md](RELEASE_NOTES.md#-upgrade-guide).
 
 ## 🏗️ Architecture
 

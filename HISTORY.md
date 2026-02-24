@@ -7,17 +7,17 @@ themes and objectives for each version.
 
 ## 📌 Table of Contents
 
-- [🧭 Version 2.0.0 - Schema Refinement & Data Integrity](#version-200---schema-refinement--data-integrity)
-- [🧭 Version 1.1.0 – Enhanced Schema & Documentation](#version-110--enhanced-schema--documentation)
-- [🧭 Version 1.0.0 – Initial Release](#version-100--initial-release)
-- [🧭 Release Versioning Strategy](#release-versioning-strategy)
-    - [🧩 Version Types](#version-types)
-    - [🗺️ Version History Timeline](#version-history-timeline)
-- [🚀 Looking Forward](#looking-forward)
-    - [🛠️ Upcoming Enhancements](#upcoming-enhancements)
-    - [🔭 Long-term Vision](#long-term-vision)
-- [🔗 Additional Resources](#additional-resources)
-- [💬 Questions or Feedback?](#questions-or-feedback)
+- [🧭 Version 2.0.0 - Schema Refinement & Data Integrity](#-version-200---schema-refinement--data-integrity)
+- [🧭 Version 1.1.0 – Enhanced Schema & Documentation](#-version-110--enhanced-schema--documentation)
+- [🧭 Version 1.0.0 – Initial Release](#-version-100--initial-release)
+- [🧭 Release Versioning Strategy](#-release-versioning-strategy)
+    - [🧩 Version Types](#-version-types)
+    - [🗺️ Version History Timeline](#-version-history-timeline)
+- [🚀 Looking Forward](#-looking-forward)
+    - [🛠️ Upcoming Enhancements](#-upcoming-enhancements)
+    - [🔭 Long-term Vision](#-long-term-vision)
+- [🔗 Additional Resources](#-additional-resources)
+- [💬 Questions or Feedback?](#-questions-or-feedback)
 
 ---
 
@@ -86,8 +86,8 @@ structure provides a solid foundation for future community contributions and ver
 - [Full Release Notes](RELEASE_NOTES.md) – Complete details for version 2.0.0
 - [Versioned Release Notes](documentation/history/RELEASE_NOTES_HISTORY.md) – Archived release notes in
   the history directory
-- [Changelog Entry](CHANGELOG.md#200---2026-02-23) – Categorised list of all changes
-- [Migration Guide](RELEASE_NOTES.md#upgrade-guide) - Step-by-step upgrade instructions
+- [Changelog Entry](CHANGELOG.md#-200---2026-02-23) – Categorised list of all changes
+- [Migration Guide](RELEASE_NOTES.md#-upgrade-guide) - Step-by-step upgrade instructions
 - [MIT Licence](LICENSE.md) - Open source licence details
 
 ---
@@ -134,7 +134,7 @@ for setting up new database instances.
 
 ### 🔗 Related Documentation
 
-- [Changelog Entry](CHANGELOG.md#110---2026-01-28) – Complete list of additions and changes
+- [Changelog Entry](CHANGELOG.md#-110---2026-01-28) – Complete list of additions and changes
 - [Architecture Documentation](ARCHITECTURE.md) - Database design principles and technical requirements
 
 ---
@@ -154,7 +154,7 @@ shooting club data, including clubs, competitors, matches, stages, and results.
 1. **Define Core Entities**: Establish the primary database tables for clubs, competitors, and matches
 2. **Support Results Tracking**: Create tables for recording match and stage-level performance data
 3. **Enable Standings Logs**: Implement logging tables for derived competitor standings
-4. **Initialize Project**: Set up repository structure and basic documentation
+4. **Initialise Project**: Set up repository structure and basic documentation
 
 ### 📖 Why This Release Matters
 
@@ -181,7 +181,7 @@ enabling the club to begin tracking match results and competitor performance dig
 
 ### 🔗 Related Documentation
 
-- [Changelog Entry](CHANGELOG.md#100---2025-12-28) – Initial release details
+- [Changelog Entry](CHANGELOG.md#-100---2025-12-28) – Initial release details
 - [README](README.md) – Project introduction and overview
 
 ---

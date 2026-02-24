@@ -160,7 +160,7 @@ FROM ipsc_match m
 - `ipsc_match_match_stages`: Links matches to their stages
 - `ipsc_match_match_competitors`: Links matches to competitors
 - `ipsc_match_stage_match_stage_competitors`: Links stages to stage results
-- `competitor_competitor_matches`: Links competitors to their match participations
+- `competitor_competitor_matches`: Links competitors to their match participants
 - `competitor_competitor_stage_matches`: Links competitors to their stage results
 
 #### Tables Modified

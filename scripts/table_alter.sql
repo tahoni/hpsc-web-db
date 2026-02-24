@@ -28,27 +28,27 @@ ALTER TABLE club
     ADD COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     ADD COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
--- Competitor table: normalize date_created/date_updated to TIMESTAMP
+-- Competitor table: normalise date_created/date_updated to TIMESTAMP
 ALTER TABLE competitor
     MODIFY COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     MODIFY COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
--- IPSC match stage table: add or normalize date_created/date_updated to TIMESTAMP
+-- IPSC match stage table: add or normalise date_created/date_updated to TIMESTAMP
 ALTER TABLE ipsc_match_stage
     MODIFY COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     MODIFY COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
--- IPSC match table: normalize date_created/date_updated to TIMESTAMP
+-- IPSC match table: normalise date_created/date_updated to TIMESTAMP
 ALTER TABLE ipsc_match
     MODIFY COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     MODIFY COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
--- Match competitor table: normalize date_created/date_updated to TIMESTAMP
+-- Match competitor table: normalise date_created/date_updated to TIMESTAMP
 ALTER TABLE match_competitor
     MODIFY COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     MODIFY COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
--- Match stage competitor table: normalize date_created/date_updated to TIMESTAMP
+-- Match stage competitor table: normalise date_created/date_updated to TIMESTAMP
 ALTER TABLE match_stage_competitor
     MODIFY COLUMN date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     MODIFY COLUMN date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
