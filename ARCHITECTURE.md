@@ -10,14 +10,12 @@ of the database used by the Hartbeespoortdam Practical Shooting Club (HPSC) webs
 - [🗂️ Project Structure](#project-structure)
 - [🎯 Goals](#goals)
 - [🧱 Data Model Overview](#data-model-overview)
-    - [🧩 Core Domain Tables](#core-domain-tables)
-    - [🎯 Participation and Scoring Tables](#participation-and-scoring-tables)
-    - [🗃️ Logging and Summary Tables](#logging-and-summary-tables)
 - [🔗 Key Relationships (conceptual)](#key-relationships-conceptual)
 - [🔐 Integrity Strategy](#integrity-strategy)
 - [🧮 Aggregation Strategy](#aggregation-strategy)
 - [⏱️ Temporal Tracking & Data Synchronisation](#temporal-tracking--data-synchronisation)
 - [⚠️ Normalisation & Breaking Changes](#normalisation--breaking-changes)
+- [💡 Design Philosophy](#-design-philosophy)
 
 ## 📖 Introduction
 
@@ -213,7 +211,7 @@ FROM ipsc_match m
 WHERE m.id = ?;
 ```
 
-### Design Philosophy
+## 💡 Design Philosophy
 
 This change reflects the project's commitment to **database normalisation best practices**. By enforcing
 JOINs rather than storing redundant data, we ensure:
@@ -222,4 +220,3 @@ JOINs rather than storing redundant data, we ensure:
 - Automatic consistency across all references
 - Simpler maintenance and schema evolution
 - Better scalability for multi-club systems
-

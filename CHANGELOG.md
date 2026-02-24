@@ -1,4 +1,4 @@
-# Changelog
+# 📒 Changelog
 
 All notable changes to the HPSC Database project will be documented in this file.
 
@@ -7,16 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## Table of Contents
+## 📌 Table of Contents
 
-- [Unreleased](#unreleased)
-- [2.0.0](#200---2026-02-23)
-- [1.1.0](#110---2026-01-28)
-- [1.0.0](#100---2025-12-28)
+- [🧪 Unreleased](#unreleased)
+- [🧾 2.0.0](#200---2026-02-23)
+- [🧾 1.1.0](#110---2026-01-28)
+- [🧾 1.0.0](#100---2025-12-28)
 
 ---
 
-## [Unreleased]
+## 🧪 [Unreleased]
 
 ### Planned
 
@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.0.0] - 2026-02-23
+## 🧾 [2.0.0] - 2026-02-23
 
 ### Added
 
@@ -100,7 +100,7 @@ ALTER TABLE match_competitor
 
 ---
 
-## [1.1.0] - 2026-01-28
+## 🧾 [1.1.0] - 2026-01-28
 
 ### Added
 
@@ -120,7 +120,7 @@ ALTER TABLE match_competitor
 
 ---
 
-## [1.0.0] - 2025-12-28
+## 🧾 [1.0.0] - 2025-12-28
 
 ### Added
 
@@ -142,14 +142,14 @@ ALTER TABLE match_competitor
 
 ---
 
-## Version Comparison Links
+## 🔗 Version Comparison Links
 
 - 2.0.0 vs 1.1.0: `git log v1.1.0...v2.0.0`
 - 1.1.0 vs 1.0.0: `git log v1.0.0...v1.1.0`
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 When adding new versions to this changelog:
 
@@ -169,7 +169,7 @@ When adding new versions to this changelog:
 
 ---
 
-## Semantic Versioning Guide
+## 📐 Semantic Versioning Guide
 
 - **Major version (X.0.0)**: Breaking changes, incompatible API/schema changes
 - **Minor version (X.Y.0)**: New features, backward-compatible additions
@@ -177,7 +177,7 @@ When adding new versions to this changelog:
 
 ---
 
-## Additional Resources
+## 📚 Additional Resources
 
 - [Release Notes](RELEASE_NOTES.md) – Detailed release information for version 2.0.0
 - [Architecture Documentation](ARCHITECTURE.md) – Database architecture and design principles
@@ -187,4 +187,3 @@ When adding new versions to this changelog:
 ---
 
 **Maintainer**: Leoni Lubbinge (leonil@tahoni.info)
-

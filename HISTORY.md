@@ -11,11 +11,7 @@ themes and objectives for each version.
 - [🧭 Version 1.1.0 – Enhanced Schema & Documentation](#version-110--enhanced-schema--documentation)
 - [🧭 Version 1.0.0 – Initial Release](#version-100--initial-release)
 - [🧭 Release Versioning Strategy](#-release-versioning-strategy)
-    - [🧩 Version Types](#-version-types)
-    - [🗺️ Version History Timeline](#-version-history-timeline)
 - [🚀 Looking Forward](#-looking-forward)
-    - [🛠️ Upcoming Enhancements](#-upcoming-enhancements)
-    - [🔭 Long-term Vision](#-long-term-vision)
 - [🔗 Additional Resources](#-additional-resources)
 - [💬 Questions or Feedback?](#-questions-or-feedback)
 
