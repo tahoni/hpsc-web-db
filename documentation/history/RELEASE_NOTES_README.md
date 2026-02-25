@@ -1,4 +1,4 @@
-# 📚 Release History & Documentation
+# Release History & Documentation
 
 Complete historical archive and documentation of all HPSC Database releases.
 
@@ -64,7 +64,7 @@ It complements the consolidated release notes in the repository root and the nar
 
 ### 🗃️ Complete Release Notes Archive
 
-- **[RELEASE_NOTES_HISTORY.md](./RELEASE_NOTES_HISTORY.md)** - Versioned release notes directory index
+- **[RELEASE_NOTES_HISTORY.md](./RELEASE_NOTES_HISTORY.md)** – Versioned release notes directory index
     - Available versions list
     - Link to consolidated release notes
 
@@ -104,7 +104,7 @@ documentation/history/
 
 ### 👋 For New Team Members
 
-1. **Start with project overview:**
+1. **Start with the project overview:**
     - Read `../../README.md` for schema introduction and workflows
     - Review `HISTORY.md` for release context
 
@@ -112,7 +112,7 @@ documentation/history/
     - Use `RELEASE_NOTES_HISTORY.md` as the index
     - Open the latest versioned release notes
 
-3. **Understand current state:**
+3. **Understand the current state:**
     - Read `RELEASE_NOTES_v2.0.0.md`
     - Check the root `RELEASE_NOTES.md` for consolidated guidance
 
@@ -132,11 +132,11 @@ documentation/history/
 
 ### 🚨 Major Breaking Changes (Require Code Updates)
 
-- **v2.0.0** - Removed redundant `club` columns and enforced `club_id` JOINs
+- **v2.0.0** – Removed redundant `club` columns and enforced `club_id` JOINs
 
 ### ✅ Non-Breaking Releases
 
-- **v1.1.0, v1.0.0** - Backward compatible schema additions and baseline setup
+- **v1.1.0, v1.0.0** – Backward compatible schema additions and baseline setup
 
 ---
 
@@ -144,9 +144,9 @@ documentation/history/
 
 ### 🏠 Root Directory
 
-- **[../../README.md](../../README.md)** - Project overview
-- **[../../ARCHITECTURE.md](../../ARCHITECTURE.md)** - System architecture
-- **[../../RELEASE_NOTES.md](../../RELEASE_NOTES.md)** - Current release notes
+- **[../../README.md](../../README.md)** – Project overview
+- **[../../ARCHITECTURE.md](../../ARCHITECTURE.md)** – System architecture
+- **[../../RELEASE_NOTES.md](../../RELEASE_NOTES.md)** – Current release notes
 - **[../../CHANGELOG.md](../../CHANGELOG.md)** - Technical changelog
 
 ### 🗂️ Archive Directory
