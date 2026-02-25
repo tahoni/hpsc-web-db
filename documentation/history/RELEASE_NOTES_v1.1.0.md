@@ -2,7 +2,7 @@
 
 ## Version 1.1.0
 
-**Release Date:** 2026-01-28  
+**Release Date:** January 28, 2026
 **Branch:** develop → main
 
 ---
@@ -148,7 +148,7 @@ None. This is a feature addition release with no breaking changes.
 
 ---
 
-## 📦 Installation Guide
+## Installation Guide
 
 ### For New Installations
 

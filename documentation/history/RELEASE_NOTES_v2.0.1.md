@@ -9,8 +9,8 @@
 
 ## 📌 Overview
 
-This patch release focuses on documentation clarity and release-history navigation, with small wording
-standardisation in schema change comments. No database schema or data changes are introduced.
+This patch release focuses on documentation polish and release-history navigation. It also standardises
+comment wording in schema change scripts. No schema or data changes are introduced.
 
 ---
 
@@ -18,28 +18,19 @@ standardisation in schema change comments. No database schema or data changes ar
 
 ### 📚 Documentation & Release History
 
-- **Release notes navigation**: Added consolidated history indexes and quick navigation guides
-- **Formatting consistency**: Standardised headings and layout across changelog, history, and archive files
-- **Release documentation**: Improved readability for current and historical release notes
+- Added consolidated release notes index and quick navigation guides
+- Standardised headings and formatting across release documentation
+- Improved clarity and consistency in archived release notes references
 
 ### 📋 SQL Script Notes
 
-- **Comment wording**: Standardised timestamp normalisation wording in `scripts/table_alter.sql`
+- Standardised timestamp normalisation comment wording in `scripts/table_alter.sql`
 
 ---
 
 ## 🐛 Bug Fixes
 
 - Corrected inconsistent headings and formatting in release documentation for clearer navigation
-
----
-
-## 🚀 Improvements
-
-### 📝 Documentation Quality
-
-- Clearer release navigation and archive referencing
-- Improved consistency across release note files and history summaries
 
 ---
 
@@ -83,11 +74,11 @@ None introduced in this release.
 
 ## 🔗 Additional Resources
 
-- [Architecture Documentation](ARCHITECTURE.md) - Detailed database architecture, design principles, and
+- [Architecture Documentation](../../ARCHITECTURE.md) - Detailed database architecture, design principles, and
   technical requirements
-- [Project Overview & Quick Start Guide](README.md) – Introduction to the HPSC Database with schema entities,
-  conventions, and typical workflows
-- [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
+- [Project Overview & Quick Start Guide](../../README.md) – Introduction to the HPSC Database with schema
+  entities, conventions, and typical workflows
+- [Improvement Suggestions](../roadmap/SUGGESTIONS.md) - Future enhancements, indexing strategies,
   and change management best practices
 
 ---

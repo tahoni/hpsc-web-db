@@ -1,8 +1,7 @@
 # Release Notes
 
 ## Version 2.0.0
-
-**Release Date:** 2026-02-23
+**Release Date:** February 23, 2026
 **Branch:** develop → main
 
 ---
@@ -36,13 +35,13 @@ improved referential integrity, and streamlined schema management.
 
 #### Schema Modifications (2026-02-14 to 2026-02-21)
 
-- **📅 Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
+- **Added `date_refreshed` columns** (2026-02-14, 2026-02-15):
     - `ipsc_match.date_refreshed` - Track when match data was last synchronised
     - `match_competitor.date_refreshed` - Track when competitor match data was last updated
     - `match_stage_competitor.date_refreshed` - Track when stage results were last refreshed
     - All columns are nullable DATETIME fields for external data source tracking
 
-- **🗑️ Removed redundant `club_name` columns** (2026-02-21):
+- **Removed redundant `club_name` columns** (2026-02-21):
     - `ipsc_match.club_name` - Eliminated to enforce foreign key relationship to club table
     - `match_competitor.club` - Removed to reduce data duplication and improve data integrity
 
@@ -80,12 +79,10 @@ improved referential integrity, and streamlined schema management.
 ## ⚠️ Breaking Changes
 
 ### Schema Changes
-
-📌 **Removed Columns**
+**Removed Columns**
 
 - `ipsc_match.club_name` - Use `club_id` foreign key relationship instead
 - `match_competitor.club` - Use `match_id` → `club_id` relationship instead
-
 **Migration Path:**
 Applications should now retrieve club information via proper JOIN operations:
 
@@ -130,11 +127,11 @@ FROM ipsc_match m
 - Clearer separation between development and production schemas
 - Better structured SQL migration files
 - Enhanced documentation templates for future releases
-- **🔓 MIT Licence adoption**: Transitioned to open source licensing for wider community adoption
-- **📁 Organised documentation structure**: Established `documentation/history/` directory for versioned
+- **MIT Licence adoption**: Transitioned to open source licensing for wider community adoption
+- **Organised documentation structure**: Established `documentation/history/` directory for versioned
   release
   notes
-- **📖 Comprehensive version history**: Created CHANGELOG.md and HISTORY.md for better version tracking
+- **Comprehensive version history**: Created CHANGELOG.md and HISTORY.md for better version tracking
 
 ---
 
@@ -143,7 +140,6 @@ FROM ipsc_match m
 ### Database Changes
 
 #### Tables Created (Complete Schema)
-
 **Core Tables:**
 
 - `club`: Club/organisation management with unique name and abbreviation constraints
@@ -153,7 +149,6 @@ FROM ipsc_match m
   scoring parameters
 - `match_competitor`: Match participation records with division, power factor, and overall match results
 - `match_stage_competitor`: Detailed stage performance including hit factor, stage points, and ranking
-
 **Join Tables:**
 
 - `club_matches`: Links clubs to their hosted matches
@@ -185,7 +180,6 @@ FROM ipsc_match m
 - `scripts/table_data.sql`: Updated seed data for clubs
 
 ### Dependencies
-
 **Database Requirements:**
 
 - MySQL 8.x
@@ -213,7 +207,7 @@ FROM ipsc_match m
    ALTER TABLE ipsc_match ADD COLUMN date_refreshed DATETIME NULL;
    ALTER TABLE match_competitor ADD COLUMN date_refreshed DATETIME NULL;
    ALTER TABLE match_stage_competitor ADD COLUMN date_refreshed DATETIME NULL;
-   
+
    -- Remove redundant club_name columns (2026-02-21)
    ALTER TABLE ipsc_match DROP COLUMN club_name;
    ALTER TABLE match_competitor DROP COLUMN club;
@@ -236,7 +230,6 @@ None at this time.
 ---
 
 ## 👥 Contributors
-
 **Leoni Lubbinge** - Database architecture and implementation
 
 ---
@@ -261,5 +254,4 @@ For questions, issues, or suggestions, please contact:
 - **GitHub**: [@tahoni](https://github.com/tahoni)
 
 ---
-
 **Full Changelog**: main vs develop - `git log main..develop`

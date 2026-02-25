@@ -41,15 +41,16 @@ It complements the consolidated release notes in the repository root and the nar
 
 ### ✅ Current Release
 
-- **[Version 2.0.0](./RELEASE_NOTES_v2.0.0.md)** - Schema Refinement & Data Integrity
-    - **Release Date:** February 23, 2026
+- **[Version 2.0.1](./RELEASE_NOTES_v2.0.1.md)** - Documentation & Release Hygiene
+    - **Release Date:** February 25, 2026
     - **Status:** Current/Stable
-    - **Key Features:** Database normalisation, temporal tracking, documentation standards
+    - **Key Features:** Release navigation, formatting consistency, documentation clarity
 
 ### 🗂️ Previous Releases
 
+- **[Version 2.0.0](./RELEASE_NOTES_v2.0.0.md)** - Schema Refinement & Data Integrity (Feb 23, 2026)
 - **[Version 1.1.0](./RELEASE_NOTES_v1.1.0.md)** - Enhanced Schema & Documentation (Jan 28, 2026)
-- **[Version 1.0.0](./RELEASE_NOTES_v1.0.0.md)** - Initial Release (Dec 28, 2025)
+- **[Version 1.0.0](./RELEASE_NOTES_v1.0.0.md)** – Initial Release (Dec 28, 2025)
 
 ---
 
@@ -57,7 +58,7 @@ It complements the consolidated release notes in the repository root and the nar
 
 ### 🧾 Project History & Evolution
 
-- **[HISTORY.md](../../HISTORY.md)** - Comprehensive project history
+- **[HISTORY.md](../../HISTORY.md)** – Comprehensive project history
     - Release themes and objectives
     - Narrative context for major changes
     - Version strategy and timeline
@@ -78,7 +79,8 @@ It complements the consolidated release notes in the repository root and the nar
 documentation/history/
 ├── README.md                          ← You are here
 ├── RELEASE_NOTES_HISTORY.md           (Versioned release notes index)
-├── RELEASE_NOTES_v2.0.0.md            (Current release)
+├── RELEASE_NOTES_v2.0.1.md            (Current release)
+├── RELEASE_NOTES_v2.0.0.md
 ├── RELEASE_NOTES_v1.1.0.md
 └── RELEASE_NOTES_v1.0.0.md
 ```
@@ -90,7 +92,7 @@ documentation/history/
 ### 🔄 For Users Upgrading Between Versions
 
 1. **Check for breaking changes:**
-    - Review the target version file (e.g., `RELEASE_NOTES_v2.0.0.md`)
+    - Review the target version file (e.g., `RELEASE_NOTES_v2.0.1.md`)
     - Look for the **Breaking Changes** section
     - Read the migration guidance in the root release notes
 
@@ -113,7 +115,7 @@ documentation/history/
     - Open the latest versioned release notes
 
 3. **Understand the current state:**
-    - Read `RELEASE_NOTES_v2.0.0.md`
+    - Read `RELEASE_NOTES_v2.0.1.md`
     - Check the root `RELEASE_NOTES.md` for consolidated guidance
 
 ---
@@ -122,6 +124,7 @@ documentation/history/
 
 | Version   | Date         | Theme                              | Status | Breaking Changes |
 |-----------|--------------|------------------------------------|--------|------------------|
+| **2.0.1** | Feb 25, 2026 | Documentation & Release Hygiene    | Stable | ✅ No             |
 | **2.0.0** | Feb 23, 2026 | Schema Refinement & Data Integrity | Stable | ⚠️ Yes           |
 | **1.1.0** | Jan 28, 2026 | Enhanced Schema & Documentation    | Stable | ✅ None           |
 | **1.0.0** | Dec 28, 2025 | Initial Release                    | Legacy | N/A              |
@@ -136,7 +139,7 @@ documentation/history/
 
 ### ✅ Non-Breaking Releases
 
-- **v1.1.0, v1.0.0** – Backward compatible schema additions and baseline setup
+- **v2.0.1, v1.1.0, v1.0.0** – Backward compatible documentation and baseline setup
 
 ---
 
@@ -158,10 +161,10 @@ documentation/history/
 ## 📝 Document Metadata
 
 - **Created:** February 24, 2026
-- **Last Updated:** February 24, 2026
-- **Coverage:** v1.0.0 - v2.0.0 (3 releases)
-- **Total Files:** 4 documentation files
+- **Last Updated:** February 25, 2026
+- **Coverage:** v1.0.0 – v2.0.1 (4 releases)
+- **Total Files:** 5 documentation files
 
 ---
 
-**Last Updated:** February 24, 2026
+**Last Updated:** February 25, 2026

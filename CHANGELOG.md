@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 📌 Table of Contents
 
 - [🧪 Unreleased](#-unreleased)
+- [🧾 2.0.1](#-201---2026-02-25)
 - [🧾 2.0.0](#-200---2026-02-23)
 - [🧾 1.1.0](#-110---2026-01-28)
 - [🧾 1.0.0](#-100---2025-12-28)
@@ -27,6 +28,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## 🧾 [2.0.1] - 2026-02-25
+
+### Changed
+
+- **Documentation**: Refined formatting and structure across release notes, history, and archive references
+- **Documentation**: Added consolidated release notes index and navigation guides in `documentation/history/`
+- **SQL Scripts**: Standardised comment wording for timestamp normalisation in `table_alter.sql`
+
+### Fixed
+
+- Inconsistent headings and formatting in release documentation for clearer navigation
+
+---
 ## 🧾 [2.0.0] - 2026-02-23
 
 ### Added
@@ -40,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation**: CHANGELOG.md for structured version tracking following Keep a Changelog format
 - **Documentation**: RELEASE_NOTES.md template aligned with modern documentation practices
 - **Documentation**: HISTORY.md with comprehensive release history and narrative descriptions for each version
-- **Documentation**: Versioned release notes (v2.0.0, v1.1.0, v1.0.0) in `documentation/history/` directory
+- **Documentation**: Versioned release notes (v2.0.1, v2.0.0, v1.1.0, v1.0.0) in `documentation/history/` directory
 
 ### Changed
 
@@ -144,6 +158,7 @@ ALTER TABLE match_competitor
 
 ## 🔗 Version Comparison Links
 
+- 2.0.1 vs 2.0.0: `git log v2.0.0...HEAD`
 - 2.0.0 vs 1.1.0: `git log v1.1.0...v2.0.0`
 - 1.1.0 vs 1.0.0: `git log v1.0.0...v1.1.0`
 
@@ -165,7 +180,6 @@ When adding new versions to this changelog:
     - **Breaking Changes** – Changes that break backward compatibility
     - **Migration Notes** – SQL or code changes required for upgrading
 4. Update the Table of Contents with the new version
-5. Add version comparison links at the bottom
 
 ---
 
@@ -179,7 +193,7 @@ When adding new versions to this changelog:
 
 ## 📚 Additional Resources
 
-- [Release Notes](RELEASE_NOTES.md) – Detailed release information for version 2.0.0
+- [Release Notes](RELEASE_NOTES.md) – Detailed release information for version 2.0.1
 - [Architecture Documentation](ARCHITECTURE.md) – Database architecture and design principles
 - [Project Overview](README.md) – Getting started and project introduction
 - [Improvement Suggestions](documentation/roadmap/SUGGESTIONS.md) - Future enhancements and roadmap
@@ -187,3 +201,6 @@ When adding new versions to this changelog:
 ---
 
 **Maintainer**: Leoni Lubbinge (leonil@tahoni.info)
+
+
+
