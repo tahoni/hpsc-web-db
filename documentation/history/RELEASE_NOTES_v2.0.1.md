@@ -2,7 +2,7 @@
 
 ## Version 2.0.1
 
-**Release Date:** 2026-02-25
+**Release Date:** February 25, 2026
 **Branch:** develop → main
 
 ---
