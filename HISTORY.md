@@ -7,6 +7,7 @@ themes and objectives for each version.
 
 ## 📌 Table of Contents
 
+- [🧭 Version 2.0.1 - Documentation & Release Hygiene](#-version-201---documentation--release-hygiene)
 - [🧭 Version 2.0.0 - Schema Refinement & Data Integrity](#-version-200---schema-refinement--data-integrity)
 - [🧭 Version 1.1.0 – Enhanced Schema & Documentation](#-version-110--enhanced-schema--documentation)
 - [🧭 Version 1.0.0 – Initial Release](#-version-100--initial-release)
@@ -18,6 +19,47 @@ themes and objectives for each version.
     - [🔭 Long-term Vision](#-long-term-vision)
 - [🔗 Additional Resources](#-additional-resources)
 - [💬 Questions or Feedback?](#-questions-or-feedback)
+
+---
+
+## 🧭 Version 2.0.1 - Documentation & Release Hygiene
+
+**Released:** February 25, 2026  
+**Type:** Patch Release (Documentation)
+
+### ✨ Release Theme
+
+This patch release focuses on **documentation polish** and **release-history navigation**, ensuring that
+release information is easier to find, consistent in structure, and aligned across the project.
+
+### 🎯 Key Objectives
+
+1. **Improve Release Navigation**: Add consolidated indexes and quick links for release notes
+2. **Standardise Formatting**: Harmonise headings and layout across changelog and history files
+3. **Clarify Documentation**: Refresh release documentation for readability and consistency
+4. **Minor Script Wording**: Standardise timestamp normalisation comments in schema scripts
+
+### 📖 Why This Release Matters
+
+Version 2.0.1 improves the usability of project documentation without changing the schema. By providing
+clearer navigation and consistent formatting, the release history becomes easier to consume for both new
+contributors and existing users tracking upgrades.
+
+### 📋 Major Changes
+
+- **Documentation**: Added consolidated release notes index and quick navigation guides
+- **Documentation**: Standardised headings and formatting for clarity and consistency
+- **SQL Scripts**: Normalised comment wording for timestamp-related changes
+
+### ⚠️ Impact
+
+No schema changes or migrations are required. This release is safe to adopt without application updates.
+
+### 🔗 Related Documentation
+
+- [Full Release Notes](RELEASE_NOTES.md) – Complete details for version 2.0.1
+- [Changelog Entry](CHANGELOG.md#-201---2026-02-25) – Categorised list of changes
+- [Release Notes Index](documentation/history/RELEASE_NOTES_HISTORY.md) – Versioned release notes
 
 ---
 
@@ -196,10 +238,10 @@ The HPSC Database project follows [Semantic Versioning](https://semver.org/) (Se
 
 ### 🧩 Version Types
 
-- **Feature Release**: Introduces new features or enhancements (e.g., 1.1.0)
-- **Breaking Change**: Involves changes that require migration or may affect existing functionality (e.g.,
-  2.0.0)
-- **Patch Release**: Contains bug fixes or minor improvements (e.g., 2.0.1)
+- **Feature Release**: Introduces new features or enhancements (e.g. 1.1.0)
+- **Breaking Change**: Involves changes that require migration or may affect existing functionality
+  (e.g. 2.0.0)
+- **Patch Release**: Contains bug fixes or minor improvements (e.g. 2.0.1)
 
 ### 🗺️ Version History Timeline
 
@@ -210,7 +252,7 @@ v1.0.0 (2025-12-28) ─── Initial Release
           │
           └─> v2.0.0 (2026-02-23) ─── Breaking Changes
                  │
-                 └─> Future releases...
+                 └─> v2.0.1 (2026-02-25) ─── Documentation & Release Hygiene
 ```
 
 ---
@@ -265,4 +307,6 @@ For questions about release history, version strategy, or to provide feedback:
 
 ---
 
-*Last Updated: 2025-02-23*
+*Last Updated: 2026-02-25*
+
+

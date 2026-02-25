@@ -16,7 +16,7 @@ The official repository for the Hartbeespoortdam Practical Shooting Club (HPSC) 
 - [✅ Typical Workflows Supported](#-typical-workflows-supported)
     - [🧭 Common Workflow Steps](#-common-workflow-steps)
 - [🧭 Version Information](#-version-information)
-    - [✨ Key v2.0.0 Improvements](#-key-v200-improvements)
+    - [✨ Key v2.0.1 Improvements](#-key-v201-improvements)
 - [⚠️ Breaking Changes in v2.0.0](#-breaking-changes-in-v200)
 - [🏗️ Architecture](#-architecture)
 - [📜 Licence](#-licence)
@@ -93,18 +93,17 @@ It also includes logging tables for derived/aggregated competitor standings acro
 
 ## 🧭 Version Information
 
-**Current Version:** 2.0.0 (Released February 23, 2026)
+**Current Version:** 2.0.1 (Released February 25, 2026)
 
-This release introduces significant improvements to database normalisation, temporal tracking, and
-documentation standards. For detailed version history and upgrade information, see [HISTORY.md](HISTORY.md)
+This patch release focuses on documentation clarity, release-history navigation, and minor script wording standardisation. For detailed version history and upgrade information, see [HISTORY.md](HISTORY.md)
 and [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
-### ✨ Key v2.0.0 Improvements
+### ✨ Key v2.0.1 Improvements
 
-- **Temporal Tracking**: Added `date_refreshed` columns to track external data synchronisation
-- **Enhanced Normalisation**: Removed redundant `club_name` columns to enforce referential integrity
-- **Open Source**: Transitioned to MIT Licence for community adoption
-- **Comprehensive Documentation**: Established CHANGELOG.md, HISTORY.md, and versioned release notes
+- **Release Navigation**: Added consolidated release notes index and quick navigation guides
+- **Formatting Consistency**: Standardised headings and layout across release documentation
+- **Documentation Clarity**: Improved readability in release notes and history summaries
+- **Script Wording**: Standardised timestamp normalisation comment wording
 
 ## ⚠️ Breaking Changes in v2.0.0
 
@@ -160,3 +159,7 @@ The copyright licence can be found in the [`LICENSE.md`](LICENSE.md) file.
 - [![Gmail Badge](https://img.shields.io/badge/tahoni%40gmail.com-blue?logo=gmail)](mailto:tahoni@gmail.com)
 - [![GitHub Badge](https://img.shields.io/badge/Leoni_Lubbinge-blue?logo=github)](https://github.com/tahoni)
 - [![LinkedIn Badge](https://custom-icon-badges.demolab.com/badge/Leoni_Lubbinge-blue.svg?logoSource=feather&logo=linkedin)](https://www.linkedin.com/in/leoni-lubbinge-06066b16/)
+
+
+
+
